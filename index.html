@@ -14,7 +14,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 html{width:100%;height:auto;overflow-x:hidden;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;transition:overflow 0.3s ease;padding-top:80px;will-change:auto;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -118,8 +118,8 @@ section{padding:120px 80px;}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
 #mobile-icons{display:flex;}
 .nav-icons-desktop{display:none !important;}
-.nav-wrapper{display:flex;position:fixed;inset:60px 0 0 0;width:100%;height:calc(100vh - 60px);background:linear-gradient(-45deg,rgba(11,11,11,0.95),rgba(17,17,17,0.98),rgba(26,26,26,0.95));flex-direction:column;justify-content:flex-start;align-items:flex-start;overflow-y:auto;padding-top:20px;transform:translateX(100%);transition:transform 0.4s ease;z-index:9000;will-change:transform;pointer-events:none;box-sizing:border-box;}
-.nav-wrapper.active{transform:translateX(0);pointer-events:auto;box-shadow:inset -2px 0 20px rgba(0,0,0,0.8);}
+.nav-wrapper{display:flex;position:fixed;inset:60px 0 0 0;width:100%;height:calc(100vh - 60px);background:linear-gradient(-45deg,rgba(11,11,11,0.95),rgba(17,17,17,0.98),rgba(26,26,26,0.95));flex-direction:column;justify-content:flex-start;align-items:flex-start;overflow-y:hidden;padding-top:20px;transform:translateX(100%);transition:transform 0.4s ease;z-index:9000;will-change:transform;pointer-events:none;box-sizing:border-box;}
+.nav-wrapper.active{transform:translateX(0);pointer-events:auto;box-shadow:inset -2px 0 20px rgba(0,0,0,0.8);overflow-y:auto;}
 .nav-center{flex-direction:column;gap:0;width:100%;order:1;flex:1;}
 .nav-center li{width:100%;position:relative;}
 .nav-center li a{display:block;padding:16px 20px;border-bottom:1px solid rgba(129,216,208,.1);width:100%;pointer-events:auto;transition:all 0.2s ease;color:#fff;cursor:pointer;}
@@ -129,7 +129,7 @@ section{padding:120px 80px;}
 .header-icons a{pointer-events:auto;}
 .nav-inner{justify-content:space-between;gap:8px;}
 .dropdown-menu{position:static;opacity:0;visibility:hidden;transform:none;background:rgba(17,17,17,0.98);box-shadow:0 8px 24px rgba(0,0,0,.6);max-height:300px;width:100%;overflow:hidden;transition:max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;margin:8px 0 0 0;padding:0;pointer-events:auto;z-index:10000;border-radius:8px;}
-.dropdown-menu.active{opacity:1;visibility:visible;padding:10px 0;pointer-events:auto;overflow-y:auto;}
+.dropdown-menu.active{opacity:1;visibility:visible;padding:10px 0;pointer-events:auto;overflow-y:hidden;}
 .dropdown-menu a{display:block;padding:12px 20px 12px 20px;border-bottom:1px solid rgba(129,216,208,.2);color:#fff;font-size:0.9rem;pointer-events:auto;transition:all 0.2s ease;}
 .dropdown-menu a:active{background:rgba(129,216,208,.15);}
 .dropdown-menu a:last-child{border-bottom:none;}
@@ -314,10 +314,10 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .reservation-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4898;pointer-events:none;contain:layout style paint;}
 .reservation-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
-.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;overflow-x:hidden;transition:left 0.5s ease-out;z-index:10000 !important;will-change:left;contain:layout style paint;}
-.reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;}
-.pricing-modal.active{left:0 !important;}
-.reservation-modal.active{left:0;}
+.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;overflow-x:hidden;transition:left 0.5s ease-out;z-index:10000 !important;will-change:left;contain:layout style paint;}
+.reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;}
+.pricing-modal.active{left:0 !important;overflow-y:auto;}
+.reservation-modal.active{left:0;overflow-y:auto;}
 .modal-header{position:sticky;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;}
 .modal-header h1{font-size:2rem;color:var(--tiffany);margin:0;}
 .modal-close{background:none;border:none;color:var(--tiffany);font-size:2rem;cursor:pointer;transition:.3s;width:40px;height:40px;display:flex;align-items:center;justify-content:center;}
@@ -733,7 +733,7 @@ font-size:1rem;
 
 <!-- BACKGROUND VIDEO -->
 <div class="video-background" id="videoBg">
-  <video class="bg-video" autoplay muted loop playsinline>
+  <video class="bg-video" muted loop playsinline preload="none">
     <source src="1223.mp4" type="video/mp4">
     Twoja przeglądarka nie wspiera video
   </video>
@@ -1188,9 +1188,6 @@ document.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => {
     updateBeaImages();
   });
-  
-  // Natychmiastowy scroll do top bez delay
-  window.scrollTo({top: 0, behavior: 'auto'});
 
   // ------------------- DROPDOWN CENNIK -------------------
   // Kod moved to end of script for better compatibility
@@ -1318,14 +1315,19 @@ if ('IntersectionObserver' in window) {
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const videoBg = document.getElementById('videoBg');
-        if (!videoBg) return;
+        const videoEl = videoBg?.querySelector('video');
+        if (!videoBg || !videoEl) return;
         
         if (entry.isIntersecting) {
           videoBg.style.opacity = '1';
           videoBg.style.visibility = 'visible';
+          // Uruchom playback video gdy jest widoczny
+          videoEl.play().catch(err => console.log('Video autoplay blocked:', err));
         } else {
           videoBg.style.opacity = '0';
           videoBg.style.visibility = 'hidden';
+          // Pause video gdy nie jest widoczny
+          videoEl.pause();
         }
       });
     }, {
