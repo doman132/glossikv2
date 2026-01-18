@@ -14,7 +14,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 html{width:100%;height:auto;overflow-x:hidden;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scroll-behavior:smooth;scrollbar-gutter:stable;transition:overflow 0.3s ease;padding-top:80px;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;transition:overflow 0.3s ease;padding-top:80px;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -240,7 +240,7 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .ba-arrow:hover{background:var(--tiffany);color:#000;transform:scale(1.1);}
 .slider-container{position:relative;overflow:visible;max-width:90%;margin:0 auto;perspective:1200px;padding:40px 0;}
 .slider-track{display:flex;gap:30px;justify-content:center;align-items:center;position:relative;height:420px;}
-.slide{position:relative;background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;height:100%;width:340px;flex-shrink:0;transition:all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);border:2px solid rgba(129,216,208,.2);}
+.slide{position:relative;background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;height:100%;width:340px;flex-shrink:0;transition:width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);border:2px solid rgba(129,216,208,.2);will-change:width,opacity;}
 .slide img{width:100%;height:100%;object-fit:cover;}
 .slide#slide-left{transform:perspective(1200px) rotateY(25deg) translateZ(-100px) scale(0.85);opacity:0.7;}
 .slide#slide-center{transform:perspective(1200px) rotateY(0deg) translateZ(0) scale(1);opacity:1;z-index:10;border-color:var(--tiffany);box-shadow:0 20px 60px rgba(129,216,208,.3);}
@@ -299,14 +299,14 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-header h3{font-size:1.1rem;}
 }
 .contact-container{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;margin-top:40px;}
-.contact-card{flex:1 1 280px;background:rgba(255,255,255,0.05);padding:30px 20px;border-radius:20px;text-align:center;transition:all .3s;}
+.contact-card{flex:1 1 280px;background:rgba(255,255,255,0.05);padding:30px 20px;border-radius:20px;text-align:center;transition:transform 0.3s ease, box-shadow 0.3s ease;}
 .contact-card:hover{background:rgba(129,216,208,0.15);}
 .contact-icons{display:flex;justify-content:center;gap:24px;margin:50px 0;flex-wrap:wrap;}
 .contact-icons a{display:flex;align-items:center;justify-content:center;width:70px;height:70px;border-radius:50%;background:rgba(129,216,208,0.2);color:var(--tiffany);font-size:1.8rem;transition:.3s;text-decoration:none;}
 .contact-icons a:hover{background:var(--tiffany);color:#000;transform:translateY(-6px);}
 .map{width:100%;margin:0 auto;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.6);height:600px;}
 .map iframe{width:100%;height:100%;border:0;}
-.reveal{opacity:0;transform:translateY(80px);transition:all 1s ease;}
+.reveal{opacity:0;transform:translateY(80px);transition:opacity 1s ease, transform 1s ease;}
 .reveal.active{opacity:1;transform:none;}
 
 /* PANEL CENNIKA FULLSCREEN */
@@ -773,11 +773,11 @@ font-size:1rem;
 <h2>Usługi</h2>
 <div class="services-grid">
 <div class="service-card" onclick="openPricingModal('mycie')"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=900"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('wnetrze')"><img src="https://images.unsplash.com/photo-1617814065893-00757125efab?w=900"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
+<div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
 <div class="service-card" onclick="openPricingModal('lakier')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
-<div class="service-card" onclick="openPricingModal('powloki')"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
+<div class="service-card" onclick="openPricingModal('powloki')"><img src="powłoka.jpeg"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
 <div class="service-card" onclick="openPricingModal('szyby')"><img src="https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=900"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
-<div class="service-card" onclick="openPricingModal('ppf')"><img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=900"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
+<div class="service-card" onclick="openPricingModal('ppf')"><img src="ppf.jpeg"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
 </div>
 </section>
 
@@ -1275,52 +1275,63 @@ if (handle && baBox) {
 // ------------------- REVEAL -------------------
 let revealTimeout;
 function reveal() {
-  document.querySelectorAll('.reveal').forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add('active');
-    }
-  });
+  // Usunięte - używamy Intersection Observer zamiast tego
 }
 
 // ------------------- VIDEO BACKGROUND CONTROL -------------------
 function updateVideoBackground() {
-  const videoBg = document.getElementById('videoBg');
-  const onasSection = document.getElementById('onas');
-  
-  if (!videoBg || !onasSection) return;
-  
-  const onasRect = onasSection.getBoundingClientRect();
-  if (onasRect.top < 200) {
-    videoBg.style.opacity = '0';
-    videoBg.style.visibility = 'hidden';
-  } else {
-    videoBg.style.opacity = '1';
-    videoBg.style.visibility = 'visible';
-  }
+  // Usunięte - używamy Intersection Observer zamiast tego
 }
 
 // ------------------- OPTIMIZED SCROLL HANDLER -------------------
-let ticking = false;
-function onScroll() {
-  if (!ticking) {
-    window.requestAnimationFrame(() => {
-      reveal();
-      updateVideoBackground();
-      ticking = false;
+// Setup Intersection Observer dla reveal animations
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
     });
-    ticking = true;
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  });
+  
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+}
+
+// Setup Intersection Observer dla video background
+if ('IntersectionObserver' in window) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const videoBg = document.getElementById('videoBg');
+      if (!videoBg) return;
+      
+      if (entry.isIntersecting) {
+        videoBg.style.opacity = '1';
+        videoBg.style.visibility = 'visible';
+      } else {
+        videoBg.style.opacity = '0';
+        videoBg.style.visibility = 'hidden';
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '200px 0px 0px 0px'
+  });
+  
+  const heroSection = document.getElementById('hero');
+  if (heroSection) {
+    videoObserver.observe(heroSection);
   }
 }
 
 window.addEventListener('load', () => {
-  reveal();
-  updateVideoBackground();
+  // Listeners już setup przez Intersection Observer
 });
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', () => {
-  reveal();
-  updateVideoBackground();
-});
+// Usunięto scroll listener - wszystko przez Intersection Observer
 
 // ------------------- LICZNIKI -------------------
 let statsAnimated = false;
@@ -1337,19 +1348,27 @@ function animateCount(el, end) {
 }
 
 // Animuj liczniki gdy dojedzie do sekcji "O nas"
-window.addEventListener('scroll', () => {
-  if (statsAnimated) return;
-  const onas = document.querySelector('#onas');
-  if (!onas) return;
-  const offsetTop = onas.offsetTop - window.innerHeight + 100;
-  if (window.scrollY > offsetTop) {
-    statsAnimated = true;
-    const stats = document.querySelectorAll('.stat-item .number');
-    if (stats[0]) animateCount(stats[0], 6967);
-    if (stats[1]) animateCount(stats[1], 69);
-    if (stats[2]) animateCount(stats[2], 67);
+if ('IntersectionObserver' in window) {
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !statsAnimated) {
+        statsAnimated = true;
+        const stats = document.querySelectorAll('.stat-item .number');
+        if (stats[0]) animateCount(stats[0], 6967);
+        if (stats[1]) animateCount(stats[1], 69);
+        if (stats[2]) animateCount(stats[2], 67);
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+  });
+  
+  const onasSection = document.getElementById('onas');
+  if (onasSection) {
+    statsObserver.observe(onasSection);
   }
-}, { passive: true });
+}
 
 // ------------------- MODAL REZERWACJI -------------------
 const reservationBtn = document.getElementById('reservationBtn');
@@ -1918,7 +1937,7 @@ function selectPaymentMethod() {
 // Scroll do góry strony na ładowaniu
 // ========== SUWAK PRZED/PO ==========
 const beaImages = [
-  { before: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200', after: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200' },
+  { before: 'probka.jpg', after: 'probka1.jpg' },
   { before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200', after: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200' },
   { before: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200', after: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200' },
   { before: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200', after: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200' },
