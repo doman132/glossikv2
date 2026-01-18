@@ -1184,7 +1184,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // Scroll do górki
-  updateBeaImages();
+  // Odłóż ładowanie obrazów na następny frame aby nie blokować scroll
+  requestAnimationFrame(() => {
+    updateBeaImages();
+  });
   
   // Natychmiastowy scroll do top bez delay
   window.scrollTo({top: 0, behavior: 'auto'});
@@ -1277,61 +1280,6 @@ function reveal() {
   // Usunięte - używamy Intersection Observer zamiast tego
 }
 
-// ------------------- VIDEO BACKGROUND CONTROL -------------------
-function updateVideoBackground() {
-  // Usunięte - używamy Intersection Observer zamiast tego
-}
-
-// ------------------- OPTIMIZED SCROLL HANDLER -------------------
-// Setup Intersection Observer dla reveal animations
-if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-  });
-  
-  document.querySelectorAll('.reveal').forEach(el => {
-    revealObserver.observe(el);
-  });
-}
-
-// Setup Intersection Observer dla video background
-if ('IntersectionObserver' in window) {
-  const videoObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const videoBg = document.getElementById('videoBg');
-      if (!videoBg) return;
-      
-      if (entry.isIntersecting) {
-        videoBg.style.opacity = '1';
-        videoBg.style.visibility = 'visible';
-      } else {
-        videoBg.style.opacity = '0';
-        videoBg.style.visibility = 'hidden';
-      }
-    });
-  }, {
-    threshold: 0,
-    rootMargin: '200px 0px 0px 0px'
-  });
-  
-  const heroSection = document.getElementById('hero');
-  if (heroSection) {
-    videoObserver.observe(heroSection);
-  }
-}
-
-window.addEventListener('load', () => {
-  // Listeners już setup przez Intersection Observer
-});
-// Usunięto scroll listener - wszystko przez Intersection Observer
-
 // ------------------- LICZNIKI -------------------
 let statsAnimated = false;
 function animateCount(el, end) {
@@ -1346,27 +1294,72 @@ function animateCount(el, end) {
   }, stepTime);
 }
 
-// Animuj liczniki gdy dojedzie do sekcji "O nas"
+// ------------------- OPTIMIZED SCROLL HANDLER -------------------
+// Odłóż setup Intersection Observers aby nie blokować scroll przy ładowaniu
 if ('IntersectionObserver' in window) {
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !statsAnimated) {
-        statsAnimated = true;
-        const stats = document.querySelectorAll('.stat-item .number');
-        if (stats[0]) animateCount(stats[0], 6967);
-        if (stats[1]) animateCount(stats[1], 69);
-        if (stats[2]) animateCount(stats[2], 67);
-      }
+  requestAnimationFrame(() => {
+    // Setup Intersection Observer dla reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
     });
-  }, {
-    threshold: 0.3,
-    rootMargin: '0px 0px -100px 0px'
+    
+    document.querySelectorAll('.reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
+
+    // Setup Intersection Observer dla video background
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const videoBg = document.getElementById('videoBg');
+        if (!videoBg) return;
+        
+        if (entry.isIntersecting) {
+          videoBg.style.opacity = '1';
+          videoBg.style.visibility = 'visible';
+        } else {
+          videoBg.style.opacity = '0';
+          videoBg.style.visibility = 'hidden';
+        }
+      });
+    }, {
+      threshold: 0,
+      rootMargin: '200px 0px 0px 0px'
+    });
+    
+    const heroSection = document.getElementById('hero');
+    if (heroSection) {
+      videoObserver.observe(heroSection);
+    }
+
+    // Intersection Observer dla liczników
+    let statsAnimated = false;
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          const stats = document.querySelectorAll('.stat-item .number');
+          if (stats[0]) animateCount(stats[0], 6967);
+          if (stats[1]) animateCount(stats[1], 69);
+          if (stats[2]) animateCount(stats[2], 67);
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    });
+    
+    const onasSection = document.getElementById('onas');
+    if (onasSection) {
+      statsObserver.observe(onasSection);
+    }
   });
-  
-  const onasSection = document.getElementById('onas');
-  if (onasSection) {
-    statsObserver.observe(onasSection);
-  }
 }
 
 // ------------------- MODAL REZERWACJI -------------------
@@ -1973,12 +1966,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateBeaImages();
 });
 
-// Upewnij się że scroll się dzieje nawet gdy już załadowano
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    window.scrollTo({top: 0, behavior: 'auto'});
-  }, 100);
-});
+// Scroll handler jest już w DOMContentLoaded
 // Zamykanie po kliknięciu linka (bardzo przydatne na mobile)
 const navLinks = document.querySelectorAll('.nav-center li > a:not(.dropdown-toggle)');
 navLinks.forEach(link => {
