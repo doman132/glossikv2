@@ -13,8 +13,8 @@
 --black:#0b0b0b;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-html{width:100%;height:auto;overflow-x:hidden;overflow-y:scroll;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;overflow-y:visible;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
+html{width:100%;height:auto;overflow-x:hidden;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -203,7 +203,7 @@ nav{padding:12px 12px;}
   z-index:1;
 }
 
-section{margin:0 auto;padding:100px 24px;width:100%;box-sizing:border-box;z-index:2;}
+section{margin:0 auto;padding:100px 24px;position:relative;width:100%;box-sizing:border-box;z-index:2;}
 h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font-family:'Agency FB',sans-serif;}
 .hero{padding:180px 24px 140px;text-align:center;}
 .hero h2{font-size:5rem;}
@@ -492,6 +492,7 @@ font-size:1rem;
 }
 /* ===== KONTAKT – TŁO ZDJĘCIE ===== */
 .contact-bg{
+  position: relative;
   background: url("fela.jpg") center / cover no-repeat;
   background-size: cover;
   background-position: center;
@@ -510,6 +511,12 @@ font-size:1rem;
   inset: 0;
   background: rgba(0,0,0,0.75);
   z-index: 0;
+}
+
+/* wszystko nad overlay */
+.contact-bg > *{
+  position: relative;
+  z-index: 1;
 }
 @media (max-width: 980px) {
 
@@ -790,9 +797,9 @@ font-size:1rem;
 <h2>Realizacje</h2>
 <div class="slider-container">
 <div class="slider-track" id="slider">
-<div class="slide" id="slide-left"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"></div>
-<div class="slide center" id="slide-center"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=900"></div>
-<div class="slide" id="slide-right"><img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900"></div>
+<div class="slide" id="slide-left"><img src="realizacja1.jpg"></div>
+<div class="slide center" id="slide-center"><img src="realizacja2.jpg"></div>
+<div class="slide" id="slide-right"><img src="realizacja3.jpg"></div>
 </div>
 </div>
 </section>
@@ -1173,12 +1180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.addEventListener('click', closeMenu);
   }
   
-  // Scroll do górki
-  // Odłóż ładowanie obrazów na następny frame aby nie blokować scroll
-  requestAnimationFrame(() => {
-    updateBeaImages();
-  });
-
   // ------------------- DROPDOWN CENNIK -------------------
   // Kod moved to end of script for better compatibility
 
