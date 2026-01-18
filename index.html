@@ -160,7 +160,7 @@ nav{padding:12px 12px;}
 .menu-overlay.active{
   opacity:1;
   visibility:visible;
-  pointer-events:none;
+  pointer-events:auto;
 }
 
 /* VIDEO BACKGROUND */
@@ -229,7 +229,7 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-list span{color:var(--tiffany);font-weight:bold;}
 .before-after-slider{max-width:900px;margin:auto;position:relative;z-index:5;display:flex;align-items:center;gap:30px;justify-content:center;}
 .before-after{max-width:100%;margin:auto;overflow:hidden;border-radius:20px;position:relative;flex:1;min-width:0;}
-.ba-box{position:relative;aspect-ratio:4/3;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;}
+.ba-box{position:relative;aspect-ratio:4/3;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;}
 .ba-box img{position:absolute;width:100%;height:100%;object-fit:cover;}
 .ba-after{clip-path:inset(0 50% 0 0);}
 .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:var(--tiffany);cursor:grab;z-index:10;border-radius:50%;display:flex;align-items:center;justify-content:center;}
@@ -1186,9 +1186,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Scroll do górki
   updateBeaImages();
   
-  setTimeout(() => {
-    window.scrollTo({top: 0, behavior: 'auto'});
-  }, 100);
+  // Natychmiastowy scroll do top bez delay
+  window.scrollTo({top: 0, behavior: 'auto'});
 
   // ------------------- DROPDOWN CENNIK -------------------
   // Kod moved to end of script for better compatibility
