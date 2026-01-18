@@ -13,8 +13,8 @@
 --black:#0b0b0b;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-html{width:100%;height:auto;overflow-x:hidden;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
+html{width:100%;height:auto;overflow-x:hidden;overflow-y:scroll;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;overflow-y:visible;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -166,7 +166,7 @@ nav{padding:12px 12px;}
 /* VIDEO BACKGROUND */
 .video-background{
   position:fixed;
-  top:80px;
+  top:0;
   left:0;
   right:0;
   width:100%;
@@ -1347,9 +1347,9 @@ if ('IntersectionObserver' in window) {
         if (entry.isIntersecting && !statsAnimated) {
           statsAnimated = true;
           const stats = document.querySelectorAll('.stat-item .number');
-          if (stats[0]) animateCount(stats[0], 6967);
-          if (stats[1]) animateCount(stats[1], 69);
-          if (stats[2]) animateCount(stats[2], 67);
+          if (stats[0]) animateCount(stats[0], 1500);
+          if (stats[1]) animateCount(stats[1], 120);
+          if (stats[2]) animateCount(stats[2], 170);
         }
       });
     }, {
