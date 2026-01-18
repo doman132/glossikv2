@@ -14,7 +14,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 html{width:100%;height:auto;overflow-x:hidden;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;transition:overflow 0.3s ease;padding-top:80px;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;transition:overflow 0.3s ease;padding-top:80px;will-change:auto;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
@@ -1240,19 +1240,19 @@ if (handle && baBox) {
   handle.addEventListener('touchstart', startDrag, { passive: true });
 
   function startDrag(e) {
-    e.preventDefault();
     isDragging = true;
     baBox.style.cursor = 'grabbing';
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', stopDrag);
-    document.addEventListener('touchmove', drag, { passive: false });
+    document.addEventListener('touchmove', drag, { passive: true });
     document.addEventListener('touchend', stopDrag);
   }
 
   function drag(e) {
     if (!isDragging) return;
-    if (e.type.includes('touch')) {
-      e.preventDefault();
+    // Tylko dla touch events gdy to nie jest zwykłe scrollowanie
+    if (e.type.includes('touch') && e.touches.length === 1) {
+      // Nie blokujemy defaultu, pozwalamy na scroll
     }
     const rect = baBox.getBoundingClientRect();
     const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
