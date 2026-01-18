@@ -28,6 +28,7 @@ nav{width:100%;padding:16px 24px;display:flex;justify-content:center;align-items
 .header-icons a{color:var(--tiffany);font-size:1.2rem;text-decoration:none;transition:.3s;}
 .header-icons a:hover{transform:translateY(-3px);}
 #mobile-icons{display:none;}
+#mobile-icons{order:0;width:100%;padding:16px 20px;border-bottom:1px solid rgba(129,216,208,.2);justify-content:center;gap:16px;}
 .nav-center{display:flex;gap:36px;list-style:none;margin:0;align-items:center;}
 .nav-center li{position:relative;}
 .nav-center a{color:#fff;text-decoration:none;font-weight:600;transition:.3s;display:flex;align-items:center;gap:8px;white-space:nowrap;}
@@ -119,13 +120,16 @@ section{padding:120px 80px;}
 #mobile-icons{display:flex;}
 .nav-icons-desktop{display:none !important;}
 .nav-wrapper{display:flex;position:fixed;inset:60px 0 0 0;width:0;height:calc(100vh - 60px);background:linear-gradient(-45deg,rgba(11,11,11,0.95),rgba(17,17,17,0.98),rgba(26,26,26,0.95));flex-direction:column;justify-content:flex-start;align-items:flex-start;overflow:hidden;padding-top:20px;transform:translateX(100%);transition:transform 0.4s ease;z-index:9000;will-change:transform;pointer-events:none;box-sizing:border-box;}
-.nav-wrapper.active{width:100%;pointer-events:auto;box-shadow:inset -2px 0 20px rgba(0,0,0,0.8);overflow-y:auto;transform:translateX(0);}
+.nav-wrapper.active{width:100%;pointer-events:auto;box-shadow:inset -2px 0 20px rgba(0,0,0,0.8);overflow:hidden;transform:translateX(0);}
 .nav-center{flex-direction:column;gap:0;width:100%;order:1;flex:1;}
 .nav-center li{width:100%;position:relative;}
 .nav-center li a{display:block;padding:16px 20px;border-bottom:1px solid rgba(129,216,208,.1);width:100%;pointer-events:auto;transition:all 0.2s ease;color:#fff;cursor:pointer;}
 .nav-center li a:active{background:rgba(129,216,208,.15);}
 .dropdown-toggle{pointer-events:auto !important;color:#fff;}
-.header-icons{flex-direction:row;gap:20px;justify-content:center;order:2;width:100%;padding:20px;border-top:1px solid rgba(129,216,208,.2);pointer-events:auto;}
+#mobile-icons{flex-direction:row;gap:20px;justify-content:center;order:0;width:100%;padding:16px 20px;border-bottom:1px solid rgba(129,216,208,.2);pointer-events:auto;}
+#mobile-icons a{pointer-events:auto;color:var(--tiffany);font-size:1.2rem;text-decoration:none;transition:.3s;}
+#mobile-icons a:hover{transform:translateY(-3px);}
+.header-icons{flex-direction:row;gap:20px;justify-content:center;width:100%;padding:20px;border-top:1px solid rgba(129,216,208,.2);pointer-events:auto;}
 .header-icons a{pointer-events:auto;}
 .nav-inner{justify-content:space-between;gap:8px;}
 .dropdown-menu{position:static;opacity:0;visibility:hidden;transform:none;background:rgba(17,17,17,0.98);box-shadow:0 8px 24px rgba(0,0,0,.6);max-height:300px;width:100%;overflow:hidden;transition:max-height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;margin:8px 0 0 0;padding:0;pointer-events:auto;z-index:10000;border-radius:8px;}
@@ -696,6 +700,11 @@ font-size:1rem;
       <img src="logo.png" alt="Gloss Point">
     </div>
     <div class="nav-wrapper" id="menu">
+      <div class="header-icons" id="mobile-icons">
+        <a href="tel:+48 660 706 043"><i class="fas fa-phone"></i></a>
+        <a href="https://www.instagram.com/glosspoint_/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61570655316863" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      </div>
       <ul class="nav-center">
         <li class="nav-icons-desktop">
           <a href="tel:+48 660 706 043"><i class="fas fa-phone"></i></a>
@@ -719,11 +728,6 @@ font-size:1rem;
         <li><a href="#kontakt">Kontakt</a></li>
         <li><a href="javascript:void(0)" class="btn-rezerwacja" id="reservationBtn">Rezerwacja</a></li>
       </ul>
-      <div class="header-icons" id="mobile-icons">
-        <a href="tel:+48 660 706 043"><i class="fas fa-phone"></i></a>
-        <a href="https://www.instagram.com/glosspoint_/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/profile.php?id=61570655316863" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      </div>
     </div>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
@@ -802,10 +806,10 @@ font-size:1rem;
 <h2>Realizacje</h2>
 <div class="slider-container">
 <div class="slider-track" id="slider">
-<div class="slide" id="slide-0"><img src="1.jpg"></div>
-<div class="slide" id="slide-1"><img src="2.jpg"></div>
-<div class="slide" id="slide-2"><img src="3.jpg"></div>
-<div class="slide" id="slide-3"><img src="4.jpg"></div>
+<div class="slide" id="slide-0"><img src="realizacja1.jpg"></div>
+<div class="slide" id="slide-1"><img src="realizacja2.jpg"></div>
+<div class="slide" id="slide-2"><img src="realizacja3.jpg"></div>
+<div class="slide" id="slide-3"><img src="realizacja4.jpg"></div>
 </div>
 </div>
 </section>
@@ -1198,7 +1202,7 @@ let allImages = [
   'realizacja2.jpeg',
   'realizacja3.jpeg',
   'realizacja4.jpeg',
-  'realizacja5.jpeg',
+  'realizacja5.jpg',
 ];
 
 let currentIndex = 0;
@@ -2187,5 +2191,3 @@ if (!document.querySelector('style[data-animations]')) {
 
 </body>
 </html>
-
-
