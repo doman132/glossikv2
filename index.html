@@ -800,6 +800,18 @@ font-size:1rem;
 </p>
 </div>
 
+<div style="margin-bottom:30px;background:rgba(129,216,208,.05);padding:20px;border-radius:12px;border:2px solid rgba(129,216,208,.2);">
+<h3 style="color:var(--tiffany);margin-top:0;margin-bottom:15px;font-size:1.1rem;">Zgoda i Zatwierdzenia</h3>
+<div style="margin-bottom:15px;display:flex;align-items:flex-start;gap:12px;">
+<input type="checkbox" id="consentTerms" required style="margin-top:4px;cursor:pointer;width:18px;height:18px;accent-color:var(--tiffany);flex-shrink:0;">
+<label for="consentTerms" style="color:#fff;font-size:0.95rem;cursor:pointer;line-height:1.4;">Akceptuję <span style="color:var(--tiffany);cursor:pointer;text-decoration:underline;" onclick="openPrivacyPanel()">Regulamin rezerwacji oraz Politykę prywatności i informację o przetwarzaniu danych osobowych</span> <span style="color:#ff9999;">*</span></label>
+</div>
+<div style="display:flex;align-items:flex-start;gap:12px;">
+<input type="checkbox" id="consentMarketing" style="margin-top:4px;cursor:pointer;width:18px;height:18px;accent-color:var(--tiffany);flex-shrink:0;">
+<label for="consentMarketing" style="color:#fff;font-size:0.95rem;cursor:pointer;line-height:1.4;">Wyrażam zgodę na otrzymywanie informacji handlowych drogą elektroniczną (np. promocje, nowości) – mogę cofnąć zgodę w każdej chwili</label>
+</div>
+</div>
+
 <div style="display:flex;gap:16px;">
 <button type="button" onclick="backToHours()" style="flex:1;padding:14px;background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.3);border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;">Wróć</button>
 <button type="submit" style="flex:1;padding:14px;background:var(--tiffany);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;">Zarezerwuj</button>
@@ -2188,6 +2200,19 @@ reservationForm.addEventListener('submit', async (e) => {
     return;
   }
   
+  // Sprawdź czy wymagana zgoda na regulamin i politykę prywatności jest zaznaczona
+  const consentTerms = document.getElementById('consentTerms');
+  if (!consentTerms.checked) {
+    showNotification('Musisz zaakceptować Regulamin rezerwacji i Politykę prywatności aby kontynuować', 'error');
+    consentTerms.focus();
+    return;
+  }
+  
+  // Zapisz preferencje marketingowe
+  const consentMarketing = document.getElementById('consentMarketing');
+  const marketingConsent = consentMarketing.checked;
+  localStorage.setItem('marketingConsent', marketingConsent);
+  
   // Sprawdź czy godzina jest zablokowana (wraz z czasem trwania usługi)
   const duration = selectedService.duration || 1;
   if (isTimeBlocked(date, time, duration)) {
@@ -2291,6 +2316,19 @@ function selectPaymentMethod() {
     showNotification('Uzupełnij imię, telefon i email aby kontynuować płatność', 'error');
     return;
   }
+  
+  // Sprawdź czy wymagana zgoda na regulamin i politykę prywatności jest zaznaczona
+  const consentTerms = document.getElementById('consentTerms');
+  if (!consentTerms.checked) {
+    showNotification('Musisz zaakceptować Regulamin rezerwacji i Politykę prywatności aby kontynuować', 'error');
+    consentTerms.focus();
+    return;
+  }
+  
+  // Zapisz preferencje marketingowe
+  const consentMarketing = document.getElementById('consentMarketing');
+  const marketingConsent = consentMarketing.checked;
+  localStorage.setItem('marketingConsent', marketingConsent);
   
   if (!selectedDate || !selectedTime) {
     showNotification('Wybierz datę i godzinę', 'error');
