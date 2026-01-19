@@ -218,14 +218,14 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-list span{color:var(--tiffany);font-weight:bold;}
 .before-after-slider{max-width:900px;margin:auto;position:relative;z-index:5;display:flex;align-items:center;gap:30px;justify-content:center;}
 .before-after{max-width:100%;margin:auto;overflow:hidden;border-radius:20px;position:relative;flex:1;min-width:0;}
-.ba-box{position:relative;aspect-ratio:4/3;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;}
+.ba-box{position:relative;aspect-ratio:3/2;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;}
 .ba-box img{position:absolute;width:100%;height:100%;object-fit:cover;}
 .ba-after{clip-path:inset(0 50% 0 0);}
 .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:var(--tiffany);cursor:grab;z-index:10;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .ba-handle::before{content:'⟨';color:#000;font-size:24px;font-weight:bold;}
 .ba-handle::after{content:'⟩';color:#000;font-size:24px;font-weight:bold;}
 .ba-nav{display:flex;gap:20px;align-items:center;justify-content:center;}
-.ba-arrow{background:rgba(129,216,208,.2);border:2px solid var(--tiffany);color:var(--tiffany);width:60px;height:60px;border-radius:50%;cursor:pointer;font-size:32px;display:flex;align-items:center;justify-content:center;transition:.3s;flex-shrink:0;}
+.ba-arrow{background:rgba(129,216,208,.2);border:2px solid var(--tiffany);color:var(--tiffany);width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;transition:.3s;flex-shrink:0;}
 .ba-arrow:hover{background:var(--tiffany);color:#000;transform:scale(1.1);}
 .slider-container{position:relative;overflow:visible;max-width:1200px;margin:0 auto;perspective:1200px;padding:40px 0;}
 .slider-track{position:relative;height:480px;width:100%;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:40px;}
@@ -261,6 +261,7 @@ h2{font-size:2rem;margin-bottom:40px;}
 .services-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
 .service-card img{height:200px;}
 .before-after{max-width:400px;}
+.ba-box{aspect-ratio:3/2.5;}
 .slider-track{height:300px;}
 .slide{width:240px;}
 .slide#slide-center{transform:perspective(800px) rotateY(0deg) translateZ(0) scale(1);}
@@ -281,6 +282,7 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .service-card p{font-size:0.9rem;padding:0 15px 20px;}
 .service-card img{height:160px;}
 .before-after{max-width:300px;}
+.ba-box{aspect-ratio:1/1;}
 .slider-track{gap:10px;height:240px;}
 .slide{width:180px;}
 .slide#slide-left{transform:perspective(600px) rotateY(10deg) translateZ(-40px) scale(0.7);}
@@ -309,16 +311,19 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .reservation-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4899;pointer-events:none;contain:layout style paint;}
 .reservation-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
-.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;overflow-x:hidden;transition:left 0.5s ease-out;z-index:10000 !important;will-change:left;contain:layout style paint;}
+.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;overflow-x:hidden;transition:left 0.5s ease-out;z-index:9500;will-change:left;contain:layout style paint;pointer-events:none;}
 .reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;pointer-events:none;}
-.pricing-modal.active{left:0 !important;overflow-y:auto;}
+.pricing-modal.active{left:0 !important;overflow-y:auto;pointer-events:auto;}
 .reservation-modal.active{left:0;overflow-y:auto;pointer-events:auto;}
-.modal-header{position:sticky;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;}
+.modal-header{position:sticky;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;margin-top:80px;}
 .modal-header h1{font-size:2rem;color:var(--tiffany);margin:0;}
 .modal-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:2.5rem;cursor:pointer;transition:.3s;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:0;margin:0;line-height:1;}
 .modal-close:hover{background:rgba(129,216,208,0.25);color:#fff;transform:scale(1.1);border-color:var(--tiffany);}
 .modal-close:active{transform:scale(0.95);}
 .modal-content{max-width:1200px;margin:0 auto;padding:40px 24px 40px 24px;scroll-padding-top:100px;}
+@media(max-width:768px){
+.modal-header{margin-top:0;}
+}
 .category-tabs{display:flex;gap:12px;flex-wrap:nowrap;flex:1;align-items:center;overflow-x:auto;}
 .category-tab{padding:12px 24px;background:rgba(129,216,208,.1);border:2px solid rgba(129,216,208,.3);color:#fff;cursor:pointer;border-radius:8px;font-weight:600;transition:.3s;}
 .category-tab.active{background:var(--tiffany);color:#000;border-color:var(--tiffany);}
@@ -341,7 +346,7 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .privacy-panel.active{right:0;}
 .privacy-panel-header{padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5001;}
 .privacy-panel-header h2{font-size:1.8rem;color:var(--tiffany);margin:0;}
-.privacy-panel-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:2.5rem;cursor:pointer;transition:.3s;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:0;margin:0;line-height:1;pointer-events:auto;}
+.privacy-panel-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:0.9rem;cursor:pointer;transition:.3s;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:0;margin:0;line-height:1;pointer-events:auto;}
 .privacy-panel-close:hover{background:rgba(129,216,208,0.25);color:#fff;transform:scale(1.1);}
 .privacy-panel-content{flex:1;padding:40px 24px;overflow-y:auto;}
 .privacy-panel-content h3{color:var(--tiffany);font-size:1.2rem;margin-top:24px;margin-bottom:12px;}
@@ -360,6 +365,12 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .item-name{font-size:1rem;}
 .item-price{font-size:1.1rem;}
 .pricing-item-modal{padding:16px;margin:0;}
+}
+
+@media(max-width:480px){
+.category-tabs{flex-wrap:wrap;gap:8px;}
+.category-tabs .category-tab:first-child{flex:0 1 auto;}
+.category-tabs .category-tab:nth-child(2),.category-tabs .category-tab:nth-child(3){flex:1;min-width:calc(50% - 4px);}
 }
 
 /* COOKIES BANNER */
@@ -680,10 +691,12 @@ font-size:1rem;
 <div class="modal-header">
 <h1 id="modalTitle">Cennik usług</h1>
 </div>
+<button class="modal-close" id="modalClose" onclick="closePricingModal()" style="position:absolute;top:90px;right:24px;z-index:5002;">&times;</button>
 <div class="modal-content">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+<div style="display:flex;gap:8px;align-items:center;width:100%;">
 <div class="category-tabs" id="categoryTabs"></div>
-<button class="modal-close" id="modalClose" onclick="closePricingModal()" style="flex-shrink:0;">&times;</button>
+</div>
 </div>
 <div class="pricing-list-modal" id="pricingListModal"></div>
 </div>
@@ -992,34 +1005,126 @@ font-size:1rem;
 <div class="privacy-panel" id="privacyPanel">
 <div class="privacy-panel-header">
 <h2>Polityka Prywatności</h2>
-<button class="privacy-panel-close" id="privacyClose" onclick="closePrivacyPanel()">&times;</button>
 </div>
 <div class="privacy-panel-content">
-<h3>1. Informacje ogólne</h3>
-<p>Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony informacji o użytkownikach naszej strony internetowej. Szanujemy prywatność każdego użytkownika i zobowiązujemy się do zachowania poufności przekazanych nam danych.</p>
+<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;">
+<h3 style="margin:0;">Regulamin Rezerwacji i Świadczenia Usług Detailingowych</h3>
+<button class="privacy-panel-close" id="privacyClose" onclick="closePrivacyPanel()">&times;</button>
+</div>
+<p>Wstęp
+Niniejszy regulamin określa zasady korzystania z serwisu internetowego [adres strony], w tym dokonywania rezerwacji terminów usług detailingowych samochodów, pobierania zaliczek oraz świadczenia usług. Regulamin obowiązuje od dnia 19 stycznia 2026 r. i jest dostępny na stronie internetowej. Korzystanie z serwisu oznacza akceptację regulaminu w całości.</p>
 
-<h3>2. Administrator danych osobowych</h3>
-<p>Administratorem danych osobowych jest GLOSS POINT DETAILING, ul. Marii Konopnickiej 5, 33-100 Tarnów. Wszelkie pytania dotyczące przetwarzania danych można kierować na adres email: glosspointbiuro@gmail.com</p>
+<h3>§ 1. Postanowienia ogólne </h3>
+<p>Właścicielem serwisu i realizatorem usług jest: Gloss Point, NIP: [NIP], Adres siedziby: Marii Konopnickiej 5, 33-100 Tarnów, Adres e-mail: [e-mail], Numer telefonu: [telefon].  
+Serwis umożliwia rezerwację usług detailingowych (mycie, polerowanie, zabezpieczanie lakieru itp.) poprzez kalendarz online z wyborem dnia i godziny.  
+Rezerwacje zapisywane są wyłącznie w formie e-maila potwierdzającego, zawierającego dane Klienta (imię, nazwisko, numer telefonu, e-mail, termin wizyty).  
+Usługi świadczone są w lokalu firmy lub w miejscu wskazanym przez Klienta (jeśli dotyczy), z zachowaniem standardów branżowych.  
+Serwis może zbierać dane techniczne (np. adres IP, typ przeglądarki) w celu poprawy funkcjonalności, zgodnie z Polityką Prywatności.</p>
 
-<h3>3. Zbierane dane</h3>
-<p>Podczas korzystania z naszych usług możemy zbierać następujące dane: imię i nazwisko, numer telefonu, adres email, adres zamieszkania, informacje o pojeździe oraz historię rezerwacji. Dane te zbieramy wyłącznie w celu świadczenia usług detailingu i komunikacji z klientem.</p>
+<h3>§ 2. Zasady rezerwacji  </h3>
+<p>Rezerwacja odbywa się poprzez wypełnienie formularza online: wybór usługi, terminu, podanie danych osobowych (imię, nazwisko, numer telefonu, e-mail).  
+Potwierdzenie rezerwacji następuje po opłaceniu zaliczki i wysłaniu e-maila z podsumowaniem.  
+Klient zobowiązany jest podać prawdziwe dane; podanie fałszywych danych może skutkować odmową usługi.  
+Maksymalna liczba rezerwacji na jednego Klienta w miesiącu: [np. 5, jeśli chcesz ograniczyć].  
+W przypadku braku wolnych terminów, serwis informuje o alternatywnych datach.</p>
 
-<h3>4. Cel przetwarzania danych</h3>
-<p>Przetwarzamy dane osobowe w celu realizacji rezerwacji, wysyłania potwierdzenia zamówienia, kontaktu w sprawie usługi, obsługi rachunków oraz spełniania obowiązków prawnych. Przetwarzanie odbywa się na podstawie umowy lub zgody użytkownika.</p>
+<h3>§ 3. Zaliczki i płatności </h3>
+<p>Zaliczka w wysokości 20 zł pobierana jest przed potwierdzeniem rezerwacji za pośrednictwem systemu Przelewy24 (bezpieczne płatności online).  
+Zaliczka jest w całości zaliczana na poczet ostatecznej ceny usługi i odliczana od kwoty do zapłaty po wykonaniu detailingowania.  
+W przypadku braku pojawienia się Klienta w umówionym terminie („no-show”) lub odwołania później niż 24 godziny przed wizytą, zaliczka jest bezzwrotna i przepada na rzecz firmy jako rekompensata za zarezerwowany termin.  
+Klient może jednokrotnie bezpłatnie przełożyć termin wizyty (na inną godzinę lub dzień) maksymalnie 24 godziny przed umówioną datą; kolejne zmiany lub zmiany w krótszym terminie traktowane są jak odwołanie z utratą zaliczki.  
+Zwrot zaliczki możliwy jest tylko w przypadku odwołania przez firmę (np. z powodu siły wyższej); zwrot następuje w ciągu 7 dni roboczych na konto, z którego dokonano płatności.  
+Pozostała część płatności za usługę uiszczana jest po wykonaniu usługi (gotówka, karta, przelew).  
+Firma wystawia paragon lub fakturę VAT na żądanie Klienta (podaj NIP w formularzu rezerwacyjnym).  
+W przypadku sporów dotyczących zaliczki, stosuje się przepisy Kodeksu cywilnego.</p>
 
-<h3>5. Bezpieczeństwo danych</h3>
-<p>Stosujemy odpowiednie środki techniczne i organizacyjne mające na celu ochronę danych osobowych przed nieuprawnionym dostępem, modyfikacją, utratą lub ujawnieniem. Wszystkie transmisje danych są szyfrowane.</p>
+<h3>§ 4. Realizacja usługi  </h3>
+<p>Usługa wykonywana jest w wybranym terminie, pod warunkiem dostarczenia pojazdu w stanie umożliwiającym pracę (np. bez uszkodzeń uniemożliwiających detailing).  
+Czas trwania usługi zależy od zakresu (np. podstawowe mycie: 1-2h; pełny detailing: 4-8h).  
+Firma zastrzega prawo do odmowy usługi w przypadku stwierdzenia zagrożeń (np. substancje niebezpieczne w pojeździe).  
+Po wykonaniu usługi, Klient odbiera pojazd i potwierdza jakość pracy.</p>
 
-<h3>6. Prawa użytkownika</h3>
-<p>Każdy użytkownik ma prawo do dostępu do swoich danych, sprostowania ich, usunięcia lub ograniczenia przetwarzania. W celu realizacji tych praw prosimy o kontakt na adres email podany powyżej.</p>
+<h3>§ 5. Prawo odstąpienia i anulowanie  /h3>
+<p>Z uwagi na charakter usługi (usługi świadczone w określonym terminie, art. 38 pkt 12 Ustawy o prawach konsumenta), Klientowi nie przysługuje prawo odstąpienia od umowy po potwierdzeniu rezerwacji i opłaceniu zaliczki.  
+Anulowanie rezerwacji możliwe jest wyłącznie poprzez kontakt e-mailowy lub telefoniczny; nie akceptujemy anulowań poprzez media społecznościowe.  
+W przypadku siły wyższej (np. awaria, choroba), firma informuje Klienta z wyprzedzeniem i proponuje alternatywny termin lub zwrot zaliczki.</p>
 
-<h3>7. Cookies</h3>
-<p>Nasza strona wykorzystuje pliki cookies w celu poprawy funkcjonalności i ułatwienia nawigacji. Użytkownik może zablokować cookies w ustawieniach swojej przeglądarki.</p>
+<h3>§ 6. Reklamacje i odpowiedzialność  </h3>
+<p>Reklamacje dotyczące jakości usługi zgłaszane są pisemnie (e-mail) w terminie 14 dni od wykonania usługi.  
+Firma rozpatruje reklamacje w ciągu 14 dni roboczych; w przypadku uznania, oferuje poprawkę lub zwrot części opłaty.  
+Firma nie ponosi odpowiedzialności za uszkodzenia pojazdu powstałe przed dostarczeniem lub z winy Klienta.  
+Odpowiedzialność firmy ograniczona jest do wartości usługi.</p>
 
-<h3>8. Zmiany w Polityce Prywatności</h3>
-<p>Zastrzegamy sobie prawo do zmiany niniejszej Polityki Prywatności. O wszelkich zmianach poinformujemy użytkowników poprzez zmianę daty ostatniej aktualizacji na tej stronie.</p>
+<h3>§ 7. Pliki cookies i zbieranie danych   </h3>
+<p>Serwis używa plików cookies (ciasteczek) do: zapamiętywania preferencji użytkownika, analizy ruchu (np. Google Analytics), ułatwienia logowania/rezerwacji.  
+Rodzaje cookies: niezbędne (do funkcjonowania serwisu), funkcjonalne (do personalizacji), analityczne (do statystyk), marketingowe (do reklam, jeśli dotyczy).  
+Użytkownik może zarządzać cookies w ustawieniach przeglądarki; brak zgody może ograniczyć funkcjonalność serwisu (np. kalendarz nie zapamięta wyborów).  
+Zbieranie danych: Serwis zbiera dane osobowe wyłącznie w zakresie niezbędnym do rezerwacji (imię, nazwisko, telefon, e-mail); dane nie są przechowywane w bazie, tylko w e-mailach. Szczegóły w Polityce Prywatności.  
+Dane techniczne (IP, przeglądarka) zbierane anonimowo do poprawy serwisu; nie łączymy ich z danymi osobowymi bez zgody.</p>
+
+<h3>§ 8. Postanowienia końcowe  </h3>
+<p>W sprawach nieuregulowanych stosuje się przepisy polskiego prawa, w tym Kodeks cywilny, Ustawę o prawach konsumenta, Ustawę o świadczeniu usług drogą elektroniczną.  
+Zmiany regulaminu ogłaszane są na stronie z 14-dniowym wyprzedzeniem.  
+Sąd właściwy: Sąd Rejonowy w [miasto], zgodnie z adresem firmy.</p>
+
+<h3>Polityka Prywatności i Informacja o Przetwarzaniu Danych Osobowych (zgodna z RODO)</h3>
+<p>Wstęp
+Niniejsza Polityka Prywatności opisuje, jak zbieramy, przetwarzamy i chronimy Twoje dane osobowe w związku z korzystaniem z serwisu [adres strony] oraz usług detailingowych. Polityka obowiązuje od 19 stycznia 2026 r. Administratorem danych jest: [Twoja pełna nazwa firmy / imię i nazwisko], NIP: [NIP], Adres: [adres], e-mail: [e-mail], telefon: [telefon].</p>
+
+<h3>§ 1. Rodzaje zbieranych danych  </h3>
+<p>Dane osobowe: Imię i nazwisko, numer telefonu, adres e-mail, termin rezerwacji, numer rejestracyjny pojazdu (opcjonalnie).  
+Dane płatnicze: Przetwarzane wyłącznie przez Przelewy24 (nie przechowujemy numerów kart/rachunków).  
+Dane techniczne: Adres IP, typ przeglądarki, system operacyjny, dane o wizytach (czas, strony odwiedzone) – zbierane za pomocą cookies i narzędzi analitycznych.  
+Dane z cookies: Informacje o preferencjach, sesjach użytkownika.</p>
+
+<h3>§ 2. Cele przetwarzania danych  </h3>
+<p>Wykonanie umowy: Realizacja rezerwacji, wysyłka potwierdzeń e-mail (podstawa: art. 6 ust. 1 lit. b RODO).  
+Płatności: Obsługa zaliczek poprzez Przelewy24 (podstawa: art. 6 ust. 1 lit. b i f RODO – uzasadniony interes).  
+Analiza i poprawa serwisu: Zbieranie statystyk (podstawa: art. 6 ust. 1 lit. f RODO).  
+Marketing: Wysyłka informacji o promocjach (tylko za wyraźną zgodą, art. 6 ust. 1 lit. a RODO).  
+Obrona roszczeń: Przechowywanie danych na potrzeby sporów (podstawa: art. 6 ust. 1 lit. f RODO).</p>
+
+<h3>§ 3. Podstawy prawne i okres przechowywania  </h3>
+<p>Dane rezerwacyjne: Do końca przedawnienia roszczeń (3 lata).  
+Dane z cookies: Do wygaśnięcia cookies lub cofnięcia zgody (maks. 2 lata).  
+Dane analityczne: Anonimowo, do 26 miesięcy (np. Google Analytics).  
+Minimalizacja: Zbieramy tylko niezbędne dane; nie przechowujemy ich w bazach, tylko w e-mailach.</p>
+
+<h3>§ 4. Odbiorcy danych   </h3>
+<p>Przelewy24: Do przetwarzania płatności (ich polityka RODO dostępna na stronie Przelewy24).  
+Dostawcy usług IT: Hosting, e-mail (z umowami powierzenia przetwarzania).  
+Organy państwowe: Na żądanie (np. sąd, policja).  
+Nie przekazujemy danych poza EOG bez odpowiednich zabezpieczeń.</p>
+
+<h3>§ 5. Pliki cookies - szczegółowo   </h3>
+<p>Używamy cookies niezbędnych (do sesji, rezerwacji), funkcjonalnych (zapamiętywanie wyborów), analitycznych (Google Analytics do statystyk odwiedzin) i marketingowych (jeśli włączone).  
+Zgoda na cookies: Wyrażana poprzez baner na stronie; możesz wycofać w ustawieniach przeglądarki.  
+Narzędzia trzecie: Google Analytics zbiera anonimowe dane o ruchu; nie łączymy z danymi osobowymi bez zgody.  
+Blokada cookies: Może uniemożliwić rezerwację; zalecamy akceptację niezbędnych.</p>
+
+<h3>§ 6. Bezpieczeństwo danych  </h3>
+<p>Środki: Szyfrowanie SSL/TLS, hasła dostępu, regularne backupy e-maili.  
+W przypadku naruszenia: Zgłaszamy do UODO w 72h i informujemy Ciebie, jeśli ryzyko jest wysokie.  
+Nie przechowujemy danych wrażliwych (np. zdrowotnych).</p>
+
+<h3>§ 7. Twoje prawa  </h3>
+<p>Dostęp do danych: Możesz żądać kopii.  
+Sprostowanie/usunięcie: Popraw lub usuń dane (o ile nie blokuje to umowy).  
+Sprzeciw: Wobec przetwarzania na podstawie interesu uzasadnionego.  
+Przenoszenie: Otrzymaj dane w formacie maszynowym.  
+Cofnięcie zgody: W każdej chwili (np. na marketing).  
+Skarga: Do Prezesa UODO (uodo.gov.pl).  
+Kontakt: E-mail [e-mail] - odpowiedź w ciągu 1 miesiąca.</p>
+
+<h3>§ 8. Zmiany polityki   </h3>
+<p>Zmiany ogłaszane na stronie z 14-dniowym wyprzedzeniem.  
+Kontynuacja korzystania oznacza akceptację zmian.</p>
 
 <p style="margin-top:30px;padding-top:20px;border-top:1px solid rgba(129,216,208,0.2);font-size:0.9rem;color:var(--muted);">Ostatnia aktualizacja: 19 stycznia 2026</p>
+
+<div style="display:flex;gap:12px;margin-top:30px;padding-top:20px;border-top:1px solid rgba(129,216,208,0.2);">
+<button onclick="closePrivacyPanel()" style="flex:1;padding:14px;background:var(--tiffany);color:#000;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;">Zamknij</button>
+</div>
 </div>
 </div>
 
@@ -1428,6 +1533,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (reservationModal && reservationModal.classList.contains('active')) {
         closeReservationModal();
       }
+      // Zamknij politykę prywatności jeśli jest otwarta
+      closePrivacyPanel();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -1447,6 +1554,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Toggle hamburger menu
   if (hamburger) {
     hamburger.addEventListener('click', () => {
+      // Na telefonie - zamknij cennik jeśli jest otwarty
+      const pricingModal = document.getElementById('pricingModal');
+      const pricingModalOverlay = document.getElementById('pricingModalOverlay');
+      if (pricingModal && pricingModal.classList.contains('active')) {
+        pricingModal.classList.remove('active');
+        pricingModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
       document.body.classList.toggle('mobile-menu-open');
@@ -1474,6 +1589,8 @@ document.addEventListener('DOMContentLoaded', () => {
         reservationModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
       }
+      // Zamknij politykę prywatności
+      closePrivacyPanel();
     });
   });
 
@@ -1496,12 +1613,15 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.remove('active');
       mobileMenu.classList.remove('active');
       document.body.classList.remove('mobile-menu-open');
+      // Zamknij politykę prywatności
+      closePrivacyPanel();
     });
   });
 
   // Rezerwacja button w headerze
   if (headerReservationBtn) {
     headerReservationBtn.addEventListener('click', () => {
+      closePrivacyPanel();
       openReservationModal();
     });
   }
