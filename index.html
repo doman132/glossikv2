@@ -272,7 +272,9 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .hero{padding:80px 12px 60px;}
 .hero h2{font-size:2rem;}
 .hero p{font-size:1.1rem;}
-.stats{gap:30px;flex-direction:column;}
+.stats{gap:20px;flex-wrap:wrap;justify-content:center;}
+.stat-item{flex:0 0 calc(50% - 10px);text-align:center;}
+.stat-item:nth-child(3){flex:0 0 100%;max-width:150px;margin:0 auto;}
 .stat-item .number{font-size:2.5rem;}
 .services-grid{grid-template-columns:1fr;}
 .service-card h3{font-size:1.2rem;}
@@ -332,6 +334,25 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-item-description{display:none;color:var(--muted);line-height:1.8;font-size:1rem;}
 .pricing-item-modal.expanded .pricing-item-description{display:block;}
 
+/* PRIVACY POLICY PANEL */
+.privacy-panel-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4998;pointer-events:none;}
+.privacy-panel-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
+.privacy-panel{position:fixed;top:0;right:-100%;width:100%;max-width:600px;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;transition:right 0.5s ease-out;z-index:4999;display:flex;flex-direction:column;}
+.privacy-panel.active{right:0;}
+.privacy-panel-header{padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5001;}
+.privacy-panel-header h2{font-size:1.8rem;color:var(--tiffany);margin:0;}
+.privacy-panel-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:2.5rem;cursor:pointer;transition:.3s;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:0;margin:0;line-height:1;pointer-events:auto;}
+.privacy-panel-close:hover{background:rgba(129,216,208,0.25);color:#fff;transform:scale(1.1);}
+.privacy-panel-content{flex:1;padding:40px 24px;overflow-y:auto;}
+.privacy-panel-content h3{color:var(--tiffany);font-size:1.2rem;margin-top:24px;margin-bottom:12px;}
+.privacy-panel-content p{color:var(--muted);line-height:1.8;margin-bottom:16px;font-size:0.95rem;}
+
+@media(max-width:768px){
+.privacy-panel{max-width:100%;width:100%;}
+.privacy-panel-content{padding:30px 16px;}
+.privacy-panel-header h2{font-size:1.4rem;}
+}
+
 @media(max-width:768px){
 .modal-content{padding:60px 16px 40px 16px;}
 .category-tabs{gap:8px;flex-wrap:wrap;}
@@ -339,6 +360,41 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .item-name{font-size:1rem;}
 .item-price{font-size:1.1rem;}
 .pricing-item-modal{padding:16px;margin:0;}
+}
+
+/* COOKIES BANNER */
+.cookies-banner{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.95);border-top:2px solid var(--tiffany);padding:24px;z-index:9999;max-height:85vh;overflow-y:auto;box-shadow:0 -4px 12px rgba(0,0,0,.4);}
+.cookies-container{max-width:1200px;margin:0 auto;margin-bottom:20px;}
+.cookies-tabs{display:flex;gap:12px;margin-bottom:20px;border-bottom:2px solid rgba(129,216,208,.2);flex-wrap:wrap;}
+.cookies-tab{background:none;border:none;color:var(--muted);padding:12px 16px;cursor:pointer;font-size:1rem;font-weight:600;transition:all 0.3s ease;border-bottom:3px solid transparent;position:relative;bottom:-2px;}
+.cookies-tab:hover{color:var(--tiffany);}
+.cookies-tab.active{color:var(--tiffany);border-bottom-color:var(--tiffany);}
+.cookies-content{display:flex;flex-direction:column;}
+.cookies-tab-content{display:none;}
+.cookies-tab-content.active{display:block;}
+.cookies-tab-content h3{color:var(--tiffany);font-size:1.3rem;margin-bottom:16px;margin-top:0;}
+.cookies-tab-content p{color:var(--muted);line-height:1.8;margin-bottom:12px;font-size:0.95rem;}
+.cookies-detail-item{margin-bottom:20px;padding:16px;background:rgba(129,216,208,.05);border-radius:8px;border-left:3px solid rgba(129,216,208,.3);}
+.cookies-detail-item h4{color:var(--tiffany);margin:0 0 8px 0;}
+.cookies-detail-item p{margin:0 0 12px 0;}
+.cookies-toggle{display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--muted);}
+.cookies-toggle input{width:18px;height:18px;cursor:pointer;}
+.cookies-buttons{display:flex;gap:12px;justify-content:flex-end;max-width:1200px;margin:0 auto;flex-wrap:wrap;}
+.cookies-btn{padding:10px 20px;border:2px solid rgba(129,216,208,.3);border-radius:8px;cursor:pointer;font-weight:600;transition:all 0.3s ease;font-size:0.95rem;}
+.cookies-btn-reject{background:none;color:var(--muted);border-color:rgba(129,216,208,.3);}
+.cookies-btn-reject:hover{color:#fff;border-color:rgba(129,216,208,.5);}
+.cookies-btn-customize{background:rgba(129,216,208,.1);color:var(--tiffany);border-color:var(--tiffany);}
+.cookies-btn-customize:hover{background:rgba(129,216,208,.2);color:#fff;}
+.cookies-btn-accept{background:var(--tiffany);color:#000;border-color:var(--tiffany);}
+.cookies-btn-accept:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(129,216,208,.4);}
+.cookies-banner.hidden{display:none;}
+
+@media(max-width:768px){
+.cookies-banner{padding:16px;}
+.cookies-tabs{gap:8px;}
+.cookies-tab{padding:10px 12px;font-size:0.9rem;}
+.cookies-buttons{flex-direction:column;}
+.cookies-btn{width:100%;}
 }
 
 .btn-rezerwacja{
@@ -545,6 +601,77 @@ font-size:1rem;
 </style>
 </head>
 <body>
+
+<!-- COOKIES BANNER -->
+<div class="cookies-banner" id="cookiesBanner">
+  <div class="cookies-container">
+    <div class="cookies-tabs">
+      <button class="cookies-tab active" onclick="switchCookieTab('zgoda')">Zgoda</button>
+      <button class="cookies-tab" onclick="switchCookieTab('szczegoly')">Szczegóły</button>
+      <button class="cookies-tab" onclick="switchCookieTab('ocasteczkach')">O ciasteczkach</button>
+    </div>
+    
+    <div class="cookies-content">
+      <div class="cookies-tab-content active" id="tab-zgoda">
+        <h3>Pliki cookies</h3>
+        <p>Nasza strona internetowa wykorzystuje pliki cookies w celu:</p>
+        <ul style="margin:15px 0;padding-left:20px;color:var(--muted);">
+          <li>Zapamiętywania Twoich preferencji</li>
+          <li>Poprawy funkcjonalności strony</li>
+          <li>Analizy ruchu na stronie</li>
+          <li>Świadczenia personalizowanych usług</li>
+        </ul>
+        <p>Klikając "Zezwól na wszystkie", wyrażasz zgodę na użycie wszystkich cookies. Możesz również wybrać opcję "Dostosuj" aby wybrać, które cookies chcesz akceptować.</p>
+      </div>
+      
+      <div class="cookies-tab-content" id="tab-szczegoly">
+        <h3>Szczegóły cookies</h3>
+        <div class="cookies-detail-item">
+          <h4>Niezbędne cookies</h4>
+          <p>Cookies niezbędne do prawidłowego funkcjonowania strony. Zawsze włączone.</p>
+          <label class="cookies-toggle">
+            <input type="checkbox" checked disabled>
+            <span>Zawsze włączone</span>
+          </label>
+        </div>
+        <div class="cookies-detail-item">
+          <h4>Analityczne cookies</h4>
+          <p>Pomagają nam zrozumieć jak odwiedzający korzystają ze strony.</p>
+          <label class="cookies-toggle">
+            <input type="checkbox" id="analyticalCookies">
+            <span>Włącz analitykę</span>
+          </label>
+        </div>
+        <div class="cookies-detail-item">
+          <h4>Marketing cookies</h4>
+          <p>Używane do wyświetlania reklam dostosowanych do Twoich zainteresowań.</p>
+          <label class="cookies-toggle">
+            <input type="checkbox" id="marketingCookies">
+            <span>Włącz marketing</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="cookies-tab-content" id="tab-ocasteczkach">
+        <h3>O ciasteczkach</h3>
+        <p>Pliki cookies to małe pliki tekstowe przechowywane na Twoim urządzeniu. Wykorzystujemy je do:</p>
+        <ul style="margin:15px 0;padding-left:20px;color:var(--muted);">
+          <li><strong>Zapamiętywania ustawień -</strong> Twoje preferencje są zapamiętywane między wizytami</li>
+          <li><strong>Analizy ruchu -</strong> Zbieramy anonimowe dane o tym jak użytkownicy korzystają ze strony</li>
+          <li><strong>Personalizacji -</strong> Dostosowujemy treść do Twoich zainteresowań</li>
+          <li><strong>Bezpieczeństwa -</strong> Chronimy Twoją sesję przed nieuprawnionym dostępem</li>
+        </ul>
+        <p>Możesz zarządzać cookies w ustawieniach przeglądarki. Przeglądarki zazwyczaj zawierają możliwość blokowania lub usuwania plików cookies.</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cookies-buttons">
+    <button class="cookies-btn cookies-btn-reject" onclick="rejectCookies()">Odrzuć</button>
+    <button class="cookies-btn cookies-btn-customize" onclick="switchCookieTab('szczegoly')">Dostosuj</button>
+    <button class="cookies-btn cookies-btn-accept" onclick="acceptAllCookies()">Zezwól na wszystkie</button>
+  </div>
+</div>
 
 <div class="pricing-modal-overlay" id="pricingModalOverlay"></div>
 
@@ -758,8 +885,8 @@ font-size:1rem;
 <h2>O nas</h2>
 <div class="stats">
 <div class="stat-item"><div class="number">0</div><div class="label">Pojazdów</div></div>
-<div class="stat-item"><div class="number">0</div><div class="label">Powłok ceramicznych</div></div>
 <div class="stat-item"><div class="number">0</div><div class="label">Korekt lakieru</div></div>
+<div class="stat-item"><div class="number">0</div><div class="label">Powłok ceramicznych</div></div>
 </div>
 <div class="beyond-wrapper" style="margin-top:60px;">
 <div class="beyond-image">
@@ -842,7 +969,47 @@ font-size:1rem;
 <div class="map">
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2592.802468242!2d20.979227016928!3d50.00739999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47165d0b0b0b0b0b%3A0xabcdef1234567890!2sul.+Marii+Konopnickiej+5%2C+33-100+Tarn%C3%B3w%2C+Polska!5e0!3m2!1spl!2spl!4v1737028800000!5m2!1spl!2spl" allowfullscreen="" loading="lazy"></iframe>
 </div>
+
+<div style="text-align:center;margin-top:40px;">
+<button onclick="openPrivacyPanel()" style="background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);padding:12px 24px;font-size:1rem;cursor:pointer;border-radius:8px;transition:all 0.3s ease;">Polityka prywatności</button>
+</div>
 </section>
+
+<!-- PRIVACY POLICY PANEL -->
+<div class="privacy-panel-overlay" id="privacyPanelOverlay"></div>
+<div class="privacy-panel" id="privacyPanel">
+<div class="privacy-panel-header">
+<h2>Polityka Prywatności</h2>
+<button class="privacy-panel-close" id="privacyClose" onclick="closePrivacyPanel()">&times;</button>
+</div>
+<div class="privacy-panel-content">
+<h3>1. Informacje ogólne</h3>
+<p>Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony informacji o użytkownikach naszej strony internetowej. Szanujemy prywatność każdego użytkownika i zobowiązujemy się do zachowania poufności przekazanych nam danych.</p>
+
+<h3>2. Administrator danych osobowych</h3>
+<p>Administratorem danych osobowych jest GLOSS POINT DETAILING, ul. Marii Konopnickiej 5, 33-100 Tarnów. Wszelkie pytania dotyczące przetwarzania danych można kierować na adres email: glosspointbiuro@gmail.com</p>
+
+<h3>3. Zbierane dane</h3>
+<p>Podczas korzystania z naszych usług możemy zbierać następujące dane: imię i nazwisko, numer telefonu, adres email, adres zamieszkania, informacje o pojeździe oraz historię rezerwacji. Dane te zbieramy wyłącznie w celu świadczenia usług detailingu i komunikacji z klientem.</p>
+
+<h3>4. Cel przetwarzania danych</h3>
+<p>Przetwarzamy dane osobowe w celu realizacji rezerwacji, wysyłania potwierdzenia zamówienia, kontaktu w sprawie usługi, obsługi rachunków oraz spełniania obowiązków prawnych. Przetwarzanie odbywa się na podstawie umowy lub zgody użytkownika.</p>
+
+<h3>5. Bezpieczeństwo danych</h3>
+<p>Stosujemy odpowiednie środki techniczne i organizacyjne mające na celu ochronę danych osobowych przed nieuprawnionym dostępem, modyfikacją, utratą lub ujawnieniem. Wszystkie transmisje danych są szyfrowane.</p>
+
+<h3>6. Prawa użytkownika</h3>
+<p>Każdy użytkownik ma prawo do dostępu do swoich danych, sprostowania ich, usunięcia lub ograniczenia przetwarzania. W celu realizacji tych praw prosimy o kontakt na adres email podany powyżej.</p>
+
+<h3>7. Cookies</h3>
+<p>Nasza strona wykorzystuje pliki cookies w celu poprawy funkcjonalności i ułatwienia nawigacji. Użytkownik może zablokować cookies w ustawieniach swojej przeglądarki.</p>
+
+<h3>8. Zmiany w Polityce Prywatności</h3>
+<p>Zastrzegamy sobie prawo do zmiany niniejszej Polityki Prywatności. O wszelkich zmianach poinformujemy użytkowników poprzez zmianę daty ostatniej aktualizacji na tej stronie.</p>
+
+<p style="margin-top:30px;padding-top:20px;border-top:1px solid rgba(129,216,208,0.2);font-size:0.9rem;color:var(--muted);">Ostatnia aktualizacja: 19 stycznia 2026</p>
+</div>
+</div>
 
 <script>
 // ------------------- CENNIK KATEGORYZOWANY -------------------
@@ -1141,9 +1308,93 @@ function closePricingModal() {
   document.body.style.overflow = '';
 }
 
+// ------------------- PRIVACY PANEL FUNCTIONS -------------------
+function openPrivacyPanel() {
+  const privacyPanel = document.getElementById('privacyPanel');
+  const privacyPanelOverlay = document.getElementById('privacyPanelOverlay');
+  
+  if (privacyPanel && privacyPanelOverlay) {
+    privacyPanel.classList.add('active');
+    privacyPanelOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closePrivacyPanel() {
+  const privacyPanel = document.getElementById('privacyPanel');
+  const privacyPanelOverlay = document.getElementById('privacyPanelOverlay');
+  
+  if (privacyPanel && privacyPanelOverlay) {
+    privacyPanel.classList.remove('active');
+    privacyPanelOverlay.classList.remove('active');
+  }
+  document.body.style.overflow = '';
+}
+
 // Exports do global scope (dla onclick w HTML)
+// ------------------- COOKIES FUNCTIONS -------------------
+function switchCookieTab(tabName) {
+  // Ukryj wszystkie tab'y
+  const tabContents = document.querySelectorAll('.cookies-tab-content');
+  tabContents.forEach(tab => tab.classList.remove('active'));
+  
+  // Usuń active z przycisków
+  const tabButtons = document.querySelectorAll('.cookies-tab');
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  
+  // Pokaż wybrany tab
+  const selectedTab = document.getElementById('tab-' + tabName);
+  if (selectedTab) {
+    selectedTab.classList.add('active');
+  }
+  
+  // Ustaw active button
+  event.target.classList.add('active');
+}
+
+function rejectCookies() {
+  // Odrzuć wszystkie cookies
+  localStorage.setItem('cookiesConsent', 'rejected');
+  hideCookiesBanner();
+}
+
+function acceptAllCookies() {
+  // Zaakceptuj wszystkie cookies
+  localStorage.setItem('cookiesConsent', 'all');
+  localStorage.setItem('analyticalCookies', 'true');
+  localStorage.setItem('marketingCookies', 'true');
+  hideCookiesBanner();
+}
+
+function hideCookiesBanner() {
+  const banner = document.getElementById('cookiesBanner');
+  if (banner) {
+    banner.classList.add('hidden');
+  }
+}
+
+function initCookiesBanner() {
+  const consent = localStorage.getItem('cookiesConsent');
+  
+  // Jeśli użytkownik już dokonał wyboru, ukryj banner
+  if (consent) {
+    hideCookiesBanner();
+  } else {
+    // Banner jest domyślnie widoczny
+    const banner = document.getElementById('cookiesBanner');
+    if (banner) {
+      banner.classList.remove('hidden');
+    }
+  }
+}
+
 window.openPricingModal = openPricingModal;
 window.closePricingModal = closePricingModal;
+window.openPrivacyPanel = openPrivacyPanel;
+window.closePrivacyPanel = closePrivacyPanel;
+window.switchCookieTab = switchCookieTab;
+window.rejectCookies = rejectCookies;
+window.acceptAllCookies = acceptAllCookies;
 window.filterByCategory = filterByCategory;
 window.toggleExpand = toggleExpand;
 
@@ -1284,6 +1535,23 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closePricingModal();
   });
+
+  // ------------------- PRIVACY PANEL LISTENERS -------------------
+  const privacyClose = document.getElementById('privacyClose');
+  const privacyPanelOverlay = document.getElementById('privacyPanelOverlay');
+  
+  if (privacyClose) {
+    privacyClose.addEventListener('click', closePrivacyPanel);
+  }
+  if (privacyPanelOverlay) {
+    privacyPanelOverlay.addEventListener('click', closePrivacyPanel);
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePrivacyPanel();
+  });
+  
+  // ------------------- COOKIES BANNER INIT -------------------
+  initCookiesBanner();
   
   // ------------------- DROPDOWN CENNIK -------------------
   // Kod moved to end of script for better compatibility
@@ -1463,8 +1731,8 @@ if ('IntersectionObserver' in window) {
           statsAnimated = true;
           const stats = document.querySelectorAll('.stat-item .number');
           if (stats[0]) animateCount(stats[0], 1500);
-          if (stats[1]) animateCount(stats[1], 120);
-          if (stats[2]) animateCount(stats[2], 170);
+          if (stats[1]) animateCount(stats[1], 170);
+          if (stats[2]) animateCount(stats[2], 120);
         }
       });
     }, {
