@@ -216,6 +216,29 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-list li{padding:10px 0;color:var(--muted);border-bottom:1px solid rgba(129,216,208,.1);display:flex;justify-content:space-between;}
 .pricing-list li:last-child{border-bottom:none;}
 .pricing-list span{color:var(--tiffany);font-weight:bold;}
+
+/* PRICING SECTION MOBILE OPTIMIZATION */
+.pricing-section{transition:all 0.3s ease;}
+.pricing-section h2{margin-bottom:50px;}
+@media(max-width:1024px){
+.pricing-grid{grid-template-columns:repeat(2,1fr);gap:25px;}
+}
+@media(max-width:768px){
+.pricing-section{padding:50px 16px;}
+.pricing-grid{grid-template-columns:1fr;gap:20px;}
+.pricing-header h3{font-size:1.2rem;}
+.pricing-content{padding:20px 16px;}
+.pricing-list li{padding:8px 0;font-size:0.95rem;}
+}
+@media(max-width:480px){
+.pricing-section{padding:40px 12px;}
+.pricing-grid{grid-template-columns:1fr;gap:15px;}
+.pricing-header{padding:18px 16px;}
+.pricing-header h3{font-size:1.1rem;margin-bottom:6px;}
+.pricing-content{padding:16px 12px;}
+.pricing-list li{padding:7px 0;font-size:0.9rem;}
+.pricing-list span:first-child{display:inline-block;max-width:70%;}
+}
 .before-after-slider{max-width:900px;margin:auto;position:relative;z-index:5;display:flex;align-items:center;gap:30px;justify-content:center;}
 .before-after{max-width:100%;margin:auto;overflow:hidden;border-radius:20px;position:relative;flex:1;min-width:0;}
 .ba-box{position:relative;aspect-ratio:3/2;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;}
@@ -311,18 +334,26 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .reservation-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4899;pointer-events:none;contain:layout style paint;}
 .reservation-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
-.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;overflow-x:hidden;transition:left 0.5s ease-out;z-index:9500;will-change:left;contain:layout style paint;pointer-events:none;}
+.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;overflow-x:hidden;transition:left 0.5s ease-out;z-index:9500;will-change:left;contain:layout style paint;pointer-events:none;padding-top:80px;box-sizing:border-box;}
 .reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;pointer-events:none;}
 .pricing-modal.active{left:0 !important;overflow-y:auto;pointer-events:auto;}
 .reservation-modal.active{left:0;overflow-y:auto;pointer-events:auto;}
-.modal-header{position:sticky;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;margin-top:80px;}
+.modal-header{position:sticky;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;margin-top:0;}
 .modal-header h1{font-size:2rem;color:var(--tiffany);margin:0;}
 .modal-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:2.5rem;cursor:pointer;transition:.3s;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:8px;padding:0;margin:0;line-height:1;}
 .modal-close:hover{background:rgba(129,216,208,0.25);color:#fff;transform:scale(1.1);border-color:var(--tiffany);}
 .modal-close:active{transform:scale(0.95);}
 .modal-content{max-width:1200px;margin:0 auto;padding:40px 24px 40px 24px;scroll-padding-top:100px;}
 @media(max-width:768px){
-.modal-header{margin-top:0;}
+.modal-header{margin-top:0;padding:20px 16px;}
+.modal-header h1{font-size:1.6rem;}
+.modal-content{padding:30px 16px 40px 16px;margin-top:0;}
+}
+@media(max-width:480px){
+.modal-header{padding:16px 12px;}
+.modal-header h1{font-size:1.4rem;}
+.modal-close{width:40px;height:40px;font-size:2rem;}
+.modal-content{padding:24px 12px 40px 12px;}
 }
 .category-tabs{display:flex;gap:12px;flex-wrap:nowrap;flex:1;align-items:center;overflow-x:auto;}
 .category-tab{padding:12px 24px;background:rgba(129,216,208,.1);border:2px solid rgba(129,216,208,.3);color:#fff;cursor:pointer;border-radius:8px;font-weight:600;transition:.3s;}
@@ -359,12 +390,20 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 }
 
 @media(max-width:768px){
-.modal-content{padding:60px 16px 40px 16px;}
+.modal-content{padding:30px 16px 40px 16px;}
 .category-tabs{gap:8px;flex-wrap:wrap;}
 .category-tab{padding:10px 16px;font-size:0.9rem;}
 .item-name{font-size:1rem;}
 .item-price{font-size:1.1rem;}
 .pricing-item-modal{padding:16px;margin:0;}
+}
+@media(max-width:480px){
+.category-tabs{gap:6px;margin-top:15px;}
+.category-tab{padding:8px 12px;font-size:0.85rem;}
+.pricing-item-modal{padding:14px;margin-bottom:10px;}
+.item-name{font-size:0.95rem;}
+.item-price{font-size:1rem;}
+.pricing-item-description{font-size:0.9rem;}
 }
 
 @media(max-width:480px){
@@ -1621,10 +1660,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Rezerwacja button w headerze
   if (headerReservationBtn) {
     headerReservationBtn.addEventListener('click', () => {
+      // Zamknij menu mobilne
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.classList.remove('mobile-menu-open');
+      // Zamknij rozwijalne menu Cennika
+      const cennikMobileToggle = document.getElementById('cennikMobileToggle');
+      const cennikMobileMenu = document.getElementById('cennikMobileMenu');
+      if (cennikMobileToggle && cennikMobileMenu) {
+        cennikMobileToggle.classList.remove('active');
+        cennikMobileMenu.classList.remove('active');
+      }
       closePrivacyPanel();
       openReservationModal();
     });
   }
+
+
 
   // ------------------- CLOSE MODALS ON NAV CLICK -------------------
   // Zamknij modalne okna przy klikaniu na linki nawigacyjne
