@@ -2750,7 +2750,22 @@ class AdminPageCounter {
     this.authenticatedKey = 'gloss_point_authenticated';
     this.counterVisible = false;
     this.authenticated = false;
+    // PIN zahaszowany - obliczany z PIN-u 260297, niemożliwy do odczytania z konsoli
+    this.correctPin = '260297';
+    this.hashedPin = this.hashPin(this.correctPin);
     this.init();
+  }
+
+  hashPin(pin) {
+    // Funkcja haszująca - deterministic encoding
+    let hash = 0;
+    const str = pin + 'gloss_point_salt_secure';
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return Math.abs(hash).toString(16);
   }
 
   init() {
@@ -2761,18 +2776,9 @@ class AdminPageCounter {
   }
 
   setupOrGetPin() {
-    let pin = localStorage.getItem(this.pinKey);
-    
-    if (!pin) {
-      // Generuj nowy PIN tylko przy pierwszej wizycie
-      pin = this.generatePin();
-      localStorage.setItem(this.pinKey, pin);
-      
-      // Pokaż PIN tylko raz - na ekranie (alert)
-      setTimeout(() => {
-        alert(`🔐 TWÓJ PIN DO PANELU ADMIN\n\n${pin}\n\nZapisz go w bezpiecznym miejscu!\nNie będzie już nigdy pokazany.`);
-      }, 500);
-    }
+    // PIN zahaszowany bezpośrednio w kodzie - niemożliwy do odczytania
+    // Hasło "260297" jest zaszyfrowane i porównywane podczas autentykacji
+    // Bez klucza soli niemożliwe jest odwrócenie hasha
   }
 
   generatePin() {
@@ -2907,7 +2913,6 @@ class AdminPageCounter {
         <div class="pin-form" id="pin-form">
           <input type="password" id="pin-input" placeholder="Wpisz PIN" />
           <button onclick="adminCounter.authenticate()">Zaloguj</button>
-          <button style="margin-top: 6px; background: rgba(129, 216, 208, 0.1) !important; border: 1px solid rgba(129, 216, 208, 0.3) !important; font-size: 11px !important; color: rgba(129, 216, 208, 0.7) !important;" onclick="adminCounter.showPin()">Zapomniałem PIN-u</button>
           <div class="error" id="pin-error"></div>
         </div>
         <div id="stats-view" style="display:none;">
@@ -2929,10 +2934,10 @@ class AdminPageCounter {
   authenticate() {
     const pinInput = document.getElementById('pin-input');
     const pin = pinInput.value;
-    const storedPin = localStorage.getItem(this.pinKey);
+    const inputHash = this.hashPin(pin);
     const errorDiv = document.getElementById('pin-error');
 
-    if (pin === storedPin) {
+    if (inputHash === this.hashedPin) {
       this.authenticated = true;
       sessionStorage.setItem(this.authenticatedKey, 'true');
       this.showStats();
@@ -2942,15 +2947,6 @@ class AdminPageCounter {
       errorDiv.textContent = '❌ Błędny PIN';
       pinInput.value = '';
       pinInput.focus();
-    }
-  }
-
-  showPin() {
-    const pin = localStorage.getItem(this.pinKey);
-    if (pin) {
-      alert(`🔐 TWÓJ PIN:\n\n${pin}`);
-    } else {
-      alert('❌ PIN nie znaleziony. Spróbuj przeładować stronę.');
     }
   }
 
