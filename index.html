@@ -2549,14 +2549,31 @@ const beaImages = [
 
 let beaIndex = 0;
 
-// Preload all before-after images
+// Preload all before-after images asynchronously without blocking scroll
 function preloadBeaImages() {
-  beaImages.forEach(pair => {
-    const img1 = new Image();
-    img1.src = pair.before;
-    const img2 = new Image();
-    img2.src = pair.after;
-  });
+  // Use requestIdleCallback or setTimeout to avoid blocking main thread
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      beaImages.forEach((pair, index) => {
+        setTimeout(() => {
+          const img1 = new Image();
+          img1.src = pair.before;
+          const img2 = new Image();
+          img2.src = pair.after;
+        }, index * 100); // Stagger image loading
+      });
+    });
+  } else {
+    // Fallback for browsers that don't support requestIdleCallback
+    beaImages.forEach((pair, index) => {
+      setTimeout(() => {
+        const img1 = new Image();
+        img1.src = pair.before;
+        const img2 = new Image();
+        img2.src = pair.after;
+      }, index * 100);
+    });
+  }
 }
 
 function updateBeaImages() {
@@ -2577,7 +2594,7 @@ function prevBeforeAfter() {
   updateBeaImages();
 }
 
-// Preload images immediately
+// Preload images asynchronously - won't block scroll
 preloadBeaImages();
 
 // Inicjalizuj przed/po slider w następnej frame aby nie blokować scroll
