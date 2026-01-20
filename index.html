@@ -2740,6 +2740,340 @@ if (!document.querySelector('style[data-animations]')) {
   `;
   document.head.appendChild(style);
 }
+
+// ========== LICZNIK ODWIEDZIN (ADMIN - CHRONIONY) ==========
+// Aby zobaczyć licznik: naciśnij Ctrl+Shift+K i wpisz PIN z konsoli (F12)
+class AdminPageCounter {
+  constructor() {
+    this.storageKey = 'gloss_point_visits';
+    this.pinKey = 'gloss_point_admin_pin';
+    this.authenticatedKey = 'gloss_point_authenticated';
+    this.counterVisible = false;
+    this.authenticated = false;
+    this.init();
+  }
+
+  init() {
+    this.setupOrGetPin();
+    this.setupCounter();
+    this.addVisit();
+    this.setupToggleListener();
+  }
+
+  setupOrGetPin() {
+    let pin = localStorage.getItem(this.pinKey);
+    
+    if (!pin) {
+      // Generuj nowy PIN tylko przy pierwszej wizycie
+      pin = this.generatePin();
+      localStorage.setItem(this.pinKey, pin);
+      
+      // Pokaż PIN tylko raz - na ekranie (alert)
+      setTimeout(() => {
+        alert(`🔐 TWÓJ PIN DO PANELU ADMIN\n\n${pin}\n\nZapisz go w bezpiecznym miejscu!\nNie będzie już nigdy pokazany.`);
+      }, 500);
+    }
+  }
+
+  generatePin() {
+    return Math.random().toString().substring(2, 8);
+  }
+
+  setupCounter() {
+    // Dodaj CSS dla licznika
+    if (!document.querySelector('style[data-counter]')) {
+      const style = document.createElement('style');
+      style.setAttribute('data-counter', 'true');
+      style.textContent = `
+        #admin-counter {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: rgba(0, 0, 0, 0.95);
+          border: 2px solid #81d8d0;
+          border-radius: 12px;
+          padding: 16px;
+          color: #81d8d0;
+          font-family: 'Courier New', monospace;
+          font-size: 13px;
+          z-index: 99999;
+          display: none;
+          min-width: 280px;
+          box-shadow: 0 8px 32px rgba(129, 216, 208, 0.2);
+          backdrop-filter: blur(10px);
+        }
+        #admin-counter.visible {
+          display: block;
+          animation: slideUp 0.3s ease;
+        }
+        #admin-counter h4 {
+          margin: 0 0 12px 0;
+          color: #fff;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+        #admin-counter .pin-form {
+          margin-bottom: 12px;
+          padding-bottom: 12px;
+          border-bottom: 1px solid rgba(129, 216, 208, 0.2);
+        }
+        #admin-counter input {
+          width: 100%;
+          padding: 8px;
+          background: rgba(129, 216, 208, 0.1);
+          border: 1px solid #81d8d0;
+          border-radius: 6px;
+          color: #81d8d0;
+          font-family: 'Courier New', monospace;
+          font-size: 12px;
+          box-sizing: border-box;
+          margin-bottom: 6px;
+        }
+        #admin-counter input::placeholder {
+          color: rgba(129, 216, 208, 0.5);
+        }
+        #admin-counter input:focus {
+          outline: none;
+          background: rgba(129, 216, 208, 0.15);
+          box-shadow: 0 0 8px rgba(129, 216, 208, 0.3);
+        }
+        #admin-counter button {
+          width: 100%;
+          padding: 6px;
+          background: rgba(129, 216, 208, 0.2);
+          border: 1px solid #81d8d0;
+          border-radius: 6px;
+          color: #81d8d0;
+          font-family: 'Courier New', monospace;
+          font-size: 12px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        #admin-counter button:hover {
+          background: rgba(129, 216, 208, 0.3);
+        }
+        #admin-counter .error {
+          color: #ff6b6b;
+          font-size: 11px;
+          margin-top: 4px;
+        }
+        #admin-counter p {
+          margin: 6px 0;
+          padding: 4px 0;
+          border-bottom: 1px solid rgba(129, 216, 208, 0.2);
+        }
+        #admin-counter p:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
+        }
+        #admin-counter .label {
+          color: #aaa;
+          font-size: 12px;
+        }
+        #admin-counter .value {
+          color: #81d8d0;
+          font-weight: bold;
+        }
+        #admin-counter .hint {
+          margin-top: 8px;
+          padding-top: 8px;
+          border-top: 1px solid rgba(129, 216, 208, 0.2);
+          font-size: 11px;
+          color: #666;
+          text-align: center;
+        }
+        #admin-counter .logout-btn {
+          margin-top: 8px;
+          padding: 6px !important;
+          font-size: 11px !important;
+          background: rgba(255, 107, 107, 0.1) !important;
+          border: 1px solid rgba(255, 107, 107, 0.5) !important;
+          color: #ff6b6b !important;
+        }
+        #admin-counter .logout-btn:hover {
+          background: rgba(255, 107, 107, 0.2) !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Utwórz element licznika
+    if (!document.getElementById('admin-counter')) {
+      const counter = document.createElement('div');
+      counter.id = 'admin-counter';
+      counter.innerHTML = `
+        <h4>🔐 Panel Admin</h4>
+        <div class="pin-form" id="pin-form">
+          <input type="password" id="pin-input" placeholder="Wpisz PIN" />
+          <button onclick="adminCounter.authenticate()">Zaloguj</button>
+          <button style="margin-top: 6px; background: rgba(129, 216, 208, 0.1) !important; border: 1px solid rgba(129, 216, 208, 0.3) !important; font-size: 11px !important; color: rgba(129, 216, 208, 0.7) !important;" onclick="adminCounter.showPin()">Zapomniałem PIN-u</button>
+          <div class="error" id="pin-error"></div>
+        </div>
+        <div id="stats-view" style="display:none;">
+          <h4 style="margin-top: 0;">📊 Statystyka Odwiedzin</h4>
+          <p><span class="label">Ogółem wizyt:</span> <span class="value" id="total-visits">0</span></p>
+          <p><span class="label">Dzisiaj:</span> <span class="value" id="today-visits">0</span></p>
+          <p><span class="label">Ostatnia wizyta:</span> <span class="value" id="last-visit">-</span></p>
+          <p><span class="label">Średnio na dzień:</span> <span class="value" id="avg-visits">0</span></p>
+          <button class="logout-btn" onclick="adminCounter.logout()">Wyloguj</button>
+          <div class="hint">🔑 Ctrl+Shift+K aby ukryć</div>
+        </div>
+      `;
+      counter.innerHTML += `<div class="hint">🔑 Ctrl+Shift+K aby ukryć</div>`;
+      document.body.appendChild(counter);
+      window.adminCounter = this;
+    }
+  }
+
+  authenticate() {
+    const pinInput = document.getElementById('pin-input');
+    const pin = pinInput.value;
+    const storedPin = localStorage.getItem(this.pinKey);
+    const errorDiv = document.getElementById('pin-error');
+
+    if (pin === storedPin) {
+      this.authenticated = true;
+      sessionStorage.setItem(this.authenticatedKey, 'true');
+      this.showStats();
+      errorDiv.textContent = '';
+      pinInput.value = '';
+    } else {
+      errorDiv.textContent = '❌ Błędny PIN';
+      pinInput.value = '';
+      pinInput.focus();
+    }
+  }
+
+  showPin() {
+    const pin = localStorage.getItem(this.pinKey);
+    if (pin) {
+      alert(`🔐 TWÓJ PIN:\n\n${pin}`);
+    } else {
+      alert('❌ PIN nie znaleziony. Spróbuj przeładować stronę.');
+    }
+  }
+
+  showStats() {
+    document.getElementById('pin-form').style.display = 'none';
+    document.getElementById('stats-view').style.display = 'block';
+    this.updateCounterDisplay();
+  }
+
+  logout() {
+    this.authenticated = false;
+    sessionStorage.removeItem(this.authenticatedKey);
+    document.getElementById('pin-form').style.display = 'block';
+    document.getElementById('stats-view').style.display = 'none';
+    document.getElementById('pin-input').value = '';
+    document.getElementById('pin-error').textContent = '';
+  }
+
+  addVisit() {
+    const now = new Date();
+    const today = this.getDateString(now);
+    
+    let data = this.getData();
+    
+    // Zaktualizuj ostatnią wizytę
+    data.lastVisit = this.formatDateTime(now);
+    
+    // Zwiększ licznik wizyt
+    data.totalVisits = (data.totalVisits || 0) + 1;
+    
+    // Zwiększ licznik na dzisiaj
+    if (!data.dailyVisits) data.dailyVisits = {};
+    data.dailyVisits[today] = (data.dailyVisits[today] || 0) + 1;
+    
+    // Zapisz dane
+    localStorage.setItem(this.storageKey, JSON.stringify(data));
+  }
+
+  updateCounterDisplay() {
+    const data = this.getData();
+    const today = this.getDateString(new Date());
+    
+    if (document.getElementById('total-visits')) {
+      document.getElementById('total-visits').textContent = data.totalVisits || 0;
+      document.getElementById('today-visits').textContent = data.dailyVisits?.[today] || 0;
+      document.getElementById('last-visit').textContent = data.lastVisit || '-';
+      
+      // Oblicz średnią
+      const uniqueDays = Object.keys(data.dailyVisits || {}).length;
+      const avgVisits = uniqueDays > 0 ? Math.round((data.totalVisits || 0) / uniqueDays) : 0;
+      document.getElementById('avg-visits').textContent = avgVisits;
+    }
+  }
+
+  setupToggleListener() {
+    document.addEventListener('keydown', (e) => {
+      // Ctrl+Shift+K
+      if (e.ctrlKey && e.shiftKey && e.code === 'KeyK') {
+        e.preventDefault();
+        this.toggleCounter();
+      }
+    });
+  }
+
+  toggleCounter() {
+    const counter = document.getElementById('admin-counter');
+    if (counter) {
+      this.counterVisible = !this.counterVisible;
+      if (this.counterVisible) {
+        counter.classList.add('visible');
+        if (!this.authenticated) {
+          document.getElementById('pin-input').focus();
+        }
+      } else {
+        counter.classList.remove('visible');
+      }
+    }
+  }
+
+  getData() {
+    try {
+      return JSON.parse(localStorage.getItem(this.storageKey)) || {
+        totalVisits: 0,
+        dailyVisits: {},
+        lastVisit: '-'
+      };
+    } catch {
+      return {
+        totalVisits: 0,
+        dailyVisits: {},
+        lastVisit: '-'
+      };
+    }
+  }
+
+  getDateString(date) {
+    return date.toISOString().split('T')[0];
+  }
+
+  formatDateTime(date) {
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    return `${day}.${month}.${year} ${hours}:${minutes}`;
+  }
+}
+
+// Inicjalizuj licznik
+document.addEventListener('DOMContentLoaded', () => {
+  new AdminPageCounter();
+}, { once: true });
+
+// Lub jeśli DOM jest już załadowany
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new AdminPageCounter();
+  }, { once: true });
+} else {
+  new AdminPageCounter();
+}
 </script>
 
 </body>
