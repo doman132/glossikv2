@@ -101,13 +101,15 @@ body.mobile-menu-open{overflow:hidden;}
 .dropdown-menu{
   position:absolute;
   top:100%;
-  left:0;
+  left:50%;
   background:#111;
   border-radius:8px;
-  min-width:200px;
+  min-width:340px;
+  max-width:calc(100vw - 32px);
+  box-sizing:border-box;
   opacity:0;
   visibility:hidden;
-  transform:translateY(-10px);
+  transform:translateX(-50%) translateY(-10px);
   transition:all 0.3s ease;
   z-index:3000;
   box-shadow:0 8px 24px rgba(0,0,0,.6);
@@ -119,19 +121,22 @@ body.mobile-menu-open{overflow:hidden;}
 .dropdown-menu.active{
   opacity:1;
   visibility:visible;
-  transform:translateY(0);
+  transform:translateX(-50%) translateY(0);
   display:block;
   transition:all 0.3s ease;
 }
 .dropdown-menu a{
   display:block;
-  padding:12px 20px;
+  padding:10px 16px;
   color:#fff;
   text-decoration:none;
   font-weight:400;
   transition:.3s;
   border-bottom:1px solid rgba(129,216,208,.2);
   cursor:pointer;
+  white-space:normal;
+  word-break:break-word;
+  overflow-wrap:break-word;
 }
 .dropdown-menu a:last-child{
   border-bottom:none;
@@ -329,7 +334,6 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .slide:hover{box-shadow:0 30px 100px rgba(129,216,208,0.5) !important;}
 .slide#slide-1:hover{transform:perspective(1200px) rotateY(0deg) translateZ(120px) scale(1.15);}
 .slide#slide-3{display:none;}
-.slide#slide-4{display:none;}
 @keyframes slideIn{0%{opacity:0;transform:perspective(1200px) translateZ(-200px) scale(0.5);}100%{opacity:1;transform:perspective(1200px) translateZ(100px) scale(1.1);}}
 .slide#slide-1{animation:slideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);}
 
@@ -428,8 +432,8 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .modal-close{width:40px;height:40px;font-size:2rem;}
 .modal-content{padding:24px 12px 40px 12px;}
 }
-.category-tabs{display:flex;gap:12px;flex-wrap:nowrap;flex:1;align-items:center;overflow-x:auto;}
-.category-tab{padding:12px 24px;background:rgba(129,216,208,.1);border:2px solid rgba(129,216,208,.3);color:#fff;cursor:pointer;border-radius:8px;font-weight:600;transition:.3s;}
+.category-tabs{display:flex;gap:8px;flex-wrap:wrap;flex:1;align-items:center;justify-content:center;width:100%;padding:0;}
+.category-tab{padding:8px 12px;background:rgba(129,216,208,.1);border:2px solid rgba(129,216,208,.3);color:#fff;cursor:pointer;border-radius:8px;font-weight:600;transition:.3s;font-size:0.85rem;text-align:center;line-height:1.2;white-space:normal;flex:0 1 auto;max-width:360px;}
 .category-tab.active{background:var(--tiffany);color:#000;border-color:var(--tiffany);}
 .category-tab:hover{border-color:var(--tiffany);}
 .pricing-list-modal{display:grid;gap:20px;margin-top:40px;}
@@ -465,24 +469,18 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 @media(max-width:768px){
 .modal-content{padding:30px 16px 40px 16px;}
 .category-tabs{gap:8px;flex-wrap:wrap;}
-.category-tab{padding:10px 16px;font-size:0.9rem;}
+.category-tab{padding:8px 14px;font-size:0.9rem;white-space:normal;}
 .item-name{font-size:1rem;}
 .item-price{font-size:1.1rem;}
 .pricing-item-modal{padding:16px;margin:0;}
 }
 @media(max-width:480px){
-.category-tabs{gap:6px;margin-top:15px;}
-.category-tab{padding:8px 12px;font-size:0.85rem;}
+.category-tabs{gap:6px;flex-wrap:wrap;flex-direction:row;}
+.category-tab{padding:6px 10px;font-size:0.75rem;white-space:normal;flex:1 1 auto;min-width:auto;line-height:1.2;}
 .pricing-item-modal{padding:14px;margin-bottom:10px;}
 .item-name{font-size:0.95rem;}
 .item-price{font-size:1rem;}
 .pricing-item-description{font-size:0.9rem;}
-}
-
-@media(max-width:480px){
-.category-tabs{flex-wrap:wrap;gap:8px;}
-.category-tabs .category-tab:first-child{flex:0 1 auto;}
-.category-tabs .category-tab:nth-child(2),.category-tabs .category-tab:nth-child(3){flex:1;min-width:calc(50% - 4px);}
 }
 
 /* COOKIES BANNER */
@@ -1013,12 +1011,11 @@ font-size:1rem;
       <li>
         <a href="javascript:void(0)" class="dropdown-toggle" id="cennikToggle">Cennik</a>
         <div class="dropdown-menu" id="cennikMenu">
-          <a href="javascript:void(0)" data-category="mycie">Mycie</a>
+          <a href="javascript:void(0)" data-category="mycie">Mycie i sprzątanie</a>
           <a href="javascript:void(0)" data-category="wnetrze">Wnętrze pojazdu</a>
-          <a href="javascript:void(0)" data-category="lakier">Lakier</a>
-          <a href="javascript:void(0)" data-category="powloki">Powłoki i hydrofoba</a>
-          <a href="javascript:void(0)" data-category="szyby">Szyby</a>
-          <a href="javascript:void(0)" data-category="ppf">Folia ochronna PPF</a>
+          <a href="javascript:void(0)" data-category="Polerowanie / zabezpieczenie lakieru">Polerowanie / zabezpieczenie lakieru</a>
+          <a href="javascript:void(0)" data-category="Folie">Folie Ochronne</a>
+          <a href="javascript:void(0)" data-category="szyby">Przyciemnianie Szyb</a>
         </div>
       </li>
       <li><a href="#kontakt">Kontakt</a></li>
@@ -1037,10 +1034,9 @@ font-size:1rem;
   <div class="mobile-menu-dropdown-content" id="cennikMobileMenu">
     <a href="javascript:void(0)" data-category="mycie" class="mobile-menu-dropdown-item">Mycie</a>
     <a href="javascript:void(0)" data-category="wnetrze" class="mobile-menu-dropdown-item">Wnętrze pojazdu</a>
-    <a href="javascript:void(0)" data-category="lakier" class="mobile-menu-dropdown-item">Lakier</a>
-    <a href="javascript:void(0)" data-category="powloki" class="mobile-menu-dropdown-item">Powłoki i hydrofoba</a>
+    <a href="javascript:void(0)" data-category="Polerowanie / zabezpieczenie lakieru" class="mobile-menu-dropdown-item">Polerowanie / zabezpieczenie lakieru</a>
+    <a href="javascript:void(0)" data-category="Folie" class="mobile-menu-dropdown-item">Folie</a>
     <a href="javascript:void(0)" data-category="szyby" class="mobile-menu-dropdown-item">Szyby</a>
-    <a href="javascript:void(0)" data-category="ppf" class="mobile-menu-dropdown-item">Folia ochronna PPF</a>
   </div>
   <a href="#kontakt" class="mobile-menu-link">Kontakt</a>
   <div class="mobile-menu-icons">
@@ -1094,10 +1090,10 @@ font-size:1rem;
 <div class="services-grid">
 <div class="service-card" onclick="openPricingModal('mycie')"><img src="mycie.jpeg"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
 <div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('lakier')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
-<div class="service-card" onclick="openPricingModal('powloki')"><img src="powłoka.jpeg"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
+<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
+<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="powłoka.jpeg"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
 <div class="service-card" onclick="openPricingModal('szyby')"><img src="szyby.jpg"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
-<div class="service-card" onclick="openPricingModal('ppf')"><img src="ppf.jpeg"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
+<div class="service-card" onclick="openPricingModal('Folie')"><img src="ppf.jpeg"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
 </div>
 </section>
 
@@ -1120,11 +1116,10 @@ font-size:1rem;
 <h2>Realizacje</h2>
 <div class="slider-container">
 <div class="slider-track" id="slider">
-<div class="slide" id="slide-0"><img src="realizacja.jpeg"></div>
-<div class="slide" id="slide-1"><img src="realizacja2.jpeg"></div>
-<div class="slide" id="slide-2"><img src="realizacja3.jpeg"></div>
-<div class="slide" id="slide-3"><img src="realizacja4.jpeg"></div>
-<div class="slide" id="slide-4"><img src="realizacja1.jpeg"></div>
+<div class="slide" id="slide-0"><img src="realizacja1.jpg"></div>
+<div class="slide" id="slide-1"><img src="realizacja2.jpg"></div>
+<div class="slide" id="slide-2"><img src="realizacja3.jpg"></div>
+<div class="slide" id="slide-3"><img src="realizacja4.jpg"></div>
 </div>
 </div>
 </section>
@@ -1292,186 +1287,160 @@ Kontynuacja korzystania oznacza akceptację zmian.</p>
 // ------------------- CENNIK KATEGORYZOWANY -------------------
 const pricingData = {
   mycie: {
-    title: 'Mycie pojazdu',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
+    title: 'Mycie i sprzątanie',
+    categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
-      'Mycie z zewnątrz': {
+      'Mycie podstawowe': {
         description: 'Profesjonalne mycie całego pojazdu z obsługą każdego detalu',
-        prices: { 'Samochód mały': '130 zł', 'Samochód duży': '150 zł', 'SUV/VAN': '180 zł' }
+        prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
-      'Sprzątanie środka': {
+      'Sprzątanie wnętrza': {
         description: 'Gruntowne czyszczenie wnętrza pojazdu',
-        prices: { 'Samochód mały': '130 zł', 'Samochód duży': '150 zł', 'SUV/VAN': '180 zł' }
+        prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
-      'Dekontaminacja chemiczna': {
+      'Komplet': {
+        description: 'Profesjonalne mycie całego pojazdu z obsługą każdego detalu oraz sprzątanie wnętrza',
+        prices: { 'samochod maly - hatchback': '140 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '120 zł' }
+      },
+      'Dekontaminacja': {
         description: 'Usunięcie żelaznych zanieczyszczeń i skontaminowania z lakieru',
-        prices: { 'Samochód mały': '150 zł', 'Samochód duży': '170 zł', 'SUV/VAN': '200 zł' }
+        prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '160 zł' }
       },
-      'Ozonowanie wnętrza': {
+      'mycie det.': {
+        description: 'Mycie detailingowe - profesjonalne czyszczenie wszystkich detali pojazdu',
+        prices: { 'samochod maly - hatchback': '120 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '180 zł' }
+      },
+      'Ozonowanie': {
         description: 'Eliminacja nieprzyjemnych zapachów i bakterii z wnętrza pojazdu',
-        prices: { 'Samochód mały': '120 zł', 'Samochód duży': '150 zł', 'SUV/VAN': '180 zł' }
+        prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '80 zł', 'samochod duzy - suv': '80 zł' }
       },
-      'Wosk 9 miesięcy (do mycia)': {
+      'Usuwanie śierści': {
+        description: 'Profesjonalne usunięcie sierści zwierząt z tapicerki pojazdu',
+        prices: { 'samochod maly - hatchback': '50 zł', 'samochod sredni - sedan / maly suv': '50 zł', 'samochod duzy - suv': '50 zł' }
+      },
+      'aplikacja wosku': {
         description: 'Dodatkowa usługa do mycia - nałożenie wosku ochronnego',
-        prices: { 'Samochód mały': '350 zł', 'Samochód duży': '350 zł', 'SUV/VAN': '350 zł' }
-      },
-      'Bagażnik dachowy mycie': {
-        description: 'Czyszczenie bagażnika dachowego pojazdu',
-        prices: { 'Samochód mały': '50 zł', 'Samochód duży': '50 zł', 'SUV/VAN': '50 zł' }
+        prices: { 'samochod maly - hatchback': '200 zł', 'samochod sredni - sedan / maly suv': '250 zł', 'samochod duzy - suv': '300 zł' }
       },
     }
   },
   wnetrze: {
-    title: 'Detailing wnętrza pojazdu',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
+    title: 'Wnętrze pojazdu',
+    categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
-      'Usuwanie sierści': {
+      'Pranie Fotela': {
         description: 'Profesjonalne usunięcie sierści zwierząt z tapicerki pojazdu',
-        prices: { 'Samochód mały': 'od 50 zł', 'Samochód duży': 'od 50 zł', 'SUV/VAN': 'od 50 zł' }
+        prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '100 zł' }
+      },
+      'Pranie komplet foteli': {
+        description: 'Głębokie czyszczenie i impregnacja siedzeń skórzanych',
+        prices: { 'samochod maly - hatchback': '400 zł', 'samochod sredni - sedan / maly suv': '400 zł', 'samochod duzy - suv': '400 zł' }
       },
       'Czyszczenie skór + impregnacja': {
-        description: 'Głębokie czyszczenie i impregnacja siedzeń skórzanych',
-        prices: { 'Samochód mały': '600 zł', 'Samochód duży': '700 zł', 'SUV/VAN': '800 zł' }
-      },
-      'Pranie standardowe': {
         description: 'Czyszczenie całego wnętrza pojazdu - tapicerka, dywanki, plastiki',
-        prices: { 'Samochód mały': '1000 zł', 'Samochód duży': '1200 zł', 'SUV/VAN': '1400 zł' }
+        prices: { 'samochod maly - hatchback': '450 zł', 'samochod sredni - sedan / maly suv': '450 zł', 'samochod duzy - suv': '550 zł' }
       },
-      'Pranie premium': {
+      'Pranie podłogi': {
         description: 'Zaawansowane czyszczenie z użyciem profesjonalnych środków chemicznych',
-        prices: { 'Samochód mały': '1500 zł', 'Samochód duży': '1800 zł', 'SUV/VAN': '2200 zł' }
+        prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '200 zł', 'samochod duzy - suv': '250 zł' }
       },
-      'Pranie fotela/siedziska': {
-        description: 'Czyszczenie jednego fotela lub siedziska',
-        prices: { 'Samochód mały': '150 zł', 'Samochód duży': '150 zł', 'SUV/VAN': '150 zł' }
+      'Czyszczenie Sufitu': {
+        description: 'Profesjonalne czyszczenie sufitu pojazdu i obudowy',
+        prices: { 'samochod maly - hatchback': '200 zł', 'samochod sredni - sedan / maly suv': '200 zł', 'samochod duzy - suv': '300 zł' }
       },
-      'Impregnacja wnętrza pojazdu': {
-        description: 'Ochrona tkanin wnętrza przed zabrudzeniami i zmianą koloru',
-        prices: { 'Samochód mały': '600 zł', 'Samochód duży': '700 zł', 'SUV/VAN': '800 zł' }
-      },
-    }
-  },
-  lakier: {
-    title: 'Korekta i renowacja lakieru',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
-    items: {
-      'Usuwanie zarysowań Smart Repair': {
-        description: 'Usunięcie małych zarysowań bez konieczności przygotowywania',
-        prices: { 'Samochód mały': 'Wycena indywidualna', 'Samochód duży': 'Wycena indywidualna', 'SUV/VAN': 'Wycena indywidualna' }
-      },
-      'Usuwanie odprysków na szybie': {
-        description: 'Naprawa drobnych pęknięć i odprysków na szybie',
-        prices: { 'Samochód mały': '200 zł', 'Samochód duży': '200 zł', 'SUV/VAN': '200 zł' }
-      },
-      'One step + wosk': {
-        description: 'Jedno polerowanie + nałożenie wosku ochronnego',
-        prices: { 'Samochód mały': '1100 zł', 'Samochód duży': '1300 zł', 'SUV/VAN': '1500 zł' }
-      },
-      'Korekta lakieru (2-3 etapy)': {
-        description: 'Wieloetapowe polerowanie lakieru celem usunięcia rys i hologramów',
-        prices: { 'Samochód mały': '1600 zł', 'Samochód duży': '2000 zł', 'SUV/VAN': '2400 zł' }
-      },
-      'Renowacja lakieru': {
-        description: 'Kompleksowa renowacja lakieru pojazdu na wysokim poziomie',
-        prices: { 'Samochód mały': 'od 2500 zł', 'Samochód duży': 'od 3000 zł', 'SUV/VAN': 'od 3500 zł' }
-      },
-      'Przygotowanie do sprzedaży': {
-        description: 'Pełne przygotowanie pojazdu do sprzedaży - lakier, wnętrze',
-        prices: { 'Samochód mały': 'Wycena indywidualna', 'Samochód duży': 'Wycena indywidualna', 'SUV/VAN': 'Wycena indywidualna' }
-      },
-      'Oddaj auto po leasingu/najmie': {
-        description: 'Przygotowanie pojazdu do zwrotu w idealnym stanie',
-        prices: { 'Samochód mały': 'Wycena indywidualna', 'Samochód duży': 'Wycena indywidualna', 'SUV/VAN': 'Wycena indywidualna' }
+      'Czyszczenie pasów': {
+        description: 'Czyszczenie pasów bezpieczeństwa i ich impregnacja',
+        prices: { 'samochod maly - hatchback': '30 zł/szt', 'samochod sredni - sedan / maly suv': '30 zł/szt', 'samochod duzy - suv': '30 zł/szt.' }
       },
     }
   },
-  powloki: {
-    title: 'Powłoki ceramiczne i hydrofoba',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
+  'Polerowanie / zabezpieczenie lakieru': {
+    title: 'Polerowanie / zabezpieczenie lakieru',
+    categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
-      'Powłoka polimerowa 3 miesięczna': {
-        description: 'Tymczasowa powłoka ochronna na lakier - 3 miesiące gwarancji',
-        prices: { 'Samochód mały': '150 zł', 'Samochód duży': '180 zł', 'SUV/VAN': '220 zł' }
+      'Odswieżenie lakieru': {
+        description: 'Odświeżenie lakieru - przywrócenie połysku i głębi koloru',
+        prices: { 'samochod maly - hatchback': '800 zł', 'samochod sredni - sedan / maly suv': '1200 zł', 'samochod duzy - suv': '1500 zł' }
       },
-      'Powłoka hydrofobowa na przednią szybę': {
-        description: 'Hydrofobowa powłoka ochronna na przednią szybę',
-        prices: { 'Samochód mały': '150 zł', 'Samochód duży': '150 zł', 'SUV/VAN': '150 zł' }
+      'Korekta': {
+        description: 'Korekta lakieru - usunięcie rys i porysowań',
+        prices: { 'samochod maly - hatchback': '1300 zł', 'samochod sredni - sedan / maly suv': '1600 zł', 'samochod duzy - suv': '1900 zł' }
       },
-      'Powłoka hydrofobowa wszystkich szyb': {
-        description: 'Hydrofobowa powłoka na wszystkie szyby pojazdu',
-        prices: { 'Samochód mały': '300 zł', 'Samochód duży': '300 zł', 'SUV/VAN': '300 zł' }
+      'Powłoka roczna': {
+        description: 'Ceramiczna powłoka ochronna na lakier - ochrona na 1 rok',
+        prices: { 'samochod maly - hatchback': '600 zł', 'samochod sredni - sedan / maly suv': '750 zł', 'samochod duzy - suv': '900 zł' }
       },
-      'Pakiet zabezpieczenia ceramicznego 3 letni': {
+      'Powłoka 3-letnia': {
         description: 'Ceramiczna powłoka ochronna na lakier - 3 lata gwarancji',
-        prices: { 'Samochód mały': 'od 2500 zł', 'Samochód duży': 'od 3000 zł', 'SUV/VAN': 'od 3500 zł' }
+        prices: { 'samochod maly - hatchback': '1300 zł', 'samochod sredni - sedan / maly suv': '1700 zł', 'samochod duzy - suv': '2000 zł' }
       },
-      'Pakiet zabezpieczenia ceramicznego 5 letni': {
+      'Powłoka 5-letnia': {
         description: 'Ceramiczna powłoka ochronna na lakier - 5 lat gwarancji',
-        prices: { 'Samochód mały': 'od 3500 zł', 'Samochód duży': 'od 4200 zł', 'SUV/VAN': 'od 5000 zł' }
+        prices: { 'samochod maly - hatchback': '1900 zł', 'samochod sredni - sedan / maly suv': '2100 zł', 'samochod duzy - suv': '2500 zł' }
       },
-      'Pakiet zabezpieczenia ceramicznego 7 letni': {
-        description: 'Ceramiczna powłoka ochronna na lakier - 7 lat gwarancji',
-        prices: { 'Samochód mały': 'od 4800 zł', 'Samochód duży': 'od 5800 zł', 'SUV/VAN': 'od 6800 zł' }
+      'Hydro na szybe czołową/Komplet': {
+        description: 'Hydrofobowa powłoka na przednią szybę - zapewnia wodoodporność',
+        prices: { 'samochod maly - hatchback': '130/350 zł', 'samochod sredni - sedan / maly suv': '130/350 zł', 'samochod duzy - suv': '130/350 zł' }
+      },
+      'Powłoka na felgi': {
+        description: 'Ceramiczna powłoka ochronna na felgi - ochrona przed korozją',
+        prices: { 'samochod maly - hatchback': '400 zł', 'samochod sredni - sedan / maly suv': '400 zł', 'samochod duzy - suv': '400 zł' }
+      },
+      'Impregnacja dachu cabrio': {
+        description: 'Ochronna impregnacja dachu samochodów kabriolet',
+        prices: { 'samochod maly - hatchback': '600 zł', 'samochod sredni - sedan / maly suv': '600 zł', 'samochod duzy - suv': '-' }
+      },
+      'Odswiezenie plastików powłoką': {
+        description: 'Odświeżenie plastików wyposażenia pojazdu powłoką ochronną',
+        prices: { 'samochod maly - hatchback': 'Wycena indywidualna', 'samochod sredni - sedan / maly suv': 'Wycena indywidualna', 'samochod duzy - suv': 'Wycena indywidualna' }
+      },
+    }
+  },
+  Folie: {
+    title: 'Folie',
+    categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
+    items: {
+      'Must Have': {
+        description: 'Folia ochronna PPF na lakier pojazdu - 3 miesiące gwarancji',
+        prices: { 'samochod maly - hatchback': '990 zł', 'samochod sredni - sedan / maly suv': '990 zł', 'samochod duzy - suv': '990 zł' }
+      },
+      'Full Front': {
+        description: 'Bezbarwna folia ochronna PPF na przednią część pojazdu',
+        prices: { 'samochod maly - hatchback': 'Od 4000 zł', 'samochod sredni - sedan / maly suv': 'Od 5000 zł', 'samochod duzy - suv': 'Od 6000 zł' }
+      },
+      'Full Body': {
+        description: 'Bezbarwna folia ochronna PPF na cały pojazd',
+        prices: { 'samochod maly - hatchback': 'Od 10000 zł', 'samochod sredni - sedan / maly suv': 'Od 12500 zł', 'samochod duzy - suv': 'Od 14000 zł' }
+      },
+      'Parapety Bagaża': {
+        description: 'Folia ochronna PPF na paraperaty bagażnika',
+        prices: { 'samochod maly - hatchback': '220 zł', 'samochod sredni - sedan / maly suv': '220 zł', 'samochod duzy - suv': '250 zł' }
+      },
+      'Reflektory': {
+        description: 'Folia ochronna PPF na reflektory i lampy',
+        prices: { 'samochod maly - hatchback': '450 zł', 'samochod sredni - sedan / maly suv': '450 zł', 'samochod duzy - suv': '450 zł' }
+      },
+      'Wnętki klamek': {
+        description: 'Folia ochronna PPF na klamki drzwi i wnętki',
+        prices: { 'samochod maly - hatchback': '160 zł', 'samochod sredni - sedan / maly suv': '160 zł', 'samochod duzy - suv': '160 zł' }
       },
     }
   },
   szyby: {
-    title: 'Szyby pojazdu',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
+    title: 'Przyciemnianie szyb',
+    categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Przyciemnianie szyb': {
         description: 'Profesjonalne przyciemnianie szyb bocznych i tylnej',
-        prices: { 'Samochód mały': '1000 zł', 'Samochód duży': '1200 zł', 'SUV/VAN': '1400 zł' }
+        prices: { 'samochod maly - hatchback': '650 zł', 'samochod sredni - sedan / maly suv': '750 zł', 'samochod duzy - suv': '900 zł' }
       },
-    }
-  },
-  ppf: {
-    title: 'Folia ochronna PPF',
-    categories: ['Samochód mały', 'Samochód duży', 'SUV/VAN'],
-    items: {
-      'Reflektory': {
-        description: 'Folia ochronna na reflektory pojazdu',
-        prices: { 'Samochód mały': '800 zł', 'Samochód duży': '800 zł', 'SUV/VAN': '800 zł' }
+      'Przyciemnianie przednich szyb': {
+        description: 'Profesjonalne przyciemnianie przedniej szyby i drzwiczek',
+        prices: { 'samochod maly - hatchback': '380 zł', 'samochod sredni - sedan / maly suv': '380 zł', 'samochod duzy - suv': '380 zł' }
       },
-      'Maska': {
-        description: 'Folia ochronna na maskę pojazdu',
-        prices: { 'Samochód mały': '2000 zł', 'Samochód duży': '2200 zł', 'SUV/VAN': '2500 zł' }
-      },
-      'Zderzak przedni': {
-        description: 'Folia ochronna na zderzak przedni',
-        prices: { 'Samochód mały': '2000 zł', 'Samochód duży': '2200 zł', 'SUV/VAN': '2500 zł' }
-      },
-      'Wnęki klamek': {
-        description: 'Folia ochronna w wnetrzach klamek drzwi',
-        prices: { 'Samochód mały': '400 zł', 'Samochód duży': '400 zł', 'SUV/VAN': '400 zł' }
-      },
-      'Progi wewnętrzne': {
-        description: 'Folia ochronna na progi wewnętrzne pojazdu',
-        prices: { 'Samochód mały': '600 zł', 'Samochód duży': '600 zł', 'SUV/VAN': '600 zł' }
-      },
-      'Próg bagażnika': {
-        description: 'Folia ochronna na próg bagażnika',
-        prices: { 'Samochód mały': '500 zł', 'Samochód duży': '500 zł', 'SUV/VAN': '500 zł' }
-      },
-      'Lusterka': {
-        description: 'Folia ochronna na lusterka boczne pojazdu',
-        prices: { 'Samochód mały': '600 zł', 'Samochód duży': '600 zł', 'SUV/VAN': '600 zł' }
-      },
-      'Pakiet Hybrydowy full front': {
-        description: 'Pakiet obejmujący maskę, reflektory, zderzak, progi - hybrydowy',
-        prices: { 'Samochód mały': 'od 7000 zł', 'Samochód duży': 'od 8000 zł', 'SUV/VAN': 'od 9000 zł' }
-      },
-      'Pakiet front': {
-        description: 'Pakiet pełna ochrona przodu pojazdu',
-        prices: { 'Samochód mały': 'od 6500 zł', 'Samochód duży': 'od 7500 zł', 'SUV/VAN': 'od 8500 zł' }
-      },
-      'Full body PPF': {
-        description: 'Całkowita ochrona całego pojazdu folią ochronną',
-        prices: { 'Samochód mały': 'od 14500 zł', 'Samochód duży': 'od 17000 zł', 'SUV/VAN': 'od 20000 zł' }
-      },
-      'Pakiet PPF Basic': {
-        description: 'Podstawowy pakiet ochrony folią ochronną',
-        prices: { 'Samochód mały': 'od 1800 zł', 'Samochód duży': 'od 2200 zł', 'SUV/VAN': 'od 2600 zł' }
+      'Kameleon przednia Legalna': {
+        description: 'Kameleon film na przednią szybę - zmiana koloru pod światłem',
+        prices: { 'samochod maly - hatchback': '1000 zł', 'samochod sredni - sedan / maly suv': '1000 zł', 'samochod duzy - suv': '1000 zł' }
       },
     }
   }
@@ -1568,9 +1537,21 @@ function showCategory(category) {
   const items = document.querySelectorAll('.pricing-item-modal');
   items.forEach(item => {
     const categoryPrices = item.querySelectorAll('.category-price');
-    categoryPrices.forEach(price => {
-      price.style.display = price.getAttribute('data-category') === category ? 'block' : 'none';
+    let foundPrice = null;
+    categoryPrices.forEach(priceEl => {
+      const cat = priceEl.getAttribute('data-category');
+      const isMatch = cat === category;
+      priceEl.style.display = isMatch ? 'block' : 'none';
+      if (isMatch) {
+        const txt = priceEl.textContent || '';
+        const parts = txt.split(':');
+        foundPrice = parts.slice(1).join(':').trim();
+      }
     });
+    const headerPrice = item.querySelector('.item-price');
+    if (headerPrice) {
+      headerPrice.textContent = foundPrice || headerPrice.textContent;
+    }
   });
 }
 
@@ -1905,6 +1886,7 @@ let allImages = [
   'realizacja2.jpeg',
   'realizacja3.jpeg',
   'realizacja4.jpeg',
+  'realizacja5.jpg',
 ];
 
 let currentIndex = 0;
@@ -1938,7 +1920,7 @@ function animateSlide() {
   if (isAnimating) return;
   isAnimating = true;
   
-  currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
+  currentIndex = (currentIndex + 1) % allImages.length;
   updateSliderImages();
   
   setTimeout(() => {
@@ -2686,10 +2668,15 @@ function selectPaymentMethod() {
 // ========== SUWAK PRZED/PO ==========
 const beaImages = [
   { before: 'probka.jpg', after: 'probka1.jpg' },
+  { before: 'przedpo.jpg', after: 'przedpo1.jpg' },
   { before: 'przed2.jpg', after: 'po2.jpg' },
   { before: 'przed3.jpg', after: 'po3.jpg' },
   { before: 'przed5.jpg', after: 'po5.jpg' },
-  { before: 'przed8.jpg', after: 'po8.jpg' },
+  { before: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200', after: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200' },
+  { before: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200', after: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200' },
+  { before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200', after: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200' },
+  { before: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200', after: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200' },
+  { before: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200', after: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200' },
 ];
 
 let beaIndex = 0;
