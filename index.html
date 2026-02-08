@@ -306,19 +306,19 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 }
 .before-after-slider{max-width:900px;margin:auto;position:relative;z-index:5;display:flex;align-items:center;gap:30px;justify-content:center;}
 .before-after{max-width:100%;margin:auto;overflow:hidden;border-radius:20px;position:relative;flex:1;min-width:0;}
-.ba-box{position:relative;aspect-ratio:3/2;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;}
-.ba-box img{position:absolute;width:100%;height:100%;object-fit:cover;}
+.ba-box{position:relative;aspect-ratio:3/2;cursor:grab;user-select:none;-webkit-user-select:none;-moz-user-select:none;touch-action:manipulation;contain:layout style paint;}
+.ba-box img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 0.3s ease-in-out;}
 .ba-after{clip-path:inset(0 50% 0 0);}
 .ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;background:var(--tiffany);cursor:grab;z-index:10;border-radius:50%;display:flex;align-items:center;justify-content:center;}
 .ba-handle::before{content:'⟨';color:#000;font-size:24px;font-weight:bold;}
 .ba-handle::after{content:'⟩';color:#000;font-size:24px;font-weight:bold;}
 .ba-nav{display:flex;gap:20px;align-items:center;justify-content:center;}
-.ba-arrow{background:rgba(129,216,208,.2);border:2px solid var(--tiffany);color:var(--tiffany);width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;transition:.3s;flex-shrink:0;}
+.ba-arrow{background:rgba(129,216,208,.2);border:2px solid var(--tiffany);color:var(--tiffany);width:45px;height:45px;border-radius:50%;cursor:pointer;font-size:24px;display:flex;align-items:center;justify-content:center;transition:.15s;flex-shrink:0;}
 .ba-arrow:hover{background:var(--tiffany);color:#000;transform:scale(1.1);}
 .slider-container{position:relative;overflow:visible;max-width:1200px;margin:0 auto;padding:40px 0;}
 .slider-track{position:relative;height:480px;width:100%;margin:0 auto;display:flex;justify-content:center;align-items:center;gap:40px;}
-.slide{position:relative;background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;height:100%;width:320px;flex-shrink:0;border:2px solid rgba(129,216,208,.2);transition:transform 0.5s ease, opacity 0.5s ease-in-out, box-shadow 0.5s ease-in-out;cursor:pointer;}
-.slide img{width:100%;height:100%;object-fit:cover;transition:filter 0.8s ease-in-out, opacity 0.5s ease-in-out;}
+.slide{position:relative;background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;height:100%;width:320px;flex-shrink:0;border:2px solid rgba(129,216,208,.2);transition:transform 0.5s ease, opacity 0.5s ease-in-out, box-shadow 0.5s ease-in-out;cursor:pointer;will-change:opacity;}
+.slide img{width:100%;height:100%;object-fit:cover;transition:opacity 0.3s ease-in-out;}
 .slide#slide-0{transform:scale(0.8);opacity:0.5;z-index:8;box-shadow:0 10px 30px rgba(0,0,0,0.4);}
 .slide#slide-0 img{filter:saturate(0.8);}
 .slide#slide-1{transform:scale(1.1);opacity:1;z-index:10;border-color:var(--tiffany);box-shadow:0 30px 80px rgba(129,216,208,0.4);}
@@ -1286,15 +1286,15 @@ const pricingData = {
       },
       'Komplet': {
         description: 'Profesjonalne mycie całego pojazdu z obsługą każdego detalu oraz sprzątanie wnętrza',
-        prices: { 'samochod maly - hatchback': '140 zł', 'samochod sredni - sedan / maly suv': '160 zł', 'samochod duzy - suv': '180 zł' }
+        prices: { 'samochod maly - hatchback': '140 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '120 zł' }
       },
       'Dekontaminacja': {
         description: 'Usunięcie żelaznych zanieczyszczeń i skontaminowania z lakieru',
-        prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '120 zł' }
+        prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '160 zł' }
       },
       'mycie det.': {
         description: 'Mycie detailingowe - profesjonalne czyszczenie wszystkich detali pojazdu',
-        prices: { 'samochod maly - hatchback': '120 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '160 zł' }
+        prices: { 'samochod maly - hatchback': '120 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '180 zł' }
       },
       'Ozonowanie': {
         description: 'Eliminacja nieprzyjemnych zapachów i bakterii z wnętrza pojazdu',
@@ -1837,16 +1837,21 @@ function updateSliderImages() {
     const slideEl = document.getElementById(`slide-${i}`);
     if (slideEl) {
       const img = slideEl.querySelector('img');
-      // Fade out
       img.style.opacity = '0';
-      // Wait for fade to complete
+      // Faster image switching - 80ms instead of 250ms
       setTimeout(() => {
         img.src = allImages[indices[i]];
-        // Fade in
         img.style.opacity = '1';
-      }, 250);
+      }, 80);
     }
   }
+}
+
+function preloadCarouselImages() {
+  allImages.slice(0, 10).forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
 }
 
 function animateSlide() {
@@ -1856,12 +1861,15 @@ function animateSlide() {
   currentIndex = (currentIndex + 1) % allImages.length;
   updateSliderImages();
   
+  // Faster unlock - 500ms instead of 800ms
   setTimeout(() => {
     isAnimating = false;
-  }, 800);
+  }, 500);
 }
 
 setInterval(() => animateSlide(), 4000);
+
+preloadCarouselImages();
 
 updateSliderImages();
 
@@ -1878,6 +1886,8 @@ if (handle && baBox) {
   function startDrag(e) {
     isDragging = true;
     baBox.style.cursor = 'grabbing';
+    after.style.willChange = 'clip-path';
+    handle.style.willChange = 'left';
     document.addEventListener('mousemove', drag);
     document.addEventListener('mouseup', stopDrag);
     document.addEventListener('touchmove', drag, { passive: true });
@@ -1901,6 +1911,8 @@ if (handle && baBox) {
   function stopDrag() {
     isDragging = false;
     baBox.style.cursor = 'grab';
+    after.style.willChange = 'auto';
+    handle.style.willChange = 'auto';
     document.removeEventListener('mousemove', drag);
     document.removeEventListener('mouseup', stopDrag);
     document.removeEventListener('touchmove', drag);
@@ -2602,25 +2614,50 @@ function selectPaymentMethod() {
 // ========== SUWAK PRZED/PO ==========
 const beaImages = [
   { before: 'probka.jpg', after: 'probka1.jpg' },
-  { before: 'przedpo.jpg', after: 'przedpo1.jpg' },
+  { before: 'przed8.jpg', after: 'po8.jpg' },
   { before: 'przed2.jpg', after: 'po2.jpg' },
   { before: 'przed3.jpg', after: 'po3.jpg' },
   { before: 'przed5.jpg', after: 'po5.jpg' },
-  { before: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200', after: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200', after: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200', after: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200', after: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200', after: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200' },
 ];
 
 let beaIndex = 0;
+let beaFadeInProgress = false;
 
 function updateBeaImages() {
-  const img = beaImages[beaIndex];
+  if (beaFadeInProgress) return;
+  beaFadeInProgress = true;
+  
   const beforeEl = document.getElementById('ba-before');
   const afterEl = document.getElementById('ba-after');
-  if (beforeEl) beforeEl.src = img.before;
-  if (afterEl) afterEl.src = img.after;
+  
+  if (!beforeEl || !afterEl) return;
+  
+  const img = beaImages[beaIndex];
+  
+  // Fade out
+  beforeEl.style.opacity = '0';
+  afterEl.style.opacity = '0';
+  
+  // Change src immediately (images load in background)
+  beforeEl.src = img.before;
+  afterEl.src = img.after;
+  
+  // Fade in after a tiny delay
+  setTimeout(() => {
+    beforeEl.style.opacity = '1';
+    afterEl.style.opacity = '1';
+    beaFadeInProgress = false;
+  }, 30);
+}
+
+function preloadBeaImages() {
+  // Preload all images to avoid loading lag on click
+  beaImages.forEach(imgSet => {
+    const before = new Image();
+    const after = new Image();
+    before.src = imgSet.before;
+    after.src = imgSet.after;
+  });
 }
 
 function nextBeforeAfter() {
@@ -2636,6 +2673,8 @@ function prevBeforeAfter() {
 // Inicjalizuj przed/po slider w następnej frame aby nie blokować scroll
 requestAnimationFrame(() => {
   updateBeaImages();
+  // Preload all images in background for instant switching
+  setTimeout(() => preloadBeaImages(), 500);
 });
 
 // =============== DROPDOWN CENNIK - STANDALONE SETUP ===============
@@ -3173,5 +3212,4 @@ if (document.readyState === 'loading') {
 
 </body>
 </html>
-
 
