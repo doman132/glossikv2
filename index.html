@@ -13,13 +13,42 @@
 --black:#0b0b0b;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-html{width:100%;height:auto;overflow-x:hidden;}
-body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;scrollbar-gutter:stable;padding-top:80px;will-change:auto;}
+html{width:100%;height:auto;overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable;}
+/* Custom scrollbar styling - Tiffany Blue */
+html::-webkit-scrollbar{width:12px;}
+html::-webkit-scrollbar-track{background:#0b0b0b;}
+html::-webkit-scrollbar-thumb{background:#81d8d0;border-radius:6px;}
+html::-webkit-scrollbar-thumb:hover{background:#a3e9e5;box-shadow:0 0 6px rgba(129,216,208,0.5);}
+/* Firefox scrollbar */
+html{scrollbar-color:#81d8d0 #0b0b0b;scrollbar-width:thin;}
+body{width:100%;min-height:100vh;background:linear-gradient(-45deg,var(--black),var(--dark),#1a1a1a,var(--black));background-size:400% 400%;animation:bg 14s infinite;color:#fff;overflow-x:hidden;overflow-y:hidden;padding-top:0;will-change:auto;margin-top:0;}
 body.menu-open{overflow:hidden;}
 html.menu-open{overflow:hidden;}
 @keyframes bg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 header{position:fixed;top:0;z-index:10000;background:rgba(0,0,0,1);backdrop-filter:blur(10px);width:100%;padding:0;left:0;right:0;}
 nav{width:100%;padding:16px 24px;display:flex;justify-content:center;align-items:center;margin:0;background:rgba(0,0,0,1);box-sizing:border-box;}
+.typewriter{
+  font-size:1.8rem;
+  color:var(--muted);
+  min-height:60px;
+  display:inline-block;
+  position:relative;
+  font-family:monospace;
+  white-space:nowrap;
+  overflow:hidden;
+  border-right:3px solid var(--tiffany);
+  padding-right:10px;
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%, 49%{
+    border-right:3px solid var(--tiffany);
+  }
+  50%, 100%{
+    border-right:3px solid transparent;
+  }
+}
 .nav-inner{width:100%;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:0;max-width:2000px;margin:0 auto;}
 .logo{height:50px;width:auto;min-width:120px;flex-shrink:0;cursor:pointer;transition:all 0.3s ease;}
 .logo:hover{opacity:0.8;}
@@ -60,9 +89,7 @@ nav{width:100%;padding:16px 24px;display:flex;justify-content:center;align-items
 .mobile-menu-icons a{color:#81d8d0;font-size:1.4rem;text-decoration:none;transition:all 0.3s ease;}
 .mobile-menu-icons a:hover{color:white;transform:translateY(-3px);}
 body.mobile-menu-open{overflow:hidden;}
-.header-btn-rezerwacja{display:none;background:var(--tiffany);color:#000;padding:10px 20px;border-radius:8px;font-weight:bold;border:none;cursor:pointer;white-space:nowrap;font-size:0.9rem;transition:all 0.3s ease;}
-.header-btn-rezerwacja:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(129,216,208,.4);}
-@media (max-width:980px){.hamburger{display:flex;}.header-btn-rezerwacja{display:block;}.nav-icons-desktop{display:none !important;}.nav-center{display:none !important;}}
+@media (max-width:980px){.hamburger{display:flex;}.nav-icons-desktop{display:none !important;}.nav-center{display:none !important;}}
 .nav-icons-mobile{display:none !important;flex-direction:column;gap:0;border-bottom:none !important;padding:0 !important;margin:0 !important;width:100% !important;}
 .nav-icons-mobile div{width:100%;display:flex;gap:20px;justify-content:center;padding:20px;}
 .nav-icons-mobile a{color:var(--tiffany);font-size:1.2rem;text-decoration:none;transition:.3s;}
@@ -158,7 +185,7 @@ nav{padding:12px 12px;}
   left:0;
   right:0;
   width:100%;
-  min-height:100vh;
+  height:100vh;
   max-height:100vh;
   z-index:-1;
   overflow:hidden;
@@ -193,16 +220,55 @@ nav{padding:12px 12px;}
 }
 
 section{margin:0 auto;padding:100px 24px;position:relative;width:100%;box-sizing:border-box;z-index:1;}
+section:first-of-type{padding-top:0;}
 h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font-family:'Agency FB',sans-serif;}
-.hero{padding:180px 24px 140px;text-align:center;}
+.hero{height:100vh;padding:80px 24px;text-align:center;margin-top:0 !important;display:flex;flex-direction:column;justify-content:center;align-items:center;}
 .hero h2{font-size:5rem;}
 .hero p{color:var(--muted);font-size:1.8rem;}
 .stats{display:flex;justify-content:center;gap:70px;flex-wrap:wrap;}
 .stat-item .number{font-size:4.2rem;color:var(--tiffany);font-weight:bold;}
 .stat-item .label{color:var(--muted);margin-top:10px;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:90%;margin:0 auto;}
-.service-card{background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;transition:.35s;cursor:pointer;pointer-events:auto;}
-.service-card:hover{transform:translateY(-14px);box-shadow:0 24px 48px rgba(129,216,208,.25);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:90%;margin:0 auto;perspective:1200px;}
+.service-card{
+  background:rgba(255,255,255,.05);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor:pointer;
+  pointer-events:auto;
+  border:2px solid transparent;
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle, rgba(129,216,208,0.3) 0%, transparent 70%);
+  opacity:0;
+  transition:opacity 0.35s ease;
+  z-index:1;
+  pointer-events:none;
+}
+
+.service-card:hover{
+  transform:rotateX(5deg) rotateY(-8deg) translateY(-20px) scale(1.05);
+  box-shadow:
+    0 24px 48px rgba(129,216,208,.35),
+    0 0 60px rgba(129,216,208,.25),
+    inset 0 0 30px rgba(129,216,208,.1);
+  border-color:rgba(129,216,208,.6);
+  background:rgba(255,255,255,.08);
+}
+
+.service-card:hover::before{
+  opacity:1;
+  animation:glowPulse 0.6s ease;
+}
 .service-card img{width:100%;height:280px;object-fit:cover;}
 .service-card h3{padding:22px 20px 10px;font-size:1.5rem;font-family:'Agency FB',sans-serif;}
 .service-card p{padding:0 20px 30px;color:var(--muted);font-size:1rem;}
@@ -263,8 +329,15 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .slide:hover{box-shadow:0 30px 100px rgba(129,216,208,0.5) !important;}
 .slide#slide-1:hover{transform:perspective(1200px) rotateY(0deg) translateZ(120px) scale(1.15);}
 .slide#slide-3{display:none;}
+.slide#slide-4{display:none;}
 @keyframes slideIn{0%{opacity:0;transform:perspective(1200px) translateZ(-200px) scale(0.5);}100%{opacity:1;transform:perspective(1200px) translateZ(100px) scale(1.1);}}
 .slide#slide-1{animation:slideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);}
+
+@keyframes glowPulse{
+  0%{opacity:0;transform:scale(0.8);}
+  50%{opacity:1;}
+  100%{opacity:0;transform:scale(1.3);}
+}
 
 @media(max-width:1024px){
 .services-grid{grid-template-columns:repeat(2,1fr);gap:30px;}
@@ -334,7 +407,7 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .reservation-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4899;pointer-events:none;contain:layout style paint;}
 .reservation-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
-.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;overflow-x:hidden;transition:left 0.5s ease-out;z-index:9500;will-change:left;contain:layout style paint;pointer-events:none;padding-top:80px;box-sizing:border-box;}
+.pricing-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;overflow-x:hidden;transition:left 0.5s ease-out;z-index:9500;will-change:left;contain:layout style paint;pointer-events:none;padding-top:0;box-sizing:border-box;}
 .reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;pointer-events:none;}
 .pricing-modal.active{left:0 !important;overflow-y:auto;pointer-events:auto;}
 .reservation-modal.active{left:0;overflow-y:auto;pointer-events:auto;}
@@ -447,22 +520,9 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .cookies-btn{width:100%;}
 }
 
-.btn-rezerwacja{
-  background:var(--tiffany);
-  color:#000;
-  padding:10px 24px;
-  border-radius:8px;
-  font-weight:bold;
-  transition:.3s;
-  white-space:nowrap;
-  border:none;
-  cursor:pointer;
-}
-.btn-rezerwacja:hover{
-  background:#fff;
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(129,216,208,.4);
-}
+
+.btn-ripple{position:absolute;border-radius:50%;transform:translate(-50%,-50%) scale(0);opacity:1;pointer-events:none}
+
 
 .services-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
 .service-item{background:rgba(255,255,255,.05);padding:24px;border-radius:12px;border:2px solid rgba(129,216,208,.2);cursor:pointer;transition:.3s;text-align:center;}
@@ -648,9 +708,71 @@ font-size:1rem;
     z-index: 10;
   }
 }
+
+/* Preloader styles */
+#preloader{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,.18));backdrop-filter: blur(6px);pointer-events:none;transition:opacity .45s ease,visibility .45s}
+#preloader[aria-hidden='true']{opacity:0;visibility:hidden;pointer-events:none;display:none;}
+.preloader-logo{position:relative;width:120px;height:120px;border-radius:24px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(129,216,208,.03));box-shadow:0 18px 60px rgba(0,0,0,.45);z-index:3;overflow:hidden;margin-bottom:14px}
+.preloader-logo img{width:86px;height:auto;display:block}
+.logo-shine{position:absolute;left:-40%;top:0;height:100%;width:40%;background:linear-gradient(90deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0.0) 100%);transform:skewX(-18deg) translateX(-100%);opacity:0.9;pointer-events:none}
+@keyframes logoShimmer{to{transform:skewX(-18deg) translateX(240%);}}
+.preloader-logo.loading .logo-shine{animation:logoShimmer 1.2s linear forwards}
+.preloader-text{display:flex;flex-direction:column;align-items:center;margin-bottom:8px;z-index:3;opacity:0;transform:translateY(6px);transition:opacity .45s ease, transform .45s ease}
+.preloader-title{color:#fff;font-weight:800;font-size:1rem;letter-spacing:1px;margin-bottom:2px}
+.preloader-subtitle{color:rgba(255,255,255,.78);font-size:0.85rem}
+#preloader[aria-hidden='false'] .preloader-text{opacity:1;transform:none}
+.preloader-chrome{position:relative;left:12%;right:12%;height:8px;background:rgba(255,255,255,.03);border-radius:999px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.35);margin-top:6px}
+.preloader-fill{display:block;height:100%;background:linear-gradient(90deg,#fff 0%, #81d8d0 55%, #7ad3ff 100%);width:0%;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.spinner{width:40px;height:40px;border-radius:50%;border:4px solid rgba(255,255,255,.06);border-top-color:#fff;animation:spin 1s linear infinite;position:relative;z-index:2;margin-top:12px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media (prefers-reduced-motion: reduce){
+  .spinner{animation:none}
+  .preloader-fill{transition:none}
+  .logo-shine{display:none}
+}
+
+/* PARTICLES CONTAINER */
+.particles-container{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:-1;pointer-events:none;overflow:hidden;}
+.particle{position:absolute;width:4px;height:4px;background:rgba(129,216,208,0.5);border-radius:50%;pointer-events:none;}
+ 
 </style>
 </head>
 <body>
+
+<!-- PARTICLES BACKGROUND -->
+<div class="particles-container" id="particlesContainer">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<!-- Preloader -->
+<div id="preloader" aria-hidden="false" role="status" aria-live="polite">
+  <div class="preloader-logo" aria-hidden="true">
+    <img src="logo.png" alt="Gloss Point" />
+    <div class="logo-shine" aria-hidden="true"></div>
+  </div>
+  <div class="preloader-text" aria-hidden="true">
+    <div class="preloader-title">GLOSS POINT</div>
+    <div class="preloader-subtitle">Detailing • Tarnów</div>
+  </div>
+  <div class="preloader-chrome" role="progressbar" aria-valuemin="0" aria-valuemax="100"><span class="preloader-fill" style="width:0%"></span></div>
+  <div class="spinner" aria-hidden="true"></div>
+  <div class="sr-announce" aria-live="polite" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Ładowanie strony</div>
+</div>
 
 <!-- COOKIES BANNER -->
 <div class="cookies-banner" id="cookiesBanner">
@@ -900,9 +1022,7 @@ font-size:1rem;
         </div>
       </li>
       <li><a href="#kontakt">Kontakt</a></li>
-      <li><a href="javascript:void(0)" class="btn-rezerwacja" id="reservationBtn">Rezerwacja</a></li>
     </ul>
-    <a href="javascript:void(0)" class="btn-rezerwacja header-btn-rezerwacja" id="headerReservationBtn">Rezerwacja</a>
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -972,11 +1092,11 @@ font-size:1rem;
 <section id="uslugi" class="reveal" tabindex="-1">
 <h2>Usługi</h2>
 <div class="services-grid">
-<div class="service-card" onclick="openPricingModal('mycie')"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=900"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
+<div class="service-card" onclick="openPricingModal('mycie')"><img src="mycie.jpeg"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
 <div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
 <div class="service-card" onclick="openPricingModal('lakier')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
 <div class="service-card" onclick="openPricingModal('powloki')"><img src="powłoka.jpeg"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
-<div class="service-card" onclick="openPricingModal('szyby')"><img src="https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=900"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
+<div class="service-card" onclick="openPricingModal('szyby')"><img src="szyby.jpg"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
 <div class="service-card" onclick="openPricingModal('ppf')"><img src="ppf.jpeg"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
 </div>
 </section>
@@ -1000,10 +1120,11 @@ font-size:1rem;
 <h2>Realizacje</h2>
 <div class="slider-container">
 <div class="slider-track" id="slider">
-<div class="slide" id="slide-0"><img src="realizacja1.jpg"></div>
-<div class="slide" id="slide-1"><img src="realizacja2.jpg"></div>
-<div class="slide" id="slide-2"><img src="realizacja3.jpg"></div>
-<div class="slide" id="slide-3"><img src="realizacja4.jpg"></div>
+<div class="slide" id="slide-0"><img src="realizacja.jpeg"></div>
+<div class="slide" id="slide-1"><img src="realizacja2.jpeg"></div>
+<div class="slide" id="slide-2"><img src="realizacja3.jpeg"></div>
+<div class="slide" id="slide-3"><img src="realizacja4.jpeg"></div>
+<div class="slide" id="slide-4"><img src="realizacja1.jpeg"></div>
 </div>
 </div>
 </section>
@@ -1554,6 +1675,59 @@ window.acceptAllCookies = acceptAllCookies;
 window.filterByCategory = filterByCategory;
 window.toggleExpand = toggleExpand;
 
+// =============== PARTICLES INTERACTIVE EFFECT ===============
+document.addEventListener('mousemove', (e) => {
+  const particles = document.querySelectorAll('.particle');
+  if (!particles.length) return;
+  
+  const mouseX = e.clientX;
+  const mouseY = e.clientY;
+  
+  particles.forEach(particle => {
+    const rect = particle.getBoundingClientRect();
+    const particleX = rect.left + rect.width / 2;
+    const particleY = rect.top + rect.height / 2;
+    
+    const distance = Math.sqrt(
+      Math.pow(mouseX - particleX, 2) + Math.pow(mouseY - particleY, 2)
+    );
+    
+    // Attract particles within 150px of mouse
+    if (distance < 150) {
+      const angle = Math.atan2(mouseY - particleY, mouseX - particleX);
+      const force = (150 - distance) / 150;
+      
+      particle.style.transform = `translate(${Math.cos(angle) * force * 30}px, ${Math.sin(angle) * force * 30}px) scale(${1 + force * 0.5})`;
+      particle.style.opacity = 0.9 + force * 0.1;
+    } else {
+      particle.style.transform = 'translate(0, 0) scale(1)';
+      particle.style.opacity = 0.6;
+    }
+  });
+});
+
+// =============== SERVICE CARD 3D HOVER EFFECT ===============
+document.addEventListener('mousemove', (e) => {
+  const serviceCards = document.querySelectorAll('.service-card');
+  
+  serviceCards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const cardCenterX = rect.left + rect.width / 2;
+    const cardCenterY = rect.top + rect.height / 2;
+    
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+    
+    const rotateY = ((mouseX - cardCenterX) / rect.width) * 15;
+    const rotateX = ((cardCenterY - mouseY) / rect.height) * 15;
+    
+    // Only apply rotation on hover
+    if (card.matches(':hover')) {
+      card.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-20px) scale(1.05)`;
+    }
+  });
+});
+
 // =============== INICJALIZACJA NA DOMContentLoaded ===============
 document.addEventListener('DOMContentLoaded', () => {
   // ------------------- LOGO CLICK TO TOP -------------------
@@ -1588,7 +1762,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const cennikMobileToggle = document.getElementById('cennikMobileToggle');
   const cennikMobileMenu = document.getElementById('cennikMobileMenu');
   const mobileMenuDropdownItems = document.querySelectorAll('.mobile-menu-dropdown-item');
-  const headerReservationBtn = document.getElementById('headerReservationBtn');
 
   // Toggle hamburger menu
   if (hamburger) {
@@ -1657,24 +1830,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Rezerwacja button w headerze
-  if (headerReservationBtn) {
-    headerReservationBtn.addEventListener('click', () => {
-      // Zamknij menu mobilne
-      hamburger.classList.remove('active');
-      mobileMenu.classList.remove('active');
-      document.body.classList.remove('mobile-menu-open');
-      // Zamknij rozwijalne menu Cennika
-      const cennikMobileToggle = document.getElementById('cennikMobileToggle');
-      const cennikMobileMenu = document.getElementById('cennikMobileMenu');
-      if (cennikMobileToggle && cennikMobileMenu) {
-        cennikMobileToggle.classList.remove('active');
-        cennikMobileMenu.classList.remove('active');
-      }
-      closePrivacyPanel();
-      openReservationModal();
-    });
-  }
+
 
 
 
@@ -1749,7 +1905,6 @@ let allImages = [
   'realizacja2.jpeg',
   'realizacja3.jpeg',
   'realizacja4.jpeg',
-  'realizacja5.jpg',
 ];
 
 let currentIndex = 0;
@@ -1783,7 +1938,7 @@ function animateSlide() {
   if (isAnimating) return;
   isAnimating = true;
   
-  currentIndex = (currentIndex + 1) % allImages.length;
+  currentIndex = (currentIndex - 1 + allImages.length) % allImages.length;
   updateSliderImages();
   
   setTimeout(() => {
@@ -1932,7 +2087,6 @@ if ('IntersectionObserver' in window) {
 }
 
 // ------------------- MODAL REZERWACJI -------------------
-const reservationBtn = document.getElementById('reservationBtn');
 const reservationModal = document.getElementById('reservationModal');
 const reservationModalOverlay = document.getElementById('reservationModalOverlay');
 const reservationClose = document.getElementById('reservationClose');
@@ -2013,11 +2167,7 @@ function closeReservationModal() {
   goBackReservation();
 }
 
-// Event listenery
-reservationBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  openReservationModal();
-});
+// Reserved
 
 reservationClose.addEventListener('click', closeReservationModal);
 reservationModalOverlay.addEventListener('click', closeReservationModal);
@@ -2536,15 +2686,10 @@ function selectPaymentMethod() {
 // ========== SUWAK PRZED/PO ==========
 const beaImages = [
   { before: 'probka.jpg', after: 'probka1.jpg' },
-  { before: 'przedpo.jpg', after: 'przedpo1.jpg' },
   { before: 'przed2.jpg', after: 'po2.jpg' },
   { before: 'przed3.jpg', after: 'po3.jpg' },
   { before: 'przed5.jpg', after: 'po5.jpg' },
-  { before: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200', after: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200', after: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200', after: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1583267741297-fce58a3d63a7?w=1200', after: 'https://images.unsplash.com/photo-1617814065893-00757125efab?w=1200' },
-  { before: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=1200', after: 'https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200' },
+  { before: 'przed8.jpg', after: 'po8.jpg' },
 ];
 
 let beaIndex = 0;
@@ -3070,6 +3215,87 @@ if (document.readyState === 'loading') {
 } else {
   new AdminPageCounter();
 }
+</script>
+
+<script>
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pre = document.getElementById('preloader');
+  const fillEl = pre ? pre.querySelector('.preloader-fill') : null;
+  // kick off logo shimmer + reveal text
+  if(pre){ const logo = pre.querySelector('.preloader-logo'); if(logo) logo.classList.add('loading'); const txt = pre.querySelector('.preloader-text'); if(txt) setTimeout(()=>{ txt.style.opacity='1'; txt.style.transform='none'; }, 160); }
+  function setProgress(p){ if(!fillEl) return; fillEl.style.width = Math.max(0, Math.min(100, p)) + '%'; }
+  function hidePreloader(force=false){ if(!pre) return; // announce to SR
+    try{ const sr = pre.querySelector('.sr-announce'); if(sr) sr.textContent = 'Strona załadowana'; }catch(e){}
+    // stop logo shimmer
+    try{ const logo = pre.querySelector('.preloader-logo'); if(logo) logo.classList.remove('loading'); }catch(e){}
+    pre.setAttribute('aria-hidden','true'); pre.style.opacity = '0'; try{ if(!force) setProgress(100); }catch(e){} setTimeout(()=>{ try{ pre.remove(); }catch(e){} }, 700); }
+
+  // Simulate progress until load; keep low CPU if reduced-motion
+  (function simulate(){ let value = 8; setProgress(value); const id = setInterval(()=>{ if(!fillEl) { clearInterval(id); return; } value += Math.random()*8 + 2; if(value >= 88){ value = 88; clearInterval(id); } setProgress(Math.round(value)); }, reduceMotion ? 800 : 360); })();
+
+  // On load: finish and hide
+  window.addEventListener('load', ()=>{ try{ setProgress(92); setTimeout(()=>{ setProgress(100); hidePreloader(); }, 200); }catch(e){} });
+
+  // Fallbacks: after 5s force hide
+  setTimeout(()=>{ if(document.getElementById('preloader')){ console.warn('Preloader fallback: forcing hide'); hidePreloader(true); } }, 5000);
+
+  // Hide on first user interaction (useful for dev/live testing)
+  ['click','touchstart','keydown','wheel'].forEach(ev => document.addEventListener(ev, ()=>{ if(document.getElementById('preloader')) hidePreloader(true); }, {passive:true, once:true}));
+
+  /* --- Reservation CTA: magnetic + ripple + liquid hover --- */
+  /* Funkcja zakomentaryzowana - przyciski rezerwacji zostały usunięte */
+  /*
+  function initReservationCTA(){
+    document.querySelectorAll('.btn-rezerwacja, .btn-umow').forEach(btn=>{
+      // ensure layout
+      btn.style.position = btn.style.position || 'relative';
+      btn.style.overflow = 'hidden';
+
+      // pointer movement -> magnetic translate + move liquid center
+      const onPointerMove = (e)=>{
+        if(reduceMotion) return;
+        const r = btn.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width/2));
+        const dy = (e.clientY - (r.top + r.height/2));
+        const tx = dx * 0.06; const ty = dy * 0.04;
+        btn.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(1.02)`;
+        btn.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        btn.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        btn.classList.add('liquid-hover');
+      };
+      const onLeave = ()=>{ btn.style.transform = ''; btn.classList.remove('liquid-hover'); btn.style.removeProperty('--mx'); btn.style.removeProperty('--my'); };
+      btn.addEventListener('pointermove', onPointerMove);
+      btn.addEventListener('pointerleave', onLeave);
+
+      // ripple on press
+      btn.addEventListener('pointerdown', (e)=>{
+        const r = btn.getBoundingClientRect();
+        const span = document.createElement('span'); span.className = 'btn-ripple';
+        const size = Math.max(r.width, r.height) * 1.6; span.style.width = span.style.height = size + 'px';
+        span.style.left = (e.clientX - r.left) + 'px'; span.style.top = (e.clientY - r.top) + 'px';
+        span.style.background = 'rgba(255,255,255,0.95)'; span.style.position='absolute'; span.style.borderRadius='50%';
+        span.style.transform='translate(-50%,-50%) scale(0)'; span.style.opacity='1'; span.style.pointerEvents='none';
+        span.style.transition='transform .75s cubic-bezier(.2,.8,.2,1), opacity .75s ease'; btn.appendChild(span);
+        requestAnimationFrame(()=>{ span.style.transform='translate(-50%,-50%) scale(1)'; span.style.opacity='0'; });
+        setTimeout(()=>span.remove(), 900);
+        // tactile press feedback
+        btn.style.transition = 'transform .12s ease'; const prev = btn.style.transform; btn.style.transform = (prev || '') + ' scale(0.98)'; setTimeout(()=>{ btn.style.transform = prev || ''; }, 140);
+      });
+
+      // keyboard support: space / enter triggers click animation
+      btn.addEventListener('keydown', (e)=>{ if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); btn.classList.add('liquid-hover'); setTimeout(()=>btn.classList.remove('liquid-hover'), 300); const ev = new MouseEvent('pointerdown', {bubbles:true, clientX: btn.getBoundingClientRect().left + btn.offsetWidth/2, clientY: btn.getBoundingClientRect().top + btn.offsetHeight/2}); btn.dispatchEvent(ev); } });
+    });
+  }
+  // Initialize CTAs after a short delay to ensure elements exist
+  setTimeout(initReservationCTA, 60);
+  */
+
+})();
+
+// ==================== OBFUSKACJA I OCHRONA KODU ====================
+
+
 </script>
 
 </body>
