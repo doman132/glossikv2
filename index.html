@@ -236,7 +236,7 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .service-card{
   background:rgba(255,255,255,.05);
   border-radius:18px;
-  overflow:hidden;
+  overflow:visible;
   transition:.2s ease;
   cursor:pointer;
   pointer-events:auto;
@@ -268,7 +268,25 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .service-card:hover::before{
   opacity:1;
 }
-.service-card img{width:100%;height:280px;object-fit:cover;}
+
+.service-card::after{
+  content:'→';
+  position:absolute;
+  bottom:16px;
+  right:16px;
+  font-size:2rem;
+  color:#81d8d0;
+  font-weight:bold;
+  transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-shadow:0 0 8px rgba(129,216,208,0.3);
+}
+
+.service-card:hover::after{
+  transform:translateX(6px);
+  color:#a3e9e5;
+  text-shadow:0 0 16px rgba(129,216,208,0.6);
+}
+.service-card img{width:100%;height:280px;object-fit:cover;border-radius:18px 18px 0 0;}
 .service-card h3{padding:22px 20px 10px;font-size:1.5rem;font-family:'Agency FB',sans-serif;}
 .service-card p{padding:0 20px 30px;color:var(--muted);font-size:1rem;}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
@@ -1277,23 +1295,23 @@ const pricingData = {
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Mycie podstawowe': {
-        description: 'Profesjonalne mycie całego pojazdu z obsługą każdego detalu',
+        description: 'Bieżące mycie samochodu Bezpieczne mycie całego samochodu wraz z wnękami drzwi, nadkolami oraz felgami. Aplikacja hydrowosku. Osuszenie pojazdu powietrzem.',
         prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
       'Sprzątanie wnętrza': {
-        description: 'Gruntowne czyszczenie wnętrza pojazdu',
+        description: 'Gruntowne sprzątanie z wydmuchaniem zanieczyszczeń z zakamarków, odświeżenie plastików, odkurzanie i mycie szyb.',
         prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
       'Komplet': {
-        description: 'Profesjonalne mycie całego pojazdu z obsługą każdego detalu oraz sprzątanie wnętrza',
+        description: 'Zawiera „Bieżące mycie” oraz sprzątanie wnętrza.',
         prices: { 'samochod maly - hatchback': '140 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '120 zł' }
       },
       'Dekontaminacja': {
-        description: 'Usunięcie żelaznych zanieczyszczeń i skontaminowania z lakieru',
+        description: 'Usuniecie z nadwozia, wnęk oraz kół pyłu z klocków hamulcowych oraz zabrudzeń ropopochodnych typu asfalt.',
         prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '160 zł' }
       },
-      'mycie det.': {
-        description: 'Mycie detailingowe - profesjonalne czyszczenie wszystkich detali pojazdu',
+      'mycie detailingowe': {
+        description: 'Zawiera „Bieżące mycie”, wypędzelkowanie brudu z zakamarków, ręczne mycie nadkoli, wypłukanie podwozia, wyczyszczenie zawiasów drzwi z zalegającego smaru.',
         prices: { 'samochod maly - hatchback': '120 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '180 zł' }
       },
       'Ozonowanie': {
@@ -1305,7 +1323,7 @@ const pricingData = {
         prices: { 'samochod maly - hatchback': '50 zł', 'samochod sredni - sedan / maly suv': '50 zł', 'samochod duzy - suv': '50 zł' }
       },
       'aplikacja wosku': {
-        description: 'Dodatkowa usługa do mycia - nałożenie wosku ochronnego',
+        description: 'Ręczna aplikacja twardego wosku na karoserie aby nadać ochronę i połysk na okres 4-6 miesięcy.',
         prices: { 'samochod maly - hatchback': '200 zł', 'samochod sredni - sedan / maly suv': '250 zł', 'samochod duzy - suv': '300 zł' }
       },
     }
@@ -1315,23 +1333,23 @@ const pricingData = {
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Pranie Fotela': {
-        description: 'Profesjonalne usunięcie sierści zwierząt z tapicerki pojazdu',
+        description: 'Usuniecie plam oraz nieprzyjemnego zapachu z tapicerki za pomocą odkurzacza ekstrakcyjnego.',
         prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '100 zł' }
       },
       'Pranie komplet foteli': {
-        description: 'Głębokie czyszczenie i impregnacja siedzeń skórzanych',
+        description: 'Usuniecie plam oraz nieprzyjemnego zapachu z tapicerki za pomocą odkurzacza ekstrakcyjnego.',
         prices: { 'samochod maly - hatchback': '400 zł', 'samochod sredni - sedan / maly suv': '400 zł', 'samochod duzy - suv': '400 zł' }
       },
       'Czyszczenie skór + impregnacja': {
-        description: 'Czyszczenie całego wnętrza pojazdu - tapicerka, dywanki, plastiki',
+        description: 'Czyszczenie foteli z brudu eksploatacyjnego, tłuszczów i przetarć. Impregnacja tapicerki dedykowanymi do tego środkami aby zapewnić ochronę oraz przywrócić miękkość materiału.',
         prices: { 'samochod maly - hatchback': '450 zł', 'samochod sredni - sedan / maly suv': '450 zł', 'samochod duzy - suv': '550 zł' }
       },
       'Pranie podłogi': {
-        description: 'Zaawansowane czyszczenie z użyciem profesjonalnych środków chemicznych',
+        description: 'Usuniecie plam oraz nieprzyjemnego zapachu z tapicerki za pomocą odkurzacza ekstrakcyjnego.',
         prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '200 zł', 'samochod duzy - suv': '250 zł' }
       },
       'Czyszczenie Sufitu': {
-        description: 'Profesjonalne czyszczenie sufitu pojazdu i obudowy',
+        description: 'Usuniecie zanieczyszczeń oraz nieprzyjemnych zapachów z materiału.',
         prices: { 'samochod maly - hatchback': '200 zł', 'samochod sredni - sedan / maly suv': '200 zł', 'samochod duzy - suv': '300 zł' }
       },
       'Czyszczenie pasów': {
@@ -1345,39 +1363,47 @@ const pricingData = {
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Odswieżenie lakieru': {
-        description: 'Odświeżenie lakieru - przywrócenie połysku i głębi koloru',
+        description: 'Mechaniczne usuniecie zarysowań. Przywrócenie połysku oraz głębi koloru.',
         prices: { 'samochod maly - hatchback': '800 zł', 'samochod sredni - sedan / maly suv': '1200 zł', 'samochod duzy - suv': '1500 zł' }
       },
-      'Korekta': {
-        description: 'Korekta lakieru - usunięcie rys i porysowań',
+      'Korekta lakieru.': {
+        description: 'Wieloetapowe usuwanie zarysowań aby pozbyć się możliwie największej ilości zarysowań i przywrócić salonowy blask powłoki lakierniczej.',
         prices: { 'samochod maly - hatchback': '1300 zł', 'samochod sredni - sedan / maly suv': '1600 zł', 'samochod duzy - suv': '1900 zł' }
       },
       'Powłoka roczna': {
-        description: 'Ceramiczna powłoka ochronna na lakier - ochrona na 1 rok',
+        description: 'Ceramiczne zabezpieczenie lakieru na okres 1 roku poprzez nadanie szklistości i śliskości lakieru. ',
+        prices: { 'samochod maly - hatchback': 'Od 200 zł', 'samochod sredni - sedan / maly suv': 'Od 200 zł', 'samochod duzy - suv': 'Od 200 zł' }
+      },
+      'Usuwanie zarysowań': {
+        description: 'wycena indywidualna po oględzinach i pomiarze grubości lakieru.',
+        prices: { 'samochod maly - hatchback': 'wycena indywidualna', 'samochod sredni - sedan / maly suv': 'wycena indywidualna', 'samochod duzy - suv': 'wycena indywidualna' }
+      },
+      'Renowacja reflektorów.': {
+        description: 'Usuniecie zmatowiałej warstwy poliwęglanu oraz zabezpieczenie ich przed ponownym zniszczeniem. ',
         prices: { 'samochod maly - hatchback': '600 zł', 'samochod sredni - sedan / maly suv': '750 zł', 'samochod duzy - suv': '900 zł' }
       },
       'Powłoka 3-letnia': {
-        description: 'Ceramiczna powłoka ochronna na lakier - 3 lata gwarancji',
+        description: 'Ceramiczne zabezpieczenie lakieru na okres 3 lat poprzez nadanie szklistości i śliskości lakieru. Chroni przed warunkami atmosferycznymi oraz niweluje efekt starzenia się lakieru.',
         prices: { 'samochod maly - hatchback': '1300 zł', 'samochod sredni - sedan / maly suv': '1700 zł', 'samochod duzy - suv': '2000 zł' }
       },
       'Powłoka 5-letnia': {
-        description: 'Ceramiczna powłoka ochronna na lakier - 5 lat gwarancji',
+        description: 'Dwu składnikowa powłoką ceramiczna która zabezpiecza elementy przed warunkami atmosferycznymi oraz niweluje efekt starzenia się lakieru przy czym nadaje ekstremalna śliskość powierzchni i ułatwia pielęgnację.',
         prices: { 'samochod maly - hatchback': '1900 zł', 'samochod sredni - sedan / maly suv': '2100 zł', 'samochod duzy - suv': '2500 zł' }
       },
       'Hydro na szybe czołową/Komplet': {
-        description: 'Hydrofobowa powłoka na przednią szybę - zapewnia wodoodporność',
+        description: '( niewidzialna wycieraczka )Zapewnia komfort i bezpieczeństwo podróży poprzez swoje cechy niweluje używanie wycieraczek podczas jazdy.',
         prices: { 'samochod maly - hatchback': '130/350 zł', 'samochod sredni - sedan / maly suv': '130/350 zł', 'samochod duzy - suv': '130/350 zł' }
       },
       'Powłoka na felgi': {
-        description: 'Ceramiczna powłoka ochronna na felgi - ochrona przed korozją',
+        description: 'Ochrona felg przed sola oraz opiłkami metalicznymi które na stale mogą się wgryźć w lakier i doprowadzić do uszkodzenia powierzchni.',
         prices: { 'samochod maly - hatchback': '400 zł', 'samochod sredni - sedan / maly suv': '400 zł', 'samochod duzy - suv': '400 zł' }
       },
       'Impregnacja dachu cabrio': {
-        description: 'Ochronna impregnacja dachu samochodów kabriolet',
+        description: 'Zabezpieczenie materiału przed wilgocią i promieniami uv. Zmniejsza ryzyko przebarwień oraz przetarć materiału. Przygotowanie materiału poprzez wypranie zawarte w cenie.',
         prices: { 'samochod maly - hatchback': '600 zł', 'samochod sredni - sedan / maly suv': '600 zł', 'samochod duzy - suv': '-' }
       },
       'Odswiezenie plastików powłoką': {
-        description: 'Odświeżenie plastików wyposażenia pojazdu powłoką ochronną',
+        description: 'Przywrócenie czerni bądź zabezpieczenie przed płowieniem elementów z tworzywa sztucznego.',
         prices: { 'samochod maly - hatchback': 'Wycena indywidualna', 'samochod sredni - sedan / maly suv': 'Wycena indywidualna', 'samochod duzy - suv': 'Wycena indywidualna' }
       },
     }
@@ -1387,27 +1413,27 @@ const pricingData = {
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Must Have': {
-        description: 'Folia ochronna PPF na lakier pojazdu - 3 miesiące gwarancji',
+        description: 'Zabezpieczenie newralgicznych elementów lakierowanych przed odpryskami bądź tez uszkodzeniami mechanicznymi. ( reflektory, słupki piano black, wnęki klamek, parapet bagażnika )',
         prices: { 'samochod maly - hatchback': '990 zł', 'samochod sredni - sedan / maly suv': '990 zł', 'samochod duzy - suv': '990 zł' }
       },
       'Full Front': {
-        description: 'Bezbarwna folia ochronna PPF na przednią część pojazdu',
+        description: 'Zabezpieczenie przedniej części pojazdu przed odpryskami i uszkodzeniami mechanicznymi folia o grubości ~200 mikronów. ( Maska, zderzak przedni, reflektory, błotniki, słupki A, nadszybie, piano black, wnęki klamek, parapet bagażnika )',
         prices: { 'samochod maly - hatchback': 'Od 4000 zł', 'samochod sredni - sedan / maly suv': 'Od 5000 zł', 'samochod duzy - suv': 'Od 6000 zł' }
       },
       'Full Body': {
-        description: 'Bezbarwna folia ochronna PPF na cały pojazd',
+        description: 'Zabezpieczenie wszystkich elementów lakierowanych nadwozia.',
         prices: { 'samochod maly - hatchback': 'Od 10000 zł', 'samochod sredni - sedan / maly suv': 'Od 12500 zł', 'samochod duzy - suv': 'Od 14000 zł' }
       },
       'Parapety Bagaża': {
-        description: 'Folia ochronna PPF na paraperaty bagażnika',
+        description: 'Chroni przed uszkodzeniami podczas załadunku i rozładunku bagaży',
         prices: { 'samochod maly - hatchback': '220 zł', 'samochod sredni - sedan / maly suv': '220 zł', 'samochod duzy - suv': '250 zł' }
       },
       'Reflektory': {
-        description: 'Folia ochronna PPF na reflektory i lampy',
+        description: 'Chroni przed wypiaskowanie, zżółknięciem i pęknięciem',
         prices: { 'samochod maly - hatchback': '450 zł', 'samochod sredni - sedan / maly suv': '450 zł', 'samochod duzy - suv': '450 zł' }
       },
       'Wnętki klamek': {
-        description: 'Folia ochronna PPF na klamki drzwi i wnętki',
+        description: 'Zabezpieczenie przed porysowaniem podczas otwierania drzwi.',
         prices: { 'samochod maly - hatchback': '160 zł', 'samochod sredni - sedan / maly suv': '160 zł', 'samochod duzy - suv': '160 zł' }
       },
     }
@@ -1417,15 +1443,15 @@ const pricingData = {
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
       'Przyciemnianie szyb': {
-        description: 'Profesjonalne przyciemnianie szyb bocznych i tylnej',
+        description: 'Zwiększa prywatność a zarazem ogranicza nagrzewanie się pojazdu.',
         prices: { 'samochod maly - hatchback': '650 zł', 'samochod sredni - sedan / maly suv': '750 zł', 'samochod duzy - suv': '900 zł' }
       },
       'Przyciemnianie przednich szyb': {
-        description: 'Profesjonalne przyciemnianie przedniej szyby i drzwiczek',
+        description: 'Zwiększa prywatność a zarazem ogranicza nagrzewanie się pojazdu. Aplikacja na odpowiedzialność właściciela. ',
         prices: { 'samochod maly - hatchback': '380 zł', 'samochod sredni - sedan / maly suv': '380 zł', 'samochod duzy - suv': '380 zł' }
       },
       'Kameleon przednia Legalna': {
-        description: 'Kameleon film na przednią szybę - zmiana koloru pod światłem',
+        description: 'Folia która nada charakteru twojemu autu przez zmianę koloru. W pełni legalna nie ograniczająca widoczności.',
         prices: { 'samochod maly - hatchback': '1000 zł', 'samochod sredni - sedan / maly suv': '1000 zł', 'samochod duzy - suv': '1000 zł' }
       },
     }
@@ -3211,4 +3237,5 @@ if (document.readyState === 'loading') {
 
 </body>
 </html>
+
 
