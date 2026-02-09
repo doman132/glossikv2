@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GLOSS POINT DETAILING - Tarnów</title>
+<meta name="description" content="Gloss Point Detailing Tarnów - profesjonalny detailing samochodów z powłokami ceramicznymi, folią PPF i usługami zaawansowanymi. Nanotechnologia ochrony lakieru.">
+<meta name="keywords" content="Profesjonalne usługi detailingu samochodów w Tarnowie. Powłoki ceramiczne, folia ochronna PPF i zaawansowane techniki czyszczenia., Ceramika, Zabezpieczenie auta, Oklejanie auta, Powłoka ochronna, Sprzątanie auta, Czysta fura, Mycie auta, Pranie, Odkurzanie, Myjnia ">
+<meta name="author" content="Gloss Point Detailing">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="GLOSS POINT DETAILING - Tarnów">
+<meta property="og:description" content="Profesjonalne usługi detailingu samochodów w Tarnowie. Powłoki ceramiczne, folia ochronna PPF i zaawansowane techniki czyszczenia., Ceramika, Zabezpieczenie auta, Oklejanie auta, Powłoka ochronna, Sprzątanie auta, Czysta fura, Mycie auta, Pranie, Odkurzanie, Myjnia ">
+<meta property="og:image" content="logo.png">
+<meta property="og:url" content="https://glosspoint.pl">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GLOSS POINT DETAILING - Tarnów">
+<meta name="twitter:description" content="Detailing nanotechnologia i powłoki ceramiczne w Tarnowie">
+<link rel="canonical" href="https://glosspoint.pl">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root{
@@ -61,6 +74,7 @@ nav{width:100%;padding:16px 24px;display:flex;justify-content:center;align-items
 .nav-center li{position:relative;}
 .nav-center a{color:#fff;text-decoration:none;font-weight:600;transition:.3s;display:flex;align-items:center;gap:8px;white-space:nowrap;}
 .nav-center a:hover{color:var(--tiffany);}
+.nav-center a#faqToggle{display:inline-flex;align-items:center;height:50px;padding:0 6px;margin-left:6px;margin-right:6px;}
 .nav-icons-desktop{display:flex !important;gap:16px !important;padding:0 !important;border:none !important;}
 .nav-icons-desktop a{color:var(--tiffany);font-size:1.2rem;text-decoration:none;transition:.3s;padding:0 !important;border:none !important;width:auto !important;height:auto !important;}
 .nav-icons-desktop a:hover{transform:translateY(-3px);color:#fff;}
@@ -737,6 +751,34 @@ font-size:1rem;
 /* PARTICLES CONTAINER */
 .particles-container{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:-1;pointer-events:none;overflow:hidden;}
 .particle{position:absolute;width:4px;height:4px;background:rgba(129,216,208,0.5);border-radius:50%;pointer-events:none;}
+
+/* FAQ PANEL STYLES */
+.faq-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:9900;display:none;opacity:0;transition:opacity 0.3s ease;}
+.faq-modal-overlay.active{display:block;opacity:1;}
+  .faq-modal{position:fixed;bottom:0;left:0;right:0;width:100%;max-height:92vh;background:linear-gradient(180deg,#0b0b0b 0%,#0a0a0a 100%);border-top:2px solid var(--tiffany);z-index:9999;display:none;flex-direction:column;overflow:hidden;border-radius:24px 24px 0 0;box-shadow:0 -8px 32px rgba(129,216,208,0.2);animation:slideUpFaq 0.4s cubic-bezier(0.34,1.56,0.64,1);} 
+.faq-modal.active{display:flex;flex-direction:column;}
+@keyframes slideUpFaq{from{transform:translateY(100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+.faq-header{display:flex;justify-content:space-between;align-items:center;padding:32px 40px;border-bottom:2px solid rgba(129,216,208,0.3);background:#0b0b0b;border-radius:24px 24px 0 0;position:sticky;top:0;z-index:10;flex-shrink:0;}
+.faq-header h2{color:var(--tiffany);margin:0;font-size:1.8rem;font-weight:700;}
+.faq-close{background:rgba(129,216,208,0.1);border:none;color:var(--tiffany);font-size:32px;cursor:pointer;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all 0.3s ease;font-weight:bold;}
+.faq-close:hover{background:rgba(129,216,208,0.2);transform:rotate(90deg);}
+.faq-content{padding:40px;max-width:900px;margin:0 auto;flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-gutter:stable;}
+.faq-content::-webkit-scrollbar{width:10px;}
+.faq-content::-webkit-scrollbar-track{background:rgba(129,216,208,0.05);border-radius:10px;}
+.faq-content::-webkit-scrollbar-thumb{background:rgba(129,216,208,0.3);border-radius:10px;cursor:grab;}
+.faq-content::-webkit-scrollbar-thumb:hover{background:rgba(129,216,208,0.5);}
+.faq-content::-webkit-scrollbar-thumb:active{cursor:grabbing;}
+.faq-item{margin-bottom:20px;background:rgba(255,255,255,0.02);border:1px solid rgba(129,216,208,0.15);border-radius:12px;overflow:hidden;}
+.faq-item.active{background:rgba(129,216,208,0.08);border-color:rgba(129,216,208,0.4);}
+.faq-question{padding:20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:all 0.3s ease;user-select:none;}
+.faq-question:hover{background:rgba(129,216,208,0.05);}
+.faq-question h3{margin:0;color:#fff;font-size:1.05rem;font-weight:600;flex:1;}
+.faq-icon{color:var(--tiffany);font-size:1.5rem;transition:transform 0.3s ease;margin-left:20px;flex-shrink:0;}
+.faq-item.active .faq-icon{transform:rotate(45deg);}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;padding:0 20px;}
+.faq-item.active .faq-answer{max-height:500px;padding:0 20px 20px 20px;}
+.faq-answer p{color:#aaa;line-height:1.6;font-size:0.95rem;margin:0;}
+@media(max-width:768px){.faq-header{padding:24px 20px;}.faq-header h2{font-size:1.5rem;}.faq-content{padding:20px;}.faq-question{padding:16px;}.faq-question h3{font-size:1rem;}.faq-answer{padding:0 16px !important;}.faq-item.active .faq-answer{padding:0 16px 16px 16px;}.faq-close{width:40px;height:40px;font-size:28px;}}
  
 </style>
 </head>
@@ -1012,6 +1054,7 @@ font-size:1rem;
       <li><a href="#onas">O nas</a></li>
       <li><a href="#uslugi">Usługi</a></li>
       <li><a href="#realizacje">Realizacje</a></li>
+      <li><a href="javascript:void(0)" id="faqToggle" style="cursor:pointer;">FAQ</a></li>
       <li>
         <a href="javascript:void(0)" class="dropdown-toggle" id="cennikToggle">Cennik</a>
         <div class="dropdown-menu" id="cennikMenu">
@@ -1029,11 +1072,114 @@ font-size:1rem;
 </nav>
 </header>
 
+<!-- FAQ MODAL OVERLAY -->
+<div class="faq-modal-overlay" id="faqModalOverlay"></div>
+
+<!-- FAQ PANEL -->
+<div class="faq-modal" id="faqModal">
+  <div class="faq-header">
+    <h2>Często Zadawane Pytania</h2>
+    <button class="faq-close" onclick="closeFaqModal()">&times;</button>
+  </div>
+  <div class="faq-content">
+    <div class="faq-item active">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Jakie usługi oferujecie?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Oferujemy profesjonalne usługi detailingu samochodowego: mycie pojazdu, detailing wnętrza, korekję lakieru, powłoki ceramiczne, folie ochronne PPF oraz przyciemnianie szyb. Wszystkie usługi wykonywane są przez certyfikowanych specjalistów z użyciem wysokiej jakości produktów.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Jak długo trwa rezerwacja zabiegu?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Czas trwania zabiegu zależy od typu usługi:<br>• Mycie pojazdu: 1-2 godziny<br>• Detailing wnętrza: 2-4 godziny<br>• Korekta lakieru: 4-8 godzin<br>• Powłoki ceramiczne: 2-3 godziny<br>Dokładny czas będzie podany przy rezerwacji.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Jakie są warunki rezerwacji?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Rezerwacja wymaga wpłacenia zaliczki w wysokości 20 zł. Pozostałą kwotę zapłacisz na miejscu w dniu zabiegu. Rezerwację można anulować do 48 godzin przed zaplanowanym terminem. Jeśli nie pojawisz się na zabiegu bez powiadomienia nas, zaliczka nie zostanie zwrócona.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Gdzie się znajdujecie i jak się dostać?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Jesteśmy zlokalizowani w Tarnowie. Mapę dojazdu oraz dokładny adres oraz instrukcje parkowania znajdziesz w sekcji Kontakt na naszej stronie. Mamy wyznaczone miejsca parkingowe dla klientów.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Czy pracujecie w weekendy?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>W soboty pracujemy w ograniczonym zakresie od 9:00 do 12:00. W niedziele jesteśmy zamknięci. Rezerwacje w sobotę można dokonywać dla wybranych usług. Zapraszamy w dni robocze (poniedziałek-piątek) od 9:00 do 17:00.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Czy oferujecie usługi mobilne?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Aktualnie świadczymy usługi w naszym lokalu w Tarnowie. W przyszłości planujemy rozszerzić naszą ofertę o usługi mobilne. Prosimy o kontakt, aby uzyskać najnowsze informacje na temat dostępności tego typu usług.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Jaka jest gwarancja na przeprowadzone zabiegi?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Wszystkie nasze usługi są gwarantowane najwyższą jakością wykonania. Na powłoki ceramiczne udzielamy gwarancji do 3 lat, na folie ochronne PPF do 5 lat. Szczegółowe warunki gwarancji otrzymasz w momencie zarezerwowania usługi.</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Jak mogę się z wami skontaktować?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Możesz się z nami skontaktować na wiele sposobów:<br>📞 Telefon: +48 660 706 043<br>📧 Email: dostępny w sekcji Kontakt<br>📱 Instagram: @glosspoint_<br>👍 Facebook: Gloss Point Detailing<br>Zapraszamy do wysłania wiadomości - odpowiemy w ciągu 24 godzin!</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaqItem(this)">
+        <h3>Czy mogę dokonać rezerwacji online?</h3>
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Tak! Rezerwacje online można dokonać bezpośrednio na naszej stronie internetowej. Kliknij przycisk Rezerwuj i wybierz interesującą Cię usługę. System automatycznie sprawdzi dostępne terminy, a Ty będziesz mógł wybrać najwygodniejszy dla siebie czas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Mobile Menu - poza headerem -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#onas" class="mobile-menu-link">O nas</a>
   <a href="#uslugi" class="mobile-menu-link">Usługi</a>
   <a href="#realizacje" class="mobile-menu-link">Realizacje</a>
+  <a href="javascript:void(0)" onclick="openFaqModal()" class="mobile-menu-link">FAQ</a>
   <button class="mobile-menu-dropdown" id="cennikMobileToggle">Cennik <span>▼</span></button>
   <div class="mobile-menu-dropdown-content" id="cennikMobileMenu">
     <a href="javascript:void(0)" data-category="mycie" class="mobile-menu-dropdown-item">Mycie</a>
@@ -1065,11 +1211,14 @@ font-size:1rem;
 <p>Profesjonalna pielęgnacja samochodów - Tarnów</p>
 </section>
 
-<section id="onas" class="reveal" style="padding:0;height:0;overflow:hidden;" tabindex="-1">
-</section>
-
-<section style="padding:100px 24px;">
-<div class="beyond-wrapper" style="margin-top:0px;">
+<section id="onas" class="reveal" tabindex="-1">
+<h2>O nas</h2>
+<div class="stats">
+<div class="stat-item"><div class="number">0</div><div class="label">Pojazdów</div></div>
+<div class="stat-item"><div class="number">0</div><div class="label">Korekt lakieru</div></div>
+<div class="stat-item"><div class="number">0</div><div class="label">Powłok ceramicznych</div></div>
+</div>
+<div class="beyond-wrapper" style="margin-top:60px;">
 <div class="beyond-image">
 <img src="https://lh3.googleusercontent.com/p/AF1QipOnn3GGyAbq9u_Ds0e89yYcxTimEI8fuyDypu6z=s1600" alt="Gloss Point Detailing">
 </div>
@@ -1083,17 +1232,18 @@ font-size:1rem;
 <p>Eksperci renowacji wnętrz</p>
 </div>
 </div>
+</div>
 </section>
 
 <section id="uslugi" class="reveal" tabindex="-1">
 <h2>Usługi</h2>
 <div class="services-grid">
-<div class="service-card" onclick="openPricingModal('mycie')"><img src="mycie.jpeg"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
-<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="powłoka.jpeg"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
-<div class="service-card" onclick="openPricingModal('szyby')"><img src="szyby.jpg"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
-<div class="service-card" onclick="openPricingModal('Folie')"><img src="ppf.jpeg"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
+<div class="service-card" onclick="openPricingModal('mycie')"><img src="mycie.jpeg" alt="Profesjonalne mycie pojazdu - detailing Tarnów"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
+<div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg" alt="Detailing wnętrza samochodu - czyszczenie i renowacja"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
+<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900" alt="Korekta i renowacja lakieru - polerowanie samochodu"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
+<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="powłoka.jpeg" alt="Powłoki ceramiczne - nanotechnologia ochrony lakieru"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
+<div class="service-card" onclick="openPricingModal('szyby')"><img src="szyby.jpg" alt="Przyciemnianie i ochrona szyb samochodu"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
+<div class="service-card" onclick="openPricingModal('Folie')"><img src="ppf.jpeg" alt="Folia ochronna PPF - bezbarwna folia ochronna"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
 </div>
 </section>
 
@@ -1103,8 +1253,8 @@ font-size:1rem;
 <button class="ba-arrow" onclick="prevBeforeAfter()" title="Poprzednie">←</button>
 <div class="before-after">
 <div class="ba-box" id="ba-box">
-<img id="ba-before" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200">
-<img class="ba-after" id="ba-after" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200">
+<img id="ba-before" src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=1200" alt="Samochód przed detailingiem - stan początkowy">
+<img class="ba-after" id="ba-after" src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=1200" alt="Samochód po detailingiu - rezultat profesjonalnego zabiegu">
 <div class="ba-handle"></div>
 </div>
 </div>
@@ -1116,10 +1266,10 @@ font-size:1rem;
 <h2>Realizacje</h2>
 <div class="slider-container">
 <div class="slider-track" id="slider">
-<div class="slide" id="slide-0"><img src="realizacja1.jpg"></div>
-<div class="slide" id="slide-1"><img src="realizacja2.jpg"></div>
-<div class="slide" id="slide-2"><img src="realizacja3.jpg"></div>
-<div class="slide" id="slide-3"><img src="realizacja4.jpg"></div>
+<div class="slide" id="slide-0"><img src="realizacja1.jpg" alt="Realizacja detailingu - projekt 1"></div>
+<div class="slide" id="slide-1"><img src="realizacja2.jpg" alt="Realizacja detailingu - projekt 2"></div>
+<div class="slide" id="slide-2"><img src="realizacja3.jpg" alt="Realizacja detailingu - projekt 3"></div>
+<div class="slide" id="slide-3"><img src="realizacja4.jpg" alt="Realizacja detailingu - projekt 4"></div>
 </div>
 </div>
 </section>
@@ -1678,12 +1828,19 @@ document.addEventListener('DOMContentLoaded', () => {
         pricingModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
       }
+      // Zamknij rozwijane menu Cennik (dropdown) jeśli otwarte
+      const cennikToggle = document.getElementById('cennikToggle');
+      const cennikMenu = document.getElementById('cennikMenu');
+      if (cennikToggle) cennikToggle.classList.remove('active');
+      if (cennikMenu) cennikMenu.classList.remove('active');
       // Zamknij rezerwację jeśli jest otwarta
       if (reservationModal && reservationModal.classList.contains('active')) {
         closeReservationModal();
       }
       // Zamknij politykę prywatności jeśli jest otwarta
       closePrivacyPanel();
+      // Zamknij FAQ jeśli otwarte
+      if (typeof closeFaqModal === 'function') closeFaqModal();
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -1739,6 +1896,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       // Zamknij politykę prywatności
       closePrivacyPanel();
+      // Zamknij FAQ
+      closeFaqModal();
     });
   });
 
@@ -1752,11 +1911,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Mobile FAQ link handler
+  const mobileFaqLink = document.querySelector('.mobile-menu-link[onclick*="openFaqModal"]');
+  if (mobileFaqLink) {
+    mobileFaqLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      document.body.classList.remove('mobile-menu-open');
+      openFaqModal();
+    });
+  }
+
   // Close menu on dropdown item click
   mobileMenuDropdownItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       const category = item.dataset.category;
+      if (typeof closeFaqModal === 'function') closeFaqModal();
       openPricingModal(category);
       hamburger.classList.remove('active');
       mobileMenu.classList.remove('active');
@@ -2698,6 +2870,130 @@ requestAnimationFrame(() => {
   setTimeout(() => preloadBeaImages(), 500);
 });
 
+// =============== FAQ MODAL FUNCTIONS ===============
+window.openFaqModal = function() {
+  const faqModal = document.getElementById('faqModal');
+  const faqModalOverlay = document.getElementById('faqModalOverlay');
+  const pricingModal = document.getElementById('pricingModal');
+  const pricingModalOverlay = document.getElementById('pricingModalOverlay');
+  const reservationModal = document.getElementById('reservationModal');
+  
+  // Zamknij inne modalne okna
+  if (pricingModal && pricingModal.classList.contains('active')) {
+    pricingModal.classList.remove('active');
+    pricingModalOverlay.classList.remove('active');
+  }
+  if (reservationModal && reservationModal.classList.contains('active')) {
+    reservationModal.classList.remove('active');
+    document.getElementById('reservationModalOverlay').classList.remove('active');
+  }
+  
+  if (faqModal && faqModalOverlay) {
+    faqModal.classList.add('active');
+    faqModalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    document.html = document.documentElement;
+    document.html.style.overflow = 'hidden';
+    faqModal.scrollTop = 0;
+    
+    // Zapobiegaj propagacji scrollu do strony głównej (mouse wheel) - nasłuchuj na treści
+    const content = faqModal.querySelector('.faq-content');
+    if (content) {
+      content.removeEventListener('wheel', preventScroll);
+      content.addEventListener('wheel', preventScroll, { passive: false });
+      // Zapobiegaj propagacji scrollu do strony głównej (touch)
+      content.lastTouchY = 0;
+      content.removeEventListener('touchmove', preventTouchScroll);
+      content.addEventListener('touchmove', preventTouchScroll, { passive: false });
+    }
+  }
+};
+
+window.closeFaqModal = function() {
+  const faqModal = document.getElementById('faqModal');
+  const faqModalOverlay = document.getElementById('faqModalOverlay');
+  
+  if (faqModal && faqModalOverlay) {
+    faqModal.classList.remove('active');
+    faqModalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    
+    // Usuń event listeners z treści
+    const content = faqModal.querySelector('.faq-content');
+    if (content) {
+      content.removeEventListener('wheel', preventScroll);
+      content.removeEventListener('touchmove', preventTouchScroll);
+    }
+  }
+};
+
+// Funkcja do zapobiegania scroll propagacji
+function preventScroll(e) {
+  const element = e.currentTarget;
+  const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
+  const isAtTop = element.scrollTop === 0;
+  
+  if ((isAtBottom && e.deltaY > 0) || (isAtTop && e.deltaY < 0)) {
+    e.preventDefault();
+  }
+}
+
+// Funkcja do zapobiegania scroll propagacji na mobile (touch)
+function preventTouchScroll(e) {
+  const element = e.currentTarget;
+  const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
+  const isAtTop = element.scrollTop === 0;
+  
+  const touch = e.touches[0];
+  const scrollTop = element.scrollTop;
+  
+  if ((isAtTop && (touch.clientY < element.lastTouchY)) || 
+      (isAtBottom && (touch.clientY > element.lastTouchY))) {
+    e.preventDefault();
+  }
+  
+  element.lastTouchY = touch.clientY;
+}
+
+window.toggleFaqItem = function(element) {
+  const faqItem = element.closest('.faq-item');
+  if (faqItem) {
+    faqItem.classList.toggle('active');
+  }
+};
+
+// FAQ Modal listeners - setup
+const faqToggle = document.getElementById('faqToggle');
+const faqModalOverlay = document.getElementById('faqModalOverlay');
+
+if (faqToggle) {
+  faqToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    openFaqModal();
+  });
+}
+
+if (faqModalOverlay) {
+  faqModalOverlay.addEventListener('click', closeFaqModal);
+}
+
+// Zamknij FAQ po kliknięciu na linki w headerze
+const navLinksForFaq = document.querySelectorAll('.nav-center a[href*="#"]');
+navLinksForFaq.forEach(link => {
+  link.addEventListener('click', () => {
+    closeFaqModal();
+  });
+});
+
+// Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeFaqModal();
+  }
+});
+
 // =============== DROPDOWN CENNIK - STANDALONE SETUP ===============
 const cennikToggle = document.getElementById('cennikToggle');
 const cennikMenu = document.getElementById('cennikMenu');
@@ -2706,6 +3002,7 @@ if (cennikToggle && cennikMenu) {
   cennikToggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
+      if (typeof closeFaqModal === 'function') closeFaqModal();
     cennikToggle.classList.toggle('active');
     cennikMenu.classList.toggle('active');
   });
@@ -2718,9 +3015,11 @@ if (cennikToggle && cennikMenu) {
     e.stopPropagation();
     
     const category = link.getAttribute('data-category');
-    if (category && typeof pricingData !== 'undefined' && pricingData[category]) {
-      openPricingModal(category);
-    }
+      // Zamknij FAQ jeśli otwarty, potem otwórz modal cennika
+      if (typeof closeFaqModal === 'function') closeFaqModal();
+      if (category && typeof pricingData !== 'undefined' && pricingData[category]) {
+        openPricingModal(category);
+      }
   });
 
   document.addEventListener('click', (e) => {
