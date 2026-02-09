@@ -246,63 +246,28 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .stats{display:flex;justify-content:center;gap:70px;flex-wrap:wrap;}
 .stat-item .number{font-size:4.2rem;color:var(--tiffany);font-weight:bold;}
 .stat-item .label{color:var(--muted);margin-top:10px;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:90%;margin:0 auto;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:90%;margin:0 auto;perspective:1000px;}
+/* Flip Card CSS */
+.flip-card{position:relative;width:100%;height:350px;cursor:pointer;}
+.flip-card.flipped .flip-front{transform:rotateY(180deg);opacity:0;pointer-events:none;}
+.flip-card.flipped .flip-back{transform:rotateY(0);opacity:1;pointer-events:auto;}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;transition:transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55),opacity 0.6s;border-radius:18px;}
+.flip-front{transform:rotateY(0);opacity:1;pointer-events:auto;background:rgba(255,255,255,.05);border:2px solid transparent;overflow:hidden;display:flex;flex-direction:column;}
+.flip-front img{width:100%;height:220px;object-fit:cover;border-radius:18px 18px 0 0;}
+.flip-front h3{padding:15px 15px 8px;font-size:1.4rem;font-family:'Agency FB',sans-serif;margin:0;}
+.flip-front p{padding:0 15px 15px;color:var(--muted);font-size:0.95rem;margin:0;flex-grow:1;}
+.flip-back{transform:rotateY(-180deg);opacity:0;pointer-events:none;background:rgba(255,255,255,.05);border:2px solid rgba(129,216,208,.3);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;text-align:center;}
+.flip-back h3{color:var(--tiffany);font-size:1.3rem;margin:0 0 15px 0;font-family:'Agency FB',sans-serif;}
+.flip-back .price-list{width:100%;text-align:left;font-size:0.8rem;max-height:220px;overflow-y:auto;margin-bottom:10px;}
+.flip-back .price-item{color:#aaa;padding:6px 0;margin:4px 0;border-bottom:1px solid rgba(129,216,208,.1);}
+.flip-back .price-item strong{color:var(--tiffany);}
+.flip-back .flip-close-btn{background:rgba(129,216,208,.2);border:none;color:var(--tiffany);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:0.9rem;transition:all 0.3s;}
+.flip-back .flip-close-btn:hover{background:var(--tiffany);color:#000;}
+.flip-front:hover{transform:translateY(-6px);box-shadow:0 12px 28px rgba(129,216,208,.25);border-color:rgba(129,216,208,.4);}
 .service-card{
-  background:rgba(255,255,255,.05);
-  border-radius:18px;
-  overflow:visible;
-  transition:.2s ease;
-  cursor:pointer;
-  pointer-events:auto;
-  border:2px solid transparent;
-  position:relative;
+  display:none;
 }
 
-.service-card::before{
-  content:'';
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle, rgba(129,216,208,0.3) 0%, transparent 70%);
-  opacity:0;
-  transition:opacity 0.35s ease;
-  z-index:1;
-  pointer-events:none;
-}
-
-.service-card:hover{
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:0 16px 32px rgba(129,216,208,.25);
-  border-color:rgba(129,216,208,.6);
-  background:rgba(255,255,255,.08);
-}
-
-.service-card:hover::before{
-  opacity:1;
-}
-
-.service-card::after{
-  content:'→';
-  position:absolute;
-  bottom:16px;
-  right:16px;
-  font-size:2rem;
-  color:#81d8d0;
-  font-weight:bold;
-  transition:all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  text-shadow:0 0 8px rgba(129,216,208,0.3);
-}
-
-.service-card:hover::after{
-  transform:translateX(6px);
-  color:#a3e9e5;
-  text-shadow:0 0 16px rgba(129,216,208,0.6);
-}
-.service-card img{width:100%;height:280px;object-fit:cover;border-radius:18px 18px 0 0;}
-.service-card h3{padding:22px 20px 10px;font-size:1.5rem;font-family:'Agency FB',sans-serif;}
-.service-card p{padding:0 20px 30px;color:var(--muted);font-size:1rem;}
 .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
 .pricing-item{background:rgba(255,255,255,.05);border-radius:18px;overflow:hidden;border:2px solid rgba(129,216,208,.2);transition:.35s;}
 .pricing-item:hover{transform:translateY(-8px);border-color:var(--tiffany);box-shadow:0 20px 40px rgba(129,216,208,.2);}
@@ -321,6 +286,15 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-grid{grid-template-columns:repeat(2,1fr);gap:25px;}
 }
 @media(max-width:768px){
+.services-grid{grid-template-columns:repeat(2,1fr);gap:20px;}
+.flip-card{height:280px;}
+.flip-front img{height:160px;}
+.flip-front h3{font-size:1.2rem;padding:12px 12px 6px;}
+.flip-front p{padding:0 12px 12px;font-size:0.9rem;}
+.flip-back{padding:15px;}
+.flip-back h3{font-size:1.1rem;margin-bottom:10px;}
+.flip-back .price-list{font-size:0.75rem;max-height:180px;}
+.flip-back .flip-close-btn{padding:6px 12px;font-size:0.85rem;}
 .pricing-section{padding:50px 16px;}
 .pricing-grid{grid-template-columns:1fr;gap:20px;}
 .pricing-header h3{font-size:1.2rem;}
@@ -328,6 +302,15 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-list li{padding:8px 0;font-size:0.95rem;}
 }
 @media(max-width:480px){
+.services-grid{grid-template-columns:1fr;gap:15px;}
+.flip-card{height:260px;}
+.flip-front img{height:150px;}
+.flip-front h3{font-size:1.1rem;padding:10px 10px 5px;}
+.flip-front p{padding:0 10px 10px;font-size:0.85rem;}
+.flip-back{padding:12px;}
+.flip-back h3{font-size:1rem;margin-bottom:8px;}
+.flip-back .price-list{font-size:0.7rem;max-height:150px;}
+.flip-back .flip-close-btn{padding:5px 10px;font-size:0.8rem;}
 .pricing-section{padding:40px 12px;}
 .pricing-grid{grid-template-columns:1fr;gap:15px;}
 .pricing-header{padding:18px 16px;}
@@ -398,9 +381,8 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .stat-item:nth-child(3){flex:0 0 100%;max-width:150px;margin:0 auto;}
 .stat-item .number{font-size:2.5rem;}
 .services-grid{grid-template-columns:1fr;}
-.service-card h3{font-size:1.2rem;}
-.service-card p{font-size:0.9rem;padding:0 15px 20px;}
-.service-card img{height:160px;}
+.flip-card{height:300px;}
+.flip-front img{height:180px;}
 .before-after{max-width:300px;}
 .ba-box{aspect-ratio:1/1;}
 .slider-track{gap:10px;height:240px;}
@@ -1238,12 +1220,12 @@ font-size:1rem;
 <section id="uslugi" class="reveal" tabindex="-1">
 <h2>Usługi</h2>
 <div class="services-grid">
-<div class="service-card" onclick="openPricingModal('mycie')"><img src="mycie.jpeg" alt="Profesjonalne mycie pojazdu - detailing Tarnów"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('wnetrze')"><img src="wnetrze1.jpeg" alt="Detailing wnętrza samochodu - czyszczenie i renowacja"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div>
-<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900" alt="Korekta i renowacja lakieru - polerowanie samochodu"><h3>Korekta i renowacja lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div>
-<div class="service-card" onclick="openPricingModal('Polerowanie / zabezpieczenie lakieru')"><img src="powłoka.jpeg" alt="Powłoki ceramiczne - nanotechnologia ochrony lakieru"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div>
-<div class="service-card" onclick="openPricingModal('szyby')"><img src="szyby.jpg" alt="Przyciemnianie i ochrona szyb samochodu"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div>
-<div class="service-card" onclick="openPricingModal('Folie')"><img src="ppf.jpeg" alt="Folia ochronna PPF - bezbarwna folia ochronna"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'mycie')"><div class="flip-front"><img src="mycie.jpeg" alt="Profesjonalne mycie pojazdu - detailing Tarnów"><h3>Mycie pojazdu</h3><p>Profesjonalne mycie z zewnątrz i wnętrza</p></div><div class="flip-back"><h3>Cennik - Mycie</h3><div class="price-list" id="prices-mycie"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'wnetrze')"><div class="flip-front"><img src="wnetrze1.jpeg" alt="Detailing wnętrza samochodu - czyszczenie i renowacja"><h3>Detailing wnętrza</h3><p>Głębokie czyszczenie i renowacja wnętrza</p></div><div class="flip-back"><h3>Cennik - Wnętrze</h3><div class="price-list" id="prices-wnetrze"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'Polerowanie / zabezpieczenie lakieru')"><div class="flip-front"><img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900" alt="Korekta i renowacja lakieru - polerowanie samochodu"><h3>Korekta lakieru</h3><p>Usunięcie rys i przywrócenie połysku</p></div><div class="flip-back"><h3>Cennik - Polerowanie</h3><div class="price-list" id="prices-polish"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'ceramic')"><div class="flip-front"><img src="powłoka.jpeg" alt="Powłoki ceramiczne - nanotechnologia ochrony lakieru"><h3>Powłoki ceramiczne</h3><p>Długotrwała ochrona lakieru i szyb</p></div><div class="flip-back"><h3>Cennik - Powłoki</h3><div class="price-list" id="prices-ceramic"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'szyby')"><div class="flip-front"><img src="szyby.jpg" alt="Przyciemnianie i ochrona szyb samochodu"><h3>Szyby</h3><p>Przyciemnianie i ochrona szyb</p></div><div class="flip-back"><h3>Cennik - Szyby</h3><div class="price-list" id="prices-szyby"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
+<div class="flip-card" onclick="toggleServiceFlip(this, 'Folie')"><div class="flip-front"><img src="ppf.jpeg" alt="Folia ochronna PPF - bezbarwna folia ochronna"><h3>Folia ochronna PPF</h3><p>Bezbarwna folia i pakiety ochronne</p></div><div class="flip-back"><h3>Cennik - Folia PPF</h3><div class="price-list" id="prices-folia"></div><button class="flip-close-btn" onclick="toggleServiceFlip(this.closest('.flip-card'))">Wróć</button></div></div>
 </div>
 </section>
 
@@ -3524,6 +3506,44 @@ if (document.readyState === 'loading') {
   ['click','touchstart','keydown','wheel'].forEach(ev => document.addEventListener(ev, ()=>{ if(document.getElementById('preloader')) hidePreloader(true); }, {passive:true, once:true}));
 
 })();
+
+// ==================== FLIP CARD FUNCTIONS ====================
+function toggleServiceFlip(card, category = null) {
+  if (!card) return;
+  card.classList.toggle('flipped');
+  
+  // If flipping to show prices, populate the list
+  if (card.classList.contains('flipped') && category) {
+    populatePrices(card, category);
+  }
+}
+
+function populatePrices(card, category) {
+  const priceListId = {
+    'mycie': 'prices-mycie',
+    'wnetrze': 'prices-wnetrze',
+    'Polerowanie / zabezpieczenie lakieru': 'prices-polish',
+    'ceramic': 'prices-ceramic',
+    'szyby': 'prices-szyby',
+    'Folie': 'prices-folia'
+  }[category];
+  
+  if (!priceListId) return;
+  
+  const priceListEl = document.getElementById(priceListId);
+  if (!priceListEl || priceListEl.innerHTML.trim() !== '') return;
+  
+  const data = pricingData[category];
+  if (!data) return;
+  
+  let html = '';
+  for (const [serviceName, serviceData] of Object.entries(data.items)) {
+    html += `<div class="price-item"><strong>${serviceName}:</strong> `;
+    html += Object.values(serviceData.prices).join(' / ');
+    html += '</div>';
+  }
+  priceListEl.innerHTML = html;
+}
 
 // ==================== OBFUSKACJA I OCHRONA KODU ====================
 
