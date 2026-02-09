@@ -3629,6 +3629,109 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
+// ==================== SZYFROWANIE I DEKODOWANIE KODU ====================
+(function() {
+  // Funkcja do dekodowania kodu
+  window.decodeProtectedCode = function(encodedCode) {
+    try {
+      return atob(encodedCode);
+    } catch(e) {
+      console.error('Błąd dekodowania:', e);
+      return null;
+    }
+  };
+  
+  // Funkcja do szyfrowania kodu
+  window.encodeProtectedCode = function(code) {
+    return btoa(code);
+  };
+  
+  // Ukrycie funkcji z window scope
+  delete window.decodeProtectedCode;
+  delete window.encodeProtectedCode;
+})();
+
+// ==================== OCHRONA PRZED DEVELOPER TOOLS ====================
+(function() {
+  'use strict';
+  
+  // Kod wysyłania rezerwacji - ZASZYFROWANY
+  var encryptedReservationCode = 'ZnVuY3Rpb24gc2VuZFJlc2VydmF0aW9uKCkgewogIGNvbnN0IGRhdGEgPSB7CiAgICBjbGllbnRfbmFtZTogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudE5hbWUnKS52YWx1ZSwKICAgIGNsaWVudF9waG9uZTogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudFBob25lJykudmFsdWUsIiAgY2xpZW50X2VtYWlsOiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2xpZW50RW1haWwnKS52YWx1ZQogIH07CiAgIAogIGZldGNoKEdPT0dMRV9TQ1JJUFRfVVJMLCB7CiAgICBtZXRob2Q6ICdQT1NUJywKICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KGRhdGEpCiAgfSkudGhlbihyZXMgPT4gcmVzLmpzb24oKSkudGhlbihyZXN1bHQgPT4gewogICAgaWYocmVzdWx0LnN0YXR1cyA9PSAnc3VjY2VzcycpIHsKICAgICAgYWxlcnQoJ1JlemvqcndhY2phIHBvdHdpZXJ6b25hIScpOwogICAgfQogIH0pOwp9';
+  
+  // Blokada F12 i skrótów developer tools
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.keyCode === 123) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+I (DevTools)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+C (Element Inspector)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+J (Console)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+      e.preventDefault();
+      return false;
+    }
+    // Ctrl+Shift+K (Debugger - Firefox)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 75) {
+      e.preventDefault();
+      return false;
+    }
+  });
+  
+  // Right-click jest dozwolony - normalnie działa
+  
+  // Funkcja pokazująca overlay gdy próbuje otworzyć DevTools
+  function showProtectionOverlay() {
+    if (document.getElementById('protectionOverlay')) return;
+    
+    var overlay = document.createElement('div');
+    overlay.id = 'protectionOverlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:999999;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:white;text-align:center;flex-direction:column;gap:20px;';
+    
+    var content = document.createElement('div');
+    content.style.cssText = 'background:rgba(129,216,208,0.1);border:2px solid #81d8d0;padding:40px;border-radius:10px;max-width:600px;';
+    content.innerHTML = '<h1 style="color:#81d8d0;margin:0 0 20px 0;font-size:32px;">🔒 Zawartość Chroniona</h1><p style="font-size:18px;margin:0 0 15px 0;color:#ccc;">Kod strony jest zaszyfrowany i chroniony.</p><p style="font-size:14px;margin:0;color:#999;">Inspekcja elementów tej strony jest zabezpieczona.</p><p style="font-size:12px;margin:20px 0 0 0;color:#666;">Zamknij Developer Tools aby wrócić do strony.</p>';
+    
+    overlay.appendChild(content);
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    
+    // Usunięcie overlay'u co 500ms gdy DevTools zamknięte
+    var checkInterval = setInterval(function() {
+      var devToolsOpen = window.outerHeight - window.innerHeight > 100;
+      if (!devToolsOpen) {
+        var ol = document.getElementById('protectionOverlay');
+        if (ol) ol.remove();
+        document.body.style.overflow = 'auto';
+        clearInterval(checkInterval);
+      }
+    }, 500);
+  }
+  
+  // Nasłuchuj próby otwarcia DevTools
+  document.addEventListener('keydown', function(e) {
+    if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74 || e.keyCode === 75))) {
+      showProtectionOverlay();
+    }
+  });
+  
+  // Blokada konsoli
+  var methods = ['log', 'debug', 'info', 'warn', 'error'];
+  methods.forEach(function(method) {
+    console[method] = function() {};
+  });
+  
+})();
+
 // ==================== OBFUSKACJA I OCHRONA KODU ====================
 
 
