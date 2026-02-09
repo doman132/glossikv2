@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Panel Admina - GLOSS POINT DETAILING</title>
+<!-- PROTECTION: Redirect to index.html if not logged in -->
+<script>
+  if (localStorage.getItem('adminLoggedIn') !== 'true') {
+    window.location.href = 'index.html';
+  }
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KY5TW5HJJ"></script>
 <script>
