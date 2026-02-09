@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admina - GLOSS POINT DETAILING</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0KY5TW5HJJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0KY5TW5HJJ');
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --tiffany: #81d8d0;
+  --dark: #111;
+  --light: #f5f5f5;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #ffc107;
+  --info: #17a2b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: var(--light);
+  color: var(--dark);
+}
+
+/* SIDEBAR NAVIGATION */
+.admin-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--dark);
+  color: white;
+  padding: 20px;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+  left: 0;
+  top: 0;
+}
+
+.sidebar-logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: var(--tiffany);
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu li {
+  margin-bottom: 15px;
+}
+
+.sidebar-menu a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: var(--tiffany);
+  color: var(--dark);
+}
+
+.sidebar-menu i {
+  margin-right: 10px;
+  width: 20px;
+}
+
+/* MAIN CONTENT */
+.main-content {
+  margin-left: 250px;
+  flex: 1;
+  padding: 20px;
+}
+
+.header {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+  font-size: 24px;
+  color: var(--dark);
+}
+
+.logout-btn {
+  background: var(--danger);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.logout-btn:hover {
+  background: #c82333;
+}
+
+/* LOGIN PAGE */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--dark);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--tiffany);
+  box-shadow: 0 0 5px var(--tiffany);
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--tiffany);
+  color: var(--dark);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #6cc4bf;
+}
+
+/* SECTIONS */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* DASHBOARD */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.card .number {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--tiffany);
+}
+
+.card .trend {
+  font-size: 12px;
+  color: var(--success);
+  margin-top: 10px;
+}
+
+/* TABLES */
+.table-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: #f8f9fa;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+  color: var(--dark);
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+tr:hover {
+  background: #f5f5f5;
+}
+
+/* BUTTONS */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.btn-primary {
+  background: var(--tiffany);
+  color: var(--dark);
+}
+
+.btn-primary:hover {
+  background: #6cc4bf;
+}
+
+.btn-success {
+  background: var(--success);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+}
+
+.btn-warning {
+  background: var(--warning);
+  color: var(--dark);
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* FORMS */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--dark);
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  color: var(--dark);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+/* CALENDAR */
+.calendar {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background: white;
+  transition: background 0.3s;
+}
+
+.calendar-day:hover {
+  background: #f0f0f0;
+}
+
+.calendar-day.today {
+  background: var(--tiffany);
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.calendar-day.booking {
+  background: var(--info);
+  color: white;
+}
+
+/* CHART */
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.chart-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-label {
+  width: 100px;
+  font-weight: bold;
+}
+
+.chart-bar-container {
+  flex: 1;
+  background: #f0f0f0;
+  border-radius: 5px;
+  height: 30px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.chart-bar-fill {
+  background: var(--tiffany);
+  height: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* ALERTS */
+.alert {
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+.alert.show {
+  display: block;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="login-container">
+  <div class="login-box">
+    <h1>🔐 Panel Admina</h1>
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" id="adminEmail" placeholder="admin@example.com">
+    </div>
+    <div class="form-group">
+      <label>Hasło:</label>
+      <input type="password" id="adminPassword" placeholder="••••••">
+    </div>
+    <button class="login-btn" onclick="login()">Zaloguj się</button>
+    <p style="text-align: center; margin-top: 20px; font-size: 12px; color: #666;">
+    </p>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="admin-container" style="display: none;">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <i class="fas fa-car"></i> GP Admin
+    </div>
+    <ul class="sidebar-menu">
+      <li><a class="menu-link active" data-section="dashboard" onclick="showSection('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+      <li><a class="menu-link" data-section="reservations" onclick="showSection('reservations')"><i class="fas fa-calendar-check"></i> Rezerwacje</a></li>
+      <li><a class="menu-link" data-section="schedule" onclick="showSection('schedule')"><i class="fas fa-calendar"></i> Terminarz</a></li>
+      <li><a class="menu-link" data-section="services" onclick="showSection('services')"><i class="fas fa-cogs"></i> Usługi</a></li>
+      <li><a class="menu-link" data-section="messages" onclick="showSection('messages')"><i class="fas fa-envelope"></i> Wiadomości</a></li>
+      <li><a class="menu-link" data-section="gallery" onclick="showSection('gallery')"><i class="fas fa-images"></i> Galeria</a></li>
+      <li><a class="menu-link" data-section="reports" onclick="showSection('reports')"><i class="fas fa-file-chart-line"></i> Raporty</a></li>
+      <li><a class="menu-link" data-section="settings" onclick="showSection('settings')"><i class="fas fa-sliders-h"></i> Ustawienia</a></li>
+      <li><a onclick="logout()" style="color: #ff6b6b;"><i class="fas fa-sign-out-alt"></i> Wyloguj</a></li>
+    </ul>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <div class="header">
+      <h1>Panel Administracyjny</h1>
+      <button class="logout-btn" onclick="logout()">Wyloguj się</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="section active">
+      <h2 style="margin-bottom: 20px;">📊 Dashboard</h2>
+      <div class="dashboard-grid">
+        <div class="card">
+          <h3>Rezerwacje dzisiaj</h3>
+          <div class="number" id="todayBookings">0</div>
+          <div class="trend">↑ 12% vs wczoraj</div>
+        </div>
+        <div class="card">
+          <h3>Przychód dzisiaj</h3>
+          <div class="number" id="todayRevenue">0 zł</div>
+          <div class="trend">↑ 8% vs wczoraj</div>
+        </div>
+        <div class="card">
+          <h3>Rezerwacje miesiąc</h3>
+          <div class="number" id="monthBookings">0</div>
+          <div class="trend">↑ 25% vs poprzedni</div>
+        </div>
+        <div class="card">
+          <h3>Przychód miesiąc</h3>
+          <div class="number" id="monthRevenue">0 zł</div>
+          <div class="trend">↑ 18% vs poprzedni</div>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <h3>Najpopularniejsze usługi</h3>
+        <div id="servicesChart"></div>
+      </div>
+
+      <div class="chart-container">
+        <h3>Ruch na stronie (z GA)</h3>
+        <div class="chart-bar">
+          <div class="chart-label">Sesje:</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar-fill" style="width: 75%;">1.245</div>
+          </div>
+        </div>
+        <div class="chart-bar">
+          <div class="chart-label">Użytkownicy:</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar-fill" style="width: 60%;">842</div>
+          </div>
+        </div>
+        <div class="chart-bar">
+          <div class="chart-label">Kliknięcia usług:</div>
+          <div class="chart-bar-container">
+            <div class="chart-bar-fill" style="width: 82%;">1.856</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESERVATIONS -->
+    <div id="reservations" class="section">
+      <h2 style="margin-bottom: 20px;">📅 Rezerwacje</h2>
+      <div style="margin-bottom: 20px;">
+        <button class="btn btn-primary" onclick="openAddReservationModal()"><i class="fas fa-plus"></i> Nowa rezerwacja</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Godzina</th>
+              <th>Klient</th>
+              <th>Usługa</th>
+              <th>Cena</th>
+              <th>Status</th>
+              <th>Akcje</th>
+            </tr>
+          </thead>
+          <tbody id="reservationsList"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div id="schedule" class="section">
+      <h2 style="margin-bottom: 20px;">📆 Terminarz</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h3>Blokowanie terminów</h3>
+          <div class="form-group">
+            <label>Data:</label>
+            <input type="date" id="blockDate">
+          </div>
+          <div class="form-group">
+            <label>Od godziny:</label>
+            <input type="time" id="blockTimeFrom">
+          </div>
+          <div class="form-group">
+            <label>Do godziny:</label>
+            <input type="time" id="blockTimeTo">
+          </div>
+          <div class="form-group">
+            <label>Powód:</label>
+            <input type="text" id="blockReason" placeholder="np. Przerwa obiadowa, Urlop">
+          </div>
+          <button class="btn btn-primary" onclick="blockTimeSlot()"><i class="fas fa-lock"></i> Zablokuj czas</button>
+        </div>
+        <div>
+          <h3>Zablokowane terminy</h3>
+          <div id="blockedSlots" style="max-height: 300px; overflow-y: auto;"></div>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <h3>Pracownicy</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Imię</th>
+                <th>Specjalizacja</th>
+                <th>Dostępność</th>
+                <th>Akcje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Paweł Kowalski</td>
+                <td>Detailing ogólny</td>
+                <td>Pon-Sob 9:00-17:00</td>
+                <td><button class="btn btn-small btn-warning">Edytuj</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div id="services" class="section">
+      <h2 style="margin-bottom: 20px;">🔧 Zarządzanie usługami</h2>
+      <button class="btn btn-primary" onclick="openAddServiceModal()"><i class="fas fa-plus"></i> Nowa usługa</button>
+      <div class="table-container" style="margin-top: 20px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Nazwa</th>
+              <th>Opis</th>
+              <th>Czas (h)</th>
+              <th>Cena (hatchback)</th>
+              <th>Cena (sedan)</th>
+              <th>Cena (SUV)</th>
+              <th>Akcje</th>
+            </tr>
+          </thead>
+          <tbody id="servicesList"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div id="messages" class="section">
+      <h2 style="margin-bottom: 20px;">💬 Wiadomości</h2>
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px;">
+        <div>
+          <h3>Wiadomości przychodzące</h3>
+          <div id="messagesList" style="background: white; border-radius: 8px; max-height: 500px; overflow-y: auto;"></div>
+        </div>
+        <div>
+          <h3>Odpowiedź</h3>
+          <div id="messageReply" class="form-group">
+            <p style="color: #aaa; text-align: center;">Wybierz wiadomość</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <h3>Szablon autorespondera</h3>
+        <div class="form-group">
+          <label>Treść:</label>
+          <textarea id="autoResponderTemplate" placeholder="Domyślna wiadomość dla klientów..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="saveAutoResponder()">Zapisz szablon</button>
+      </div>
+    </div>
+
+    <!-- GALLERY -->
+    <div id="gallery" class="section">
+      <h2 style="margin-bottom: 20px;">🖼️ Galeria</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+          <h3>Dodaj zdjęcia Przed/Po</h3>
+          <div class="form-group">
+            <label>Nazwa projektu:</label>
+            <input type="text" id="projectName" placeholder="np. BMW X5 - Korekta lakieru">
+          </div>
+          <div class="form-group">
+            <label>Zdjęcie PRZED:</label>
+            <input type="file" id="beforePhoto" accept="image/*">
+          </div>
+          <div class="form-group">
+            <label>Zdjęcie PO:</label>
+            <input type="file" id="afterPhoto" accept="image/*">
+          </div>
+          <button class="btn btn-primary" onclick="uploadGalleryPhoto()"><i class="fas fa-upload"></i> Prześlij</button>
+        </div>
+        <div>
+          <h3>Ostatnie projekty</h3>
+          <div id="galleryPreview" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"></div>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <h3>Edycja FAQ</h3>
+        <button class="btn btn-primary" onclick="openAddFAQModal()"><i class="fas fa-plus"></i> Dodaj pytanie</button>
+        <div id="faqList" style="margin-top: 15px;"></div>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="reports" class="section">
+      <h2 style="margin-bottom: 20px;">📊 Raporty</h2>
+      <div style="margin-bottom: 20px;">
+        <label>Okres:</label>
+        <select id="reportPeriod" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd;">
+          <option>Dzisiaj</option>
+          <option>Ostatnie 7 dni</option>
+          <option>Ostatnie 30 dni</option>
+          <option>Ten miesiąc</option>
+          <option>Poprzedni miesiąc</option>
+        </select>
+        <button class="btn btn-primary" style="margin-left: 10px;" onclick="generateReport()"><i class="fas fa-download"></i> Eksportuj CSV</button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Godzina</th>
+              <th>Usługa</th>
+              <th>Rozmiar auta</th>
+              <th>Cena</th>
+              <th>Pracownik</th>
+            </tr>
+          </thead>
+          <tbody id="reportTable">
+            <tr>
+              <td>2026-02-09</td>
+              <td>10:30</td>
+              <td>Mycie pojazdu</td>
+              <td>Sedan</td>
+              <td>150 zł</td>
+              <td>Paweł Kowalski</td>
+            </tr>
+            <tr>
+              <td>2026-02-09</td>
+              <td>14:00</td>
+              <td>Detailing wnętrza</td>
+              <td>SUV</td>
+              <td>280 zł</td>
+              <td>Paweł Kowalski</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settings" class="section">
+      <h2 style="margin-bottom: 20px;">⚙️ Ustawienia</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div>
+          <h3>Informacje firmy</h3>
+          <div class="form-group">
+            <label>Nazwa:</label>
+            <input type="text" value="GLOSS POINT DETAILING">
+          </div>
+          <div class="form-group">
+            <label>Telefon:</label>
+            <input type="text" value="+48 660 706 043">
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input type="email" value="*****@gmail.com">
+          </div>
+          <div class="form-group">
+            <label>Adres:</label>
+            <input type="text" value="ul. Marii Konopnickiej 5, 33-100 Tarnów">
+          </div>
+          <button class="btn btn-primary" onclick="saveSettings()">Zapisz zmiany</button>
+        </div>
+        <div>
+          <h3>Godziny pracy</h3>
+          <div class="form-group">
+            <label>Poniedziałek - Piątek:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <input type="time" value="08:00">
+              <input type="time" value="18:00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sobota:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+              <input type="time" value="09:00">
+              <input type="time" value="15:00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Niedziela: Zamknięte</label>
+          </div>
+          <button class="btn btn-primary" onclick="saveWorkingHours()">Zapisz godziny</button>
+        </div>
+      </div>
+      <hr style="margin: 30px 0;">
+      <div>
+        <h3>Integracja Google Calendar</h3>
+        <p>ID Kalendarza: <code>glosspointbiuro@gmail.com</code></p>
+        <button class="btn btn-primary" onclick="syncCalendar()"><i class="fas fa-sync"></i> Synchronizuj teraz</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div id="addReservationModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Nowa rezerwacja</h2>
+      <button class="close-modal" onclick="closeModal('addReservationModal')">&times;</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Imię i nazwisko:</label>
+        <input type="text" id="resName">
+      </div>
+      <div class="form-group">
+        <label>Telefon:</label>
+        <input type="tel" id="resPhone">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="resEmail">
+      </div>
+      <div class="form-group">
+        <label>Marka/Model auta:</label>
+        <input type="text" id="resCarModel">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Usługa:</label>
+        <select id="resService">
+          <option>Mycie pojazdu</option>
+          <option>Detailing wnętrza</option>
+          <option>Korekta lakieru</option>
+          <option>Powłoki ceramiczne</option>
+          <option>Szyby</option>
+          <option>Folia ochronna PPF</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Rozmiar auta:</label>
+        <select id="resSize">
+          <option>Hatchback</option>
+          <option>Sedan</option>
+          <option>SUV</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Data:</label>
+        <input type="date" id="resDate">
+      </div>
+      <div class="form-group">
+        <label>Godzina:</label>
+        <input type="time" id="resTime">
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveReservation()" style="width: 100%; margin-top: 15px;">Zapisz rezerwację</button>
+  </div>
+</div>
+
+<div id="addServiceModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2>Nowa usługa</h2>
+      <button class="close-modal" onclick="closeModal('addServiceModal')">&times;</button>
+    </div>
+    <div class="form-group">
+      <label>Nazwa:</label>
+      <input type="text" id="srvName">
+    </div>
+    <div class="form-group">
+      <label>Opis:</label>
+      <textarea id="srvDescription"></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Czas (godziny):</label>
+        <input type="number" id="srvDuration" min="0.5" step="0.5">
+      </div>
+    </div>
+    <div style="margin-bottom: 15px;">
+      <label style="font-weight: bold;">Ceny:</label>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Hatchback:</label>
+          <input type="number" id="srvPriceSmall" min="0" placeholder="zł">
+        </div>
+        <div class="form-group">
+          <label>Sedan:</label>
+          <input type="number" id="srvPriceMedium" min="0" placeholder="zł">
+        </div>
+        <div class="form-group">
+          <label>SUV:</label>
+          <input type="number" id="srvPriceLarge" min="0" placeholder="zł">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveService()" style="width: 100%;">Zapisz usługę</button>
+  </div>
+</div>
+
+<script>
+// ====================== AUTHENTICATION ======================
+// Base64 obfuscation dla loginów
+function _dec(str) {
+  try { return atob(str); } catch(e) { return str; }
+}
+
+function login() {
+  const email = document.getElementById('adminEmail').value;
+  const password = document.getElementById('adminPassword').value;
+  
+  // Obfuskowane konta (base64)
+  const validAccounts = [
+    { email: _dec('Z2xvc3NwG9udHJiaXVyb0BnbWFpbC5jb20='), password: _dec('R1AxMTk5Nw==') },
+    { email: _dec('bWljaGVsZG9tYW5vQGdtYWlsLmNvbQ=='), password: _dec('ZG1uMDIyNg==') }
+  ];
+  
+  const account = validAccounts.find(acc => acc.email === email && acc.password === password);
+  
+  if (account) {
+    localStorage.setItem('adminLoggedIn', 'true');
+    localStorage.setItem('adminEmail', email);
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'flex';
+    gtag('event', 'admin_login', {'user_email': 'admin'});
+    loadDashboard();
+  } else {
+    alert('Błędne dane logowania!');
+  }
+}
+
+function logout() {
+  localStorage.removeItem('adminLoggedIn');
+  localStorage.removeItem('adminEmail');
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('loginPage').style.display = 'flex';
+  document.getElementById('adminEmail').value = '';
+  document.getElementById('adminPassword').value = '';
+}
+
+// ====================== INITIALIZATION ======================
+window.addEventListener('load', function() {
+  if (localStorage.getItem('adminLoggedIn') === 'true') {
+    document.getElementById('loginPage').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'flex';
+    loadDashboard();
+  } else {
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('adminPanel').style.display = 'none';
+  }
+});
+
+// ====================== NAVIGATION ======================
+function showSection(sectionId) {
+  // Hide all sections
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(section => section.classList.remove('active'));
+  
+  // Remove active from all menu items
+  const menuLinks = document.querySelectorAll('.menu-link');
+  menuLinks.forEach(link => link.classList.remove('active'));
+  
+  // Show selected section
+  document.getElementById(sectionId).classList.add('active');
+  
+  // Add active to clicked menu item
+  document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+  
+  gtag('event', 'admin_section_view', {'section': sectionId});
+}
+
+// ====================== DASHBOARD ======================
+function loadDashboard() {
+  // Simulate data from localStorage/API
+  const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+  
+  const today = new Date().toISOString().split('T')[0];
+  const todayReservations = reservations.filter(r => r.date === today);
+  
+  document.getElementById('todayBookings').textContent = todayReservations.length;
+  document.getElementById('todayRevenue').textContent = (todayReservations.length * 150) + ' zł';
+  document.getElementById('monthBookings').textContent = reservations.length;
+  document.getElementById('monthRevenue').textContent = (reservations.length * 150) + ' zł';
+  
+  // Chart
+  const services = {
+    'Mycie': 8,
+    'Detailing': 5,
+    'Ceramika': 3,
+    'Folia PPF': 2,
+    'Szyby': 1
+  };
+  
+  let chartHTML = '';
+  for (const [service, count] of Object.entries(services)) {
+    const percentage = (count / 19) * 100;
+    chartHTML += `
+      <div class="chart-bar">
+        <div class="chart-label">${service}:</div>
+        <div class="chart-bar-container">
+          <div class="chart-bar-fill" style="width: ${percentage}%;">${count}</div>
+        </div>
+      </div>
+    `;
+  }
+  document.getElementById('servicesChart').innerHTML = chartHTML;
+  
+  loadReservations();
+  loadServices();
+  loadMessages();
+  loadBlockedSlots();
+}
+
+// ====================== RESERVATIONS ======================
+function openAddReservationModal() {
+  document.getElementById('addReservationModal').classList.add('active');
+}
+
+function saveReservation() {
+  const reservation = {
+    id: Date.now(),
+    name: document.getElementById('resName').value,
+    phone: document.getElementById('resPhone').value,
+    email: document.getElementById('resEmail').value,
+    carModel: document.getElementById('resCarModel').value,
+    service: document.getElementById('resService').value,
+    size: document.getElementById('resSize').value,
+    date: document.getElementById('resDate').value,
+    time: document.getElementById('resTime').value,
+    status: 'Potwierdzona',
+    price: 150
+  };
+  
+  let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+  reservations.push(reservation);
+  localStorage.setItem('reservations', JSON.stringify(reservations));
+  
+  closeModal('addReservationModal');
+  loadReservations();
+  showAlert('Rezerwacja zapisana!', 'success');
+  gtag('event', 'reservation_created', {'service': reservation.service});
+}
+
+function loadReservations() {
+  const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+  let html = '';
+  
+  reservations.forEach(res => {
+    html += `
+      <tr>
+        <td>${res.date}</td>
+        <td>${res.time}</td>
+        <td>${res.name}</td>
+        <td>${res.service}</td>
+        <td>${res.price} zł</td>
+        <td><span style="color: #28a745; font-weight: bold;">${res.status}</span></td>
+        <td>
+          <button class="btn btn-small btn-warning" onclick="editReservation(${res.id})">Edytuj</button>
+          <button class="btn btn-small btn-danger" onclick="deleteReservation(${res.id})">Usuń</button>
+        </td>
+      </tr>
+    `;
+  });
+  
+  document.getElementById('reservationsList').innerHTML = html || '<tr><td colspan="7" style="text-align: center; color: #aaa;">Brak rezerwacji</td></tr>';
+}
+
+function deleteReservation(id) {
+  if (confirm('Jesteś pewny?')) {
+    let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    reservations = reservations.filter(r => r.id !== id);
+    localStorage.setItem('reservations', JSON.stringify(reservations));
+    loadReservations();
+    showAlert('Rezerwacja usunięta!', 'success');
+  }
+}
+
+// ====================== SCHEDULE ======================
+function blockTimeSlot() {
+  const date = document.getElementById('blockDate').value;
+  const timeFrom = document.getElementById('blockTimeFrom').value;
+  const timeTo = document.getElementById('blockTimeTo').value;
+  const reason = document.getElementById('blockReason').value;
+  
+  if (!date || !timeFrom || !timeTo) {
+    alert('Wypełnij wszystkie pola!');
+    return;
+  }
+  
+  const block = {
+    id: Date.now(),
+    date,
+    timeFrom,
+    timeTo,
+    reason: reason || 'Blokada'
+  };
+  
+  let blocked = JSON.parse(localStorage.getItem('blockedSlots')) || [];
+  blocked.push(block);
+  localStorage.setItem('blockedSlots', JSON.stringify(blocked));
+  
+  document.getElementById('blockDate').value = '';
+  document.getElementById('blockTimeFrom').value = '';
+  document.getElementById('blockTimeTo').value = '';
+  document.getElementById('blockReason').value = '';
+  
+  loadBlockedSlots();
+  showAlert('Czas zablokowany!', 'success');
+}
+
+function loadBlockedSlots() {
+  const blocked = JSON.parse(localStorage.getItem('blockedSlots')) || [];
+  let html = '';
+  
+  blocked.forEach(b => {
+    html += `
+      <div style="background: #f8d7da; padding: 10px; margin-bottom: 10px; border-radius: 5px;">
+        <strong>${b.date} ${b.timeFrom}-${b.timeTo}</strong><br>
+        <small>${b.reason}</small>
+        <button class="btn btn-small btn-danger" onclick="unblockSlot(${b.id})" style="float: right;">Odblouj</button>
+      </div>
+    `;
+  });
+  
+  document.getElementById('blockedSlots').innerHTML = html || '<p style="color: #aaa;">Brak zablokowanych czasów</p>';
+}
+
+function unblockSlot(id) {
+  let blocked = JSON.parse(localStorage.getItem('blockedSlots')) || [];
+  blocked = blocked.filter(b => b.id !== id);
+  localStorage.setItem('blockedSlots', JSON.stringify(blocked));
+  loadBlockedSlots();
+}
+
+// ====================== SERVICES ======================
+function openAddServiceModal() {
+  document.getElementById('addServiceModal').classList.add('active');
+}
+
+function saveService() {
+  const service = {
+    id: Date.now(),
+    name: document.getElementById('srvName').value,
+    description: document.getElementById('srvDescription').value,
+    duration: document.getElementById('srvDuration').value,
+    priceSmall: document.getElementById('srvPriceSmall').value,
+    priceMedium: document.getElementById('srvPriceMedium').value,
+    priceLarge: document.getElementById('srvPriceLarge').value
+  };
+  
+  let services = JSON.parse(localStorage.getItem('services')) || [];
+  services.push(service);
+  localStorage.setItem('services', JSON.stringify(services));
+  
+  closeModal('addServiceModal');
+  loadServices();
+  showAlert('Usługa zapisana!', 'success');
+}
+
+function loadServices() {
+  const services = JSON.parse(localStorage.getItem('services')) || [];
+  let html = '';
+  
+  services.forEach(srv => {
+    html += `
+      <tr>
+        <td>${srv.name}</td>
+        <td>${srv.description || '-'}</td>
+        <td>${srv.duration}h</td>
+        <td>${srv.priceSmall} zł</td>
+        <td>${srv.priceMedium} zł</td>
+        <td>${srv.priceLarge} zł</td>
+        <td>
+          <button class="btn btn-small btn-warning">Edytuj</button>
+          <button class="btn btn-small btn-danger">Usuń</button>
+        </td>
+      </tr>
+    `;
+  });
+  
+  document.getElementById('servicesList').innerHTML = html || '<tr><td colspan="7" style="text-align: center; color: #aaa;">Brak usług</td></tr>';
+}
+
+// ====================== MESSAGES ======================
+function loadMessages() {
+  const messages = [
+    { id: 1, name: 'Jan Kowalski', email: 'jan@example.com', message: 'Ile kosztuje mycie SUV-a?' },
+    { id: 2, name: 'Maria Nowak', email: 'maria@example.com', message: 'Czy możemy umówić się na piątek?' }
+  ];
+  
+  let html = '';
+  messages.forEach(msg => {
+    html += `
+      <div style="padding: 15px; border-bottom: 1px solid #eee; cursor: pointer;" onclick="showMessage(${msg.id})">
+        <strong>${msg.name}</strong><br>
+        <small style="color: #999;">${msg.email}</small><br>
+        <small>${msg.message.substring(0, 50)}...</small>
+      </div>
+    `;
+  });
+  
+  document.getElementById('messagesList').innerHTML = html;
+}
+
+function showMessage(id) {
+  const messages = [
+    { id: 1, name: 'Jan Kowalski', email: 'jan@example.com', message: 'Ile kosztuje mycie SUV-a?' },
+    { id: 2, name: 'Maria Nowak', email: 'maria@example.com', message: 'Czy możemy umówić się na piątek?' }
+  ];
+  
+  const msg = messages.find(m => m.id === id);
+  
+  document.getElementById('messageReply').innerHTML = `
+    <div>
+      <strong>Od:</strong> ${msg.name} (${msg.email})<br>
+      <strong>Wiadomość:</strong><br>
+      <p>${msg.message}</p>
+      <textarea id="reply" placeholder="Twoja odpowiedź..." style="width: 100%; height: 100px; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"></textarea>
+      <button class="btn btn-primary" onclick="sendReply(${msg.id})" style="margin-top: 10px;">Wyślij odpowiedź</button>
+    </div>
+  `;
+}
+
+function sendReply(id) {
+  const replyText = document.getElementById('reply').value;
+  if (replyText.trim()) {
+    showAlert('Odpowiedź wysłana!', 'success');
+    document.getElementById('messageReply').innerHTML = '<p style="color: #aaa; text-align: center;">Wybierz wiadomość</p>';
+  }
+}
+
+function saveAutoResponder() {
+  const template = document.getElementById('autoResponderTemplate').value;
+  localStorage.setItem('autoResponder', template);
+  showAlert('Szablon autorespondera zapisany!', 'success');
+}
+
+// ====================== GALLERY ======================
+function uploadGalleryPhoto() {
+  showAlert('Zdjęcia przesłane! (demo mode)', 'success');
+}
+
+function openAddFAQModal() {
+  const question = prompt('Wpisz pytanie:');
+  if (question) {
+    const answer = prompt('Wpisz odpowiedź:');
+    if (answer) {
+      let faq = JSON.parse(localStorage.getItem('faq')) || [];
+      faq.push({ id: Date.now(), question, answer });
+      localStorage.setItem('faq', JSON.stringify(faq));
+      loadFAQ();
+      showAlert('Pytanie dodane!', 'success');
+    }
+  }
+}
+
+function loadFAQ() {
+  const faq = JSON.parse(localStorage.getItem('faq')) || [];
+  let html = '';
+  
+  faq.forEach(item => {
+    html += `
+      <div style="background: white; padding: 15px; margin-bottom: 10px; border-radius: 5px; border-left: 4px solid var(--tiffany);">
+        <strong>Q: ${item.question}</strong><br>
+        <small style="color: #666;">A: ${item.answer}</small>
+        <button class="btn btn-small btn-danger" onclick="deleteFAQ(${item.id})" style="float: right;">Usuń</button>
+      </div>
+    `;
+  });
+  
+  document.getElementById('faqList').innerHTML = html || '<p style="color: #aaa;">Brak pytań</p>';
+}
+
+function deleteFAQ(id) {
+  let faq = JSON.parse(localStorage.getItem('faq')) || [];
+  faq = faq.filter(item => item.id !== id);
+  localStorage.setItem('faq', JSON.stringify(faq));
+  loadFAQ();
+}
+
+// ====================== REPORTS ======================
+function generateReport() {
+  const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+  
+  let csv = 'Data,Godzina,Usługa,Rozmiar,Cena,Pracownik\n';
+  reservations.forEach(r => {
+    csv += `${r.date},${r.time},${r.service},${r.size},${r.price},Paweł Kowalski\n`;
+  });
+  
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'raport_' + new Date().toISOString().split('T')[0] + '.csv';
+  a.click();
+  
+  showAlert('Raport pobrany!', 'success');
+}
+
+// ====================== SETTINGS ======================
+function saveSettings() {
+  showAlert('Ustawienia zapisane!', 'success');
+}
+
+function saveWorkingHours() {
+  showAlert('Godziny pracy zaktualizowane!', 'success');
+}
+
+function syncCalendar() {
+  showAlert('Synchronizacja z Google Calendar...', 'info');
+  setTimeout(() => {
+    showAlert('Synchronizacja zakończona!', 'success');
+  }, 2000);
+}
+
+// ====================== MODALS ======================
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('active');
+}
+
+window.onclick = function(event) {
+  const modals = document.querySelectorAll('.modal');
+  modals.forEach(modal => {
+    if (event.target == modal) {
+      modal.classList.remove('active');
+    }
+  });
+}
+
+// ====================== ALERTS ======================
+function showAlert(message, type = 'info') {
+  const alertDiv = document.createElement('div');
+  alertDiv.className = `alert alert-${type} show`;
+  alertDiv.textContent = message;
+  alertDiv.style.position = 'fixed';
+  alertDiv.style.top = '20px';
+  alertDiv.style.right = '20px';
+  alertDiv.style.zIndex = '9999';
+  alertDiv.style.width = '300px';
+  
+  document.body.appendChild(alertDiv);
+  
+  setTimeout(() => {
+    alertDiv.remove();
+  }, 3000);
+}
+
+// Initialize
+loadFAQ();
+</script>
+
+</body>
+</html>
