@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="GLOSS POINT DETAILING - Tarnów">
 <meta name="twitter:description" content="Detailing nanotechnologia i powłoki ceramiczne w Tarnowie">
 <link rel="canonical" href="https://glosspoint.pl">
-<!-- Schema.org Structured Data - LocalBusiness -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -54,7 +54,7 @@
   "priceRange": "150-1500 PLN"
 }
 </script>
-<!-- Schema.org Service -->
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,7 +97,7 @@
   }
 }
 </script>
-<!-- Google tag (gtag.js) -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KY5TW5HJJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -115,12 +115,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 html{width:100%;height:auto;overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable;}
-/* Custom scrollbar styling - Tiffany Blue */
+
 html::-webkit-scrollbar{width:12px;}
 html::-webkit-scrollbar-track{background:#0b0b0b;}
 html::-webkit-scrollbar-thumb{background:#81d8d0;border-radius:6px;}
 html::-webkit-scrollbar-thumb:hover{background:#a3e9e5;box-shadow:0 0 6px rgba(129,216,208,0.5);}
-/* Firefox scrollbar */
+
 html{scrollbar-color:#81d8d0 #0b0b0b;scrollbar-width:thin;}
 body{width:100%;min-height:100vh;background:linear-gradient(135deg,#0b0b0b,#1a1a1a);color:#fff;overflow-x:hidden;overflow-y:hidden;padding-top:0;margin-top:0;}
 body.menu-open{overflow:hidden;}
@@ -246,10 +246,10 @@ body.mobile-menu-open{overflow:hidden;}
   color:var(--tiffany);
   background:rgba(129,216,208,.1);
 }
-/* Ulepszone sty dla dropdown menu - lepsze działanie na mobilnych */
+
 .nav-center li{position:relative;z-index:1001;}
 
-/* Dla bardzo dużych ekranów */
+
 @media(min-width:1440px){
 section{padding:100px 40px;}
 .hero{padding:200px 40px 160px;}
@@ -284,7 +284,7 @@ nav{padding:12px 12px;}
 .header-icons a{font-size:1rem;}
 }
 
-/* VIDEO BACKGROUND */
+
 .video-background{
   position:fixed;
   top:0;
@@ -402,7 +402,7 @@ h2{text-align:center;color:var(--tiffany);font-size:3rem;margin-bottom:60px;font
 .pricing-list li:last-child{border-bottom:none;}
 .pricing-list span{color:var(--tiffany);font-weight:bold;}
 
-/* PRICING SECTION MOBILE OPTIMIZATION */
+
 .pricing-section{transition:all 0.3s ease;}
 .pricing-section h2{margin-bottom:50px;}
 @media(max-width:1024px){
@@ -514,7 +514,7 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .reveal{opacity:0;transform:translateY(80px);transition:opacity 1s ease, transform 1s ease;}
 .reveal.active{opacity:1;transform:none;}
 
-/* PANEL CENNIKA FULLSCREEN */
+
 .pricing-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4999;pointer-events:none;}
 .pricing-modal-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .reservation-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4899;pointer-events:none;contain:layout style paint;}
@@ -556,7 +556,7 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-item-description{display:none;color:var(--muted);line-height:1.8;font-size:1rem;}
 .pricing-item-modal.expanded .pricing-item-description{display:block;}
 
-/* PRIVACY POLICY PANEL */
+
 .privacy-panel-overlay{position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(0,0,0,.8);opacity:0;visibility:hidden;transition:all 0.3s ease;z-index:4998;pointer-events:none;}
 .privacy-panel-overlay.active{opacity:1;visibility:visible;pointer-events:auto;}
 .privacy-panel{position:fixed;top:0;right:-100%;width:100%;max-width:600px;height:100vh;background:rgba(0,0,0,.95);overflow-y:auto;transition:right 0.5s ease-out;z-index:4999;display:flex;flex-direction:column;}
@@ -581,15 +581,15 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .pricing-item-modal{padding:16px;margin:0;}
 }
 @media(max-width:480px){
-.category-tabs{gap:7px;flex-wrap:wrap;flex-direction:row;margin-top:8px;}
-.category-tab{padding:11px 14px;font-size:0.85rem;white-space:normal;flex:0 1 auto;min-width:auto;line-height:1.25;border-radius:7px;}
-.pricing-item-modal{padding:14px;margin-bottom:7px;}
-.item-name{font-size:0.92rem;}
-.item-price{font-size:0.92rem;}
-.pricing-item-description{font-size:0.82rem;}
+.category-tabs{gap:6px;flex-wrap:nowrap;flex-direction:row;margin-top:8px;}
+.category-tab{padding:8px 6px;font-size:0.65rem;font-weight:700;white-space:nowrap;flex:1;min-width:0;line-height:1.2;border-radius:6px;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
+.pricing-item-modal{padding:12px;margin-bottom:6px;}
+.item-name{font-size:0.85rem;}
+.item-price{font-size:0.85rem;}
+.pricing-item-description{font-size:0.75rem;}
 }
 
-/* COOKIES BANNER */
+
 .cookies-banner{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.95);border-top:2px solid var(--tiffany);padding:20px;z-index:9999;max-height:85vh;overflow-y:auto;box-shadow:0 -2px 8px rgba(0,0,0,.3);}
 .cookies-container{max-width:1200px;margin:0 auto;margin-bottom:16px;}
 .cookies-tabs{display:flex;gap:12px;margin-bottom:16px;border-bottom:2px solid rgba(129,216,208,.2);flex-wrap:wrap;}
@@ -737,7 +737,7 @@ font-size:1rem;
 font-size:1rem;
 }
 }
-/* FIX MOBILNE MENU */
+
 @media(max-width:980px){
   .nav-center a {
     color: #fff !important;
@@ -754,7 +754,7 @@ font-size:1rem;
     z-index: 3001;
   }
 }
-/* ===== KONTAKT – TŁO ZDJĘCIE ===== */
+
 .contact-bg{
   position: relative;
   background: url("fela.jpg") center / cover no-repeat;
@@ -768,7 +768,7 @@ font-size:1rem;
   box-sizing: border-box;
 }
 
-/* przyciemnienie dla czytelności */
+
 .contact-bg::before{
   content: "";
   position: absolute;
@@ -777,14 +777,14 @@ font-size:1rem;
   z-index: 0;
 }
 
-/* wszystko nad overlay */
+
 .contact-bg > *{
   position: relative;
   z-index: 1;
 }
 @media (max-width: 980px) {
 
-  /* Menu wrapper ma zawsze pointer-events auto żeby był klikowalny */
+  
   .nav-wrapper {
     transition: transform 0.4s ease;
     top: 0;
@@ -794,7 +794,7 @@ font-size:1rem;
     justify-content: flex-start;
   }
 
-  /* Ikony social na samym dole */
+  
   .header-icons {
     margin-top: auto;
     padding: 30px 20px;
@@ -803,7 +803,7 @@ font-size:1rem;
     border-top: 1px solid rgba(129,216,208,0.15);
   }
 
-  /* Linki w menu muszą być na 100% szerokości */
+  
   .nav-center li a,
   .dropdown-toggle,
   .dropdown-menu a {
@@ -813,7 +813,7 @@ font-size:1rem;
   }
 }
 
-/* Preloader styles */
+
 #preloader{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,.18));backdrop-filter: blur(6px);pointer-events:none;transition:opacity .45s ease,visibility .45s}
 #preloader[aria-hidden='true']{opacity:0;visibility:hidden;pointer-events:none;display:none;}
 .preloader-logo{position:relative;width:120px;height:120px;border-radius:24px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(129,216,208,.03));box-shadow:0 18px 60px rgba(0,0,0,.45);z-index:3;overflow:hidden;margin-bottom:14px}
@@ -836,11 +836,11 @@ font-size:1rem;
   .logo-shine{display:none}
 }
 
-/* PARTICLES CONTAINER */
+
 .particles-container{position:fixed;top:0;left:0;width:100%;height:100vh;z-index:-1;pointer-events:none;overflow:hidden;}
 .particle{position:absolute;width:4px;height:4px;background:rgba(129,216,208,0.5);border-radius:50%;pointer-events:none;}
 
-/* FAQ PANEL STYLES */
+
 .faq-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:9900;display:none;opacity:0;transition:opacity 0.3s ease;}
 .faq-modal-overlay.active{display:block;opacity:1;}
   .faq-modal{position:fixed;bottom:0;left:0;right:0;width:100%;max-height:92vh;background:linear-gradient(180deg,#0b0b0b 0%,#0a0a0a 100%);border-top:2px solid var(--tiffany);z-index:9999;display:none;flex-direction:column;overflow:hidden;border-radius:24px 24px 0 0;box-shadow:0 -8px 32px rgba(129,216,208,0.2);animation:slideUpFaq 0.4s cubic-bezier(0.34,1.56,0.64,1);} 
@@ -872,7 +872,7 @@ font-size:1rem;
 </head>
 <body>
 
-<!-- PARTICLES BACKGROUND -->
+
 <div class="particles-container" id="particlesContainer">
   <div class="particle"></div>
   <div class="particle"></div>
@@ -891,7 +891,7 @@ font-size:1rem;
   <div class="particle"></div>
 </div>
 
-<!-- Preloader -->
+
 <div id="preloader" aria-hidden="false" role="status" aria-live="polite">
   <div class="preloader-logo" aria-hidden="true">
     <img src="logo.png" alt="Gloss Point" />
@@ -906,7 +906,7 @@ font-size:1rem;
   <div class="sr-announce" aria-live="polite" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Ładowanie strony</div>
 </div>
 
-<!-- COOKIES BANNER -->
+
 <div class="cookies-banner" id="cookiesBanner">
   <div class="cookies-container">
     <div class="cookies-tabs">
@@ -979,7 +979,7 @@ font-size:1rem;
 
 <div class="pricing-modal-overlay" id="pricingModalOverlay"></div>
 
-<!-- FULLSCREEN MODAL CENNIKA -->
+
 <div class="pricing-modal" id="pricingModal">
 <div class="modal-header">
 <h1 id="modalTitle">Cennik usług</h1>
@@ -995,7 +995,7 @@ font-size:1rem;
 </div>
 </div>
 
-<!-- FULLSCREEN MODAL REZERWACJI -->
+
 <div class="reservation-modal-overlay" id="reservationModalOverlay"></div>
 <div class="reservation-modal" id="reservationModal">
 <div class="modal-header">
@@ -1003,7 +1003,7 @@ font-size:1rem;
 </div>
 <div class="modal-content">
 
-<!-- STRONA 1: WYBÓR USŁUGI -->
+
 <div id="reservationPage1" class="reservation-page">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;">
 <h2 style="color:var(--tiffany);margin:0;flex:1;">Wybierz usługę</h2>
@@ -1012,7 +1012,7 @@ font-size:1rem;
 <div class="services-list" id="reservationServicesList"></div>
 </div>
 
-<!-- STRONA 2: WYBÓR DNIA (KALENDARZ) -->
+
 <div id="reservationPage2" class="reservation-page" style="display:none;">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;">
 <button onclick="goBackReservation()" style="background:none;border:none;color:var(--tiffany);cursor:pointer;font-size:24px;">← Wróć</button>
@@ -1036,7 +1036,7 @@ font-size:1rem;
 <button onclick="confirmDate()" id="confirmDateBtn" style="width:100%;margin-top:20px;padding:14px;background:var(--tiffany);color:#0b0b0b;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;display:none;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Dalej - Wybierz godzinę</button>
 </div>
 
-<!-- STRONA 3: WYBÓR GODZINY -->
+
 <div id="reservationPage3" class="reservation-page" style="display:none;">
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:30px;">
 <button onclick="backToCalendar()" style="background:none;border:none;color:var(--tiffany);cursor:pointer;font-size:24px;">← Wróć</button>
@@ -1048,7 +1048,7 @@ font-size:1rem;
 <button onclick="confirmTime()" id="confirmTimeBtn" style="width:100%;padding:14px;background:var(--tiffany);color:#0b0b0b;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;display:none;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">Dalej - Uzupełnij dane</button>
 </div>
 
-<!-- STRONA 4: FORMULARZ REZERWACJI -->
+
 <div id="reservationPage4" class="reservation-page" style="display:none;">
 <h2 style="text-align:center;margin-bottom:30px;color:var(--tiffany);">Potwierdź rezerwację</h2>
 <div id="selectedServiceInfo" style="background:rgba(129,216,208,.1);padding:20px;border-radius:12px;margin-bottom:30px;border-left:4px solid var(--tiffany);">
@@ -1160,10 +1160,10 @@ font-size:1rem;
 </nav>
 </header>
 
-<!-- FAQ MODAL OVERLAY -->
+
 <div class="faq-modal-overlay" id="faqModalOverlay"></div>
 
-<!-- FAQ PANEL -->
+
 <div class="faq-modal" id="faqModal">
   <div class="faq-header">
     <h2>Często Zadawane Pytania</h2>
@@ -1262,7 +1262,7 @@ font-size:1rem;
   </div>
 </div>
 
-<!-- Mobile Menu - poza headerem -->
+
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-menu-close" onclick="closeMobileMenu()">&times;</button>
   <a href="#onas" class="mobile-menu-link">O nas</a>
@@ -1286,7 +1286,7 @@ font-size:1rem;
 </div>
 </header>
 
-<!-- BACKGROUND VIDEO -->
+
 <div class="video-background" id="videoBg">
   <video class="bg-video" muted loop playsinline preload="none">
     <source src="1223.mp4" type="video/mp4">
@@ -1388,7 +1388,7 @@ font-size:1rem;
 </div>
 </section>
 
-<!-- PRIVACY POLICY PANEL -->
+
 <div class="privacy-panel-overlay" id="privacyPanelOverlay"></div>
 <div class="privacy-panel" id="privacyPanel">
 <div class="privacy-panel-header">
@@ -1517,7 +1517,7 @@ Kontynuacja korzystania oznacza akceptację zmian.</p>
 </div>
 
 <script>
-// ------------------- CENNIK KATEGORYZOWANY -------------------
+
 const pricingData = {
   mycie: {
     title: 'Mycie i sprzątanie',
@@ -1687,9 +1687,8 @@ const pricingData = {
   }
 };
 
-// ------------------- MODAL CENNIK -------------------
 function openPricingModal(category) {
-  // Google Analytics tracking
+
   gtag('event', 'service_clicked', {
     'service_category': category,
     'event_label': 'Usługi - ' + category
@@ -1704,8 +1703,7 @@ function openPricingModal(category) {
     console.error('Modal elements not found');
     return;
   }
-  
-  // Zamknij rezerwację jeśli jest otwarta
+
   if (reservationModal && reservationModal.classList.contains('active')) {
     reservationModal.classList.remove('active');
     reservationModalOverlay.classList.remove('active');
@@ -1721,13 +1719,11 @@ function openPricingModal(category) {
 
   document.getElementById('modalTitle').textContent = data.title;
 
-  // Kategorie
   const categoriesHtml = data.categories.map((cat, index) => 
     `<button class="category-tab ${index === 0 ? 'active' : ''}" onclick="filterByCategory(this, '${cat}')" data-category="${cat}">${cat}</button>`
   ).join('');
   document.getElementById('categoryTabs').innerHTML = categoriesHtml;
 
-  // Elementy cennika
   const itemsHtml = Object.entries(data.items).map(([name, item]) => {
     const pricesHtml = Object.entries(item.prices).map(([cat, price]) =>
       `<div class="category-price" data-category="${cat}" style="display: none;"><strong>${cat}:</strong> ${price}</div>`
@@ -1748,7 +1744,6 @@ function openPricingModal(category) {
   }).join('');
   document.getElementById('pricingListModal').innerHTML = itemsHtml;
 
-  // Pokaż pierwszą kategorię
   showCategory(data.categories[0]);
 
   console.log('Adding active class to modals');
@@ -1756,11 +1751,9 @@ function openPricingModal(category) {
   pricingModalOverlay.classList.add('active');
   console.log('Modal classes:', pricingModal.className, pricingModalOverlay.className);
   document.body.style.overflow = 'hidden';
-  
-  // Scroll do górki modalu
+
   pricingModal.scrollTop = 0;
-  
-  // Upewnij się że modal jest widoczny
+
   setTimeout(() => {
     pricingModal.scrollTop = 0;
   }, 100);
@@ -1813,7 +1806,6 @@ function closePricingModal() {
   document.body.style.overflow = '';
 }
 
-// ------------------- PRIVACY PANEL FUNCTIONS -------------------
 function openPrivacyPanel() {
   const privacyPanel = document.getElementById('privacyPanel');
   const privacyPanelOverlay = document.getElementById('privacyPanelOverlay');
@@ -1836,35 +1828,31 @@ function closePrivacyPanel() {
   document.body.style.overflow = '';
 }
 
-// Exports do global scope (dla onclick w HTML)
-// ------------------- COOKIES FUNCTIONS -------------------
+
 function switchCookieTab(tabName) {
-  // Ukryj wszystkie tab'y
+
   const tabContents = document.querySelectorAll('.cookies-tab-content');
   tabContents.forEach(tab => tab.classList.remove('active'));
-  
-  // Usuń active z przycisków
+
   const tabButtons = document.querySelectorAll('.cookies-tab');
   tabButtons.forEach(btn => btn.classList.remove('active'));
-  
-  // Pokaż wybrany tab
+
   const selectedTab = document.getElementById('tab-' + tabName);
   if (selectedTab) {
     selectedTab.classList.add('active');
   }
-  
-  // Ustaw active button
+
   event.target.classList.add('active');
 }
 
 function rejectCookies() {
-  // Odrzuć wszystkie cookies
+
   localStorage.setItem('cookiesConsent', 'rejected');
   hideCookiesBanner();
 }
 
 function acceptAllCookies() {
-  // Zaakceptuj wszystkie cookies
+
   localStorage.setItem('cookiesConsent', 'all');
   localStorage.setItem('analyticalCookies', 'true');
   localStorage.setItem('marketingCookies', 'true');
@@ -1880,12 +1868,11 @@ function hideCookiesBanner() {
 
 function initCookiesBanner() {
   const consent = localStorage.getItem('cookiesConsent');
-  
-  // Jeśli użytkownik już dokonał wyboru, ukryj banner
+
   if (consent) {
     hideCookiesBanner();
   } else {
-    // Banner jest domyślnie widoczny
+
     const banner = document.getElementById('cookiesBanner');
     if (banner) {
       banner.classList.remove('hidden');
@@ -1903,13 +1890,12 @@ window.acceptAllCookies = acceptAllCookies;
 window.filterByCategory = filterByCategory;
 window.toggleExpand = toggleExpand;
 
-// =============== INICJALIZACJA NA DOMContentLoaded ===============
 document.addEventListener('DOMContentLoaded', () => {
-  // ------------------- LOGO CLICK TO TOP -------------------
+
   const logo = document.querySelector('.logo');
   if (logo) {
     logo.addEventListener('click', () => {
-      // Zamknij cennik jeśli jest otwarty
+
       const pricingModal = document.getElementById('pricingModal');
       const pricingModalOverlay = document.getElementById('pricingModalOverlay');
       if (pricingModal && pricingModal.classList.contains('active')) {
@@ -1917,18 +1903,18 @@ document.addEventListener('DOMContentLoaded', () => {
         pricingModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
       }
-      // Zamknij rozwijane menu Cennik (dropdown) jeśli otwarte
+
       const cennikToggle = document.getElementById('cennikToggle');
       const cennikMenu = document.getElementById('cennikMenu');
       if (cennikToggle) cennikToggle.classList.remove('active');
       if (cennikMenu) cennikMenu.classList.remove('active');
-      // Zamknij rezerwację jeśli jest otwarta
+
       if (reservationModal && reservationModal.classList.contains('active')) {
         closeReservationModal();
       }
-      // Zamknij politykę prywatności jeśli jest otwarta
+
       closePrivacyPanel();
-      // Zamknij FAQ jeśli otwarte
+
       if (typeof closeFaqModal === 'function') closeFaqModal();
       window.scrollTo({
         top: 0,
@@ -1937,7 +1923,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ------------------- HAMBURGER MENU -------------------
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
@@ -1945,17 +1930,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const cennikMobileMenu = document.getElementById('cennikMobileMenu');
   const mobileMenuDropdownItems = document.querySelectorAll('.mobile-menu-dropdown-item');
 
-  // Funkcja do zamknięcia mobile menu
   window.closeMobileMenu = function() {
     if (hamburger) hamburger.classList.remove('active');
     if (mobileMenu) mobileMenu.classList.remove('active');
     document.body.classList.remove('mobile-menu-open');
   };
 
-  // Toggle hamburger menu
   if (hamburger) {
     hamburger.addEventListener('click', () => {
-      // Na telefonie - zamknij cennik jeśli jest otwarty
+
       const pricingModal = document.getElementById('pricingModal');
       const pricingModalOverlay = document.getElementById('pricingModalOverlay');
       if (pricingModal && pricingModal.classList.contains('active')) {
@@ -1963,7 +1946,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pricingModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
       }
-      // Zamknij FAQ jeśli jest otwarte
+
       closeFaqModal();
       hamburger.classList.toggle('active');
       mobileMenu.classList.toggle('active');
@@ -1971,13 +1954,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close menu on link click
   mobileMenuLinks.forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
       mobileMenu.classList.remove('active');
       document.body.classList.remove('mobile-menu-open');
-      // Zamknij modalne okna
+
       const pricingModal = document.getElementById('pricingModal');
       const pricingModalOverlay = document.getElementById('pricingModalOverlay');
       const reservationModal = document.getElementById('reservationModal');
@@ -1992,26 +1974,24 @@ document.addEventListener('DOMContentLoaded', () => {
         reservationModalOverlay.classList.remove('active');
         document.body.style.overflow = '';
       }
-      // Zamknij politykę prywatności
+
       closePrivacyPanel();
-      // Zamknij FAQ
+
       closeFaqModal();
     });
   });
 
-  // Toggle Cennik dropdown in mobile menu
   if (cennikMobileToggle) {
     cennikMobileToggle.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      // Zamknij FAQ jeśli jest otwarte
+
       closeFaqModal();
       cennikMobileToggle.classList.toggle('active');
       cennikMobileMenu.classList.toggle('active');
     });
   }
 
-  // Mobile FAQ link handler
   const mobileFaqLink = document.querySelector('.mobile-menu-link[onclick*="openFaqModal"]');
   if (mobileFaqLink) {
     mobileFaqLink.addEventListener('click', (e) => {
@@ -2023,7 +2003,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close menu on dropdown item click
   mobileMenuDropdownItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
@@ -2033,17 +2012,12 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.remove('active');
       mobileMenu.classList.remove('active');
       document.body.classList.remove('mobile-menu-open');
-      // Zamknij politykę prywatności
+
       closePrivacyPanel();
     });
   });
 
 
-
-
-
-  // ------------------- CLOSE MODALS ON NAV CLICK -------------------
-  // Zamknij modalne okna przy klikaniu na linki nawigacyjne
   const closeAllModals = () => {
     const pricingModal = document.getElementById('pricingModal');
     const pricingModalOverlay = document.getElementById('pricingModalOverlay');
@@ -2061,8 +2035,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.style.overflow = '';
     }
   };
-  
-  // Dodaj event listenery dla linków w nav-center
+
   const navLinks = document.querySelectorAll('.nav-center a[href*="#"]');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -2070,7 +2043,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ------------------- MODAL CENNIK LISTENERS -------------------
   const modalClose = document.getElementById('modalClose');
   const pricingModalOverlay = document.getElementById('pricingModalOverlay');
   
@@ -2084,7 +2056,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closePricingModal();
   });
 
-  // ------------------- PRIVACY PANEL LISTENERS -------------------
   const privacyClose = document.getElementById('privacyClose');
   const privacyPanelOverlay = document.getElementById('privacyPanelOverlay');
   
@@ -2097,16 +2068,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closePrivacyPanel();
   });
-  
-  // ------------------- COOKIES BANNER INIT -------------------
+
   initCookiesBanner();
-  
-  // ------------------- DROPDOWN CENNIK -------------------
-  // Kod moved to end of script for better compatibility
+
+
 
 });
 
-// ------------------- SLIDER REALIZACJI INFINITE FLOW -------------------
 let allImages = [
   'realizacja.jpeg',
   'realizacja1.jpeg',
@@ -2119,7 +2087,7 @@ let currentIndex = 0;
 let isAnimating = false;
 
 function updateSliderImages() {
-  // Show 3 consecutive images: current-1, current, current+1
+
   const indices = [
     (currentIndex - 1 + allImages.length) % allImages.length,  // slide-0 (left)
     currentIndex,                                               // slide-1 (center)
@@ -2131,7 +2099,7 @@ function updateSliderImages() {
     if (slideEl) {
       const img = slideEl.querySelector('img');
       img.style.opacity = '0';
-      // Faster image switching - 80ms instead of 250ms
+
       setTimeout(() => {
         img.src = allImages[indices[i]];
         img.style.opacity = '1';
@@ -2153,8 +2121,7 @@ function animateSlide() {
   
   currentIndex = (currentIndex + 1) % allImages.length;
   updateSliderImages();
-  
-  // Faster unlock - 500ms instead of 800ms
+
   setTimeout(() => {
     isAnimating = false;
   }, 500);
@@ -2166,7 +2133,6 @@ preloadCarouselImages();
 
 updateSliderImages();
 
-// ------------------- PRZED/PO -------------------
 const after = document.querySelector('.ba-after');
 const handle = document.querySelector('.ba-handle');
 const baBox = document.getElementById('ba-box');
@@ -2189,9 +2155,9 @@ if (handle && baBox) {
 
   function drag(e) {
     if (!isDragging) return;
-    // Tylko dla touch events gdy to nie jest zwykłe scrollowanie
+
     if (e.type.includes('touch') && e.touches.length === 1) {
-      // Nie blokujemy defaultu, pozwalamy na scroll
+
     }
     const rect = baBox.getBoundingClientRect();
     const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left;
@@ -2213,13 +2179,11 @@ if (handle && baBox) {
   }
 }
 
-// ------------------- REVEAL -------------------
 let revealTimeout;
 function reveal() {
-  // Usunięte - używamy Intersection Observer zamiast tego
+
 }
 
-// ------------------- LICZNIKI -------------------
 let statsAnimated = false;
 function animateCount(el, end) {
   if (!el) return;
@@ -2233,11 +2197,10 @@ function animateCount(el, end) {
   }, stepTime);
 }
 
-// ------------------- OPTIMIZED SCROLL HANDLER -------------------
-// Odłóż setup Intersection Observers aby nie blokować scroll przy ładowaniu
+
 if ('IntersectionObserver' in window) {
   requestAnimationFrame(() => {
-    // Setup Intersection Observer dla reveal animations
+
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -2253,7 +2216,6 @@ if ('IntersectionObserver' in window) {
       revealObserver.observe(el);
     });
 
-    // Setup Intersection Observer dla video background
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const videoBg = document.getElementById('videoBg');
@@ -2263,12 +2225,12 @@ if ('IntersectionObserver' in window) {
         if (entry.isIntersecting) {
           videoBg.style.opacity = '1';
           videoBg.style.visibility = 'visible';
-          // Uruchom playback video gdy jest widoczny
+
           videoEl.play().catch(err => console.log('Video autoplay blocked:', err));
         } else {
           videoBg.style.opacity = '0';
           videoBg.style.visibility = 'hidden';
-          // Pause video gdy nie jest widoczny
+
           videoEl.pause();
         }
       });
@@ -2282,7 +2244,6 @@ if ('IntersectionObserver' in window) {
       videoObserver.observe(heroSection);
     }
 
-    // Intersection Observer dla liczników
     let statsAnimated = false;
     const statsObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2306,14 +2267,12 @@ if ('IntersectionObserver' in window) {
   });
 }
 
-// ------------------- MODAL REZERWACJI -------------------
 const reservationModal = document.getElementById('reservationModal');
 const reservationModalOverlay = document.getElementById('reservationModalOverlay');
 const reservationClose = document.getElementById('reservationClose');
 const reservationForm = document.getElementById('reservationForm');
 let selectedService = null;
 
-// Lista usług do rezerwacji
 const reservationServices = [
   { id: 'mycie', name: 'Bieżące mycie', price: 'od 130 zł', description: 'Profesjonalne mycie pojazdu', duration: 1 },
   { id: 'sprzatanie', name: 'Sprzątanie wnętrza', price: 'od 1000 zł', description: 'Głębokie czyszczenie wnętrza', duration: 1 },
@@ -2325,14 +2284,12 @@ function openReservationModal() {
   const reservationModalOverlay = document.getElementById('reservationModalOverlay');
   const pricingModal = document.getElementById('pricingModal');
   const pricingModalOverlay = document.getElementById('pricingModalOverlay');
-  
-  // Zamknij cennik jeśli jest otwarty
+
   if (pricingModal && pricingModal.classList.contains('active')) {
     pricingModal.classList.remove('active');
     pricingModalOverlay.classList.remove('active');
   }
-  
-  // Wygeneruj listę usług
+
   const servicesList = document.getElementById('reservationServicesList');
   servicesList.innerHTML = reservationServices.map(service => `
     <div class="service-item" onclick="selectService('${service.id}', '${service.name}', '${service.price}', ${service.duration})">
@@ -2357,8 +2314,7 @@ function selectService(id, name, price, duration) {
   selectedService = { id, name, price, duration };
   document.getElementById('selectedServiceName').textContent = name;
   document.getElementById('selectedServicePrice').textContent = price;
-  
-  // Inicjalizuj kalendarz
+
   currentMonth = new Date();
   renderCalendar();
   
@@ -2387,12 +2343,10 @@ function closeReservationModal() {
   goBackReservation();
 }
 
-// Reserved
 
 reservationClose.addEventListener('click', closeReservationModal);
 reservationModalOverlay.addEventListener('click', closeReservationModal);
 
-// ------------------- NOWY SYSTEM REZERWACJI Z KALENDARZEM -------------------
 let selectedDate = null; // YYYY-MM-DD
 let selectedTime = null; // HH:MM
 let currentMonth = new Date();
@@ -2400,8 +2354,7 @@ let currentMonth = new Date();
 function renderCalendar() {
   const year = currentMonth.getFullYear();
   const month = currentMonth.getMonth();
-  
-  // Ustaw tytuł
+
   document.getElementById('monthYear').textContent = currentMonth.toLocaleDateString('pl-PL', { 
     month: 'long', 
     year: 'numeric' 
@@ -2409,12 +2362,10 @@ function renderCalendar() {
     month: 'long', 
     year: 'numeric' 
   }).slice(1);
-  
-  // Przygotuj grid
+
   const grid = document.getElementById('calendarGrid');
   grid.innerHTML = '';
-  
-  // Dni tygodnia (po-nie)
+
   const daysHeader = ['Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'So', 'Nd'];
   daysHeader.forEach(day => {
     const dayEl = document.createElement('div');
@@ -2422,26 +2373,22 @@ function renderCalendar() {
     dayEl.style.cssText = 'color:#81d8d0;font-weight:bold;text-align:center;padding:8px;';
     grid.appendChild(dayEl);
   });
-  
-  // Pierwsze dla miesiąca (0=pon, 6=nie)
+
   const firstDay = (new Date(year, month, 1).getDay() + 6) % 7; // Shift żeby poniedziałek = 0
-  
-  // Liczba dni w miesiącu
+
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
-  // Puste pola przed pierwszym dniem
+
   for (let i = 0; i < firstDay; i++) {
     const emptyEl = document.createElement('div');
     grid.appendChild(emptyEl);
   }
-  
-  // Dni miesiąca
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   
   for (let day = 1; day <= daysInMonth; day++) {
     const date = new Date(year, month, day);
-    // Format lokalny YYYY-MM-DD (bez UTC shift)
+
     const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
     
     const dayEl = document.createElement('button');
@@ -2450,8 +2397,7 @@ function renderCalendar() {
       padding:10px;border:2px solid rgba(129,216,208,.2);border-radius:6px;background:rgba(255,255,255,.05);color:#fff;
       cursor:pointer;transition:.2s;font-weight:600;
     `;
-    
-    // Disable dni w przeszłości, niedziele i soboty
+
     const dayOfWeek = date.getDay();
     const isSunday = dayOfWeek === 0;
     const isSaturday = dayOfWeek === 6;
@@ -2461,7 +2407,7 @@ function renderCalendar() {
       dayEl.style.cursor = 'not-allowed';
       dayEl.disabled = true;
     } else if (isSaturday) {
-      // Sobota: dostępna ale informacja dla użytkownika
+
       dayEl.style.borderColor = 'rgba(255,195,0,.5)';
     }
     
@@ -2512,8 +2458,7 @@ function confirmDate() {
     showNotification('Wybierz datę', 'error');
     return;
   }
-  
-  // Renderuj godziny
+
   renderHours();
   
   document.getElementById('reservationPage2').style.display = 'none';
@@ -2541,16 +2486,13 @@ function renderHours() {
   
   const hoursGrid = document.getElementById('hoursGrid');
   hoursGrid.innerHTML = '';
-  
-  // Sprawdź czy to sobota
+
   const dayOfWeek = dateObj.getDay();
   const isSaturday = dayOfWeek === 6;
-  
-  // Dla soboty tylko 9:00-12:00, dla innych dni 9:00-16:00
+
   const hours = isSaturday ? ['09:00', '10:00', '11:00', '12:00'] : ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'];
   const duration = selectedService.duration || 1;
-  
-  // Sprawdź czy wybrana data to dzisiaj
+
   const today = new Date();
   const isToday = selectedDate === `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   const currentHour = today.getHours();
@@ -2605,8 +2547,7 @@ function confirmTime() {
     alert('Wybierz godzinę');
     return;
   }
-  
-  // Pokaż stronę 4 (formularz)
+
   const dateObj = new Date(selectedDate + 'T00:00');
   const dateFormatted = dateObj.toLocaleDateString('pl-PL', {
     weekday: 'long',
@@ -2643,61 +2584,22 @@ function closeReservationModal() {
   goBackReservation();
 }
 
-/*
-╔═══════════════════════════════════════════════════════════════════════════════╗
-║                 GOOGLE CALENDAR INTEGRATION - INSTRUKCJA SETUP                ║
-╠═══════════════════════════════════════════════════════════════════════════════╣
-║                                                                               ║
-║ Aby zintegrować Google Calendar, wykonaj następujące kroki:                  ║
-║                                                                               ║
-║ 1. OTWÓRZ GOOGLE APPS SCRIPT:                                                ║
-║    - Idź do: https://script.google.com/home                                  ║
-║    - Otwórz swój projekt Apps Script z URL powyżej                           ║
-║                                                                               ║
-║ 2. ZAKTUALIZUJ GOOGLE APPS SCRIPT KOD (editor.gs):                           ║
-║    Zastąp funkcję doPost() i dodaj funkcję createCalendarEvent()             ║
-║    Patrz plik: GOOGLE_APPS_SCRIPT_CODE.js (poniżej)                         ║
-║                                                                               ║
-║ 3. POŁĄCZ GOOGLE CALENDAR:                                                   ║
-║    - W Apps Script: Services (+) → Google Calendar API                       ║
-║    - Włącz Google Calendar API w Google Cloud                                ║
-║                                                                               ║
-║ 4. USTAW ID KALENDARZA:                                                      ║
-║    - Otwórz Google Calendar → Ustawienia kalendarza                          ║
-║    - Skopiuj ID kalendarza (np: xxxxx@group.calendar.google.com)            ║
-║    - Wstaw do CALENDAR_ID w Apps Script                                      ║
-║                                                                               ║
-║ 5. REDEPLOY GOOGLE APPS SCRIPT:                                              ║
-║    - Kliknij "Deploy" (nowa wersja)                                          ║
-║    - Skopiuj nowy URL i zastąp GOOGLE_SCRIPT_URL poniżej                    ║
-║                                                                               ║
-║ REZULTAT:                                                                     ║
-║ - Rezerwacje będą automatycznie dodawane do Google Calendar                  ║
-║ - Godziny będą automatycznie blokowane w systemie                            ║
-║ - Klienci otrzymają email z potwierdzeniem                                   ║
-║                                                                               ║
-╚═══════════════════════════════════════════════════════════════════════════════╝
-*/
-
-// Inicjalizuj Google Apps Script
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWfPgI3V_uGn0NL13GNT5hk1_CszphE9uscI76A7uMEYAG8dvHJdkn8RcY7HYOWjXQ/exec'; // Zastąp pełnym URL z Google Apps Script
 
-// Funkcja do pobierania zablokowanych czasów z lokalnego magazynu
-// W przyszłości można będzie poszerzyć o Google Calendar API
+
 async function loadBlockedTimes(date) {
-  // Obecnie używamy localStorage
-  // Aby zintegrować Google Calendar:
-  // 1. Ustaw Google Calendar API w Google Cloud
-  // 2. Uwierzytelnij aplikację
-  // 3. Pobierz eventy z kalendarza na wybraną datę
-  // 4. Zapisz je w localStorage
+
+
+
+
+
+
   return true;
 }
 
-// Funkcja sprawdzająca czy godzina jest zablokowana (wraz z czasem trwania usługi)
 function isTimeBlocked(date, time, duration = 1) {
   const [hours] = time.split(':').map(Number);
-  // Sprawdź czy jakikolwiek czas w zakresie jest zablokowany
+
   for (let i = 0; i < duration; i++) {
     const currentHour = hours + i;
     const blockedKey = `blocked_${date}_${currentHour}:00`;
@@ -2708,10 +2610,9 @@ function isTimeBlocked(date, time, duration = 1) {
   return false;
 }
 
-// Funkcja blokująca wszystkie godziny zajęte przez usługę
 function blockTime(date, time, duration = 1) {
   const [hours] = time.split(':').map(Number);
-  // Zablokuj wszystkie godziny zajęte przez usługę
+
   for (let i = 0; i < duration; i++) {
     const currentHour = hours + i;
     const blockedKey = `blocked_${date}_${currentHour}:00`;
@@ -2719,11 +2620,9 @@ function blockTime(date, time, duration = 1) {
   }
 }
 
-// Wysyłanie formularza
 reservationForm.addEventListener('submit', async (e) => {
   e.preventDefault();
-  
-  // Pobierz dane z formularza
+
   const inputs = reservationForm.querySelectorAll('input, textarea');
   const name = inputs[0].value;
   const phone = inputs[1].value;
@@ -2732,45 +2631,38 @@ reservationForm.addEventListener('submit', async (e) => {
   const carModel = inputs[4].value;
   const carYear = inputs[5].value;
   const message = inputs[6].value;
-  
-  // Użyj wybranych daty i godziny z kalendarza
+
   const date = selectedDate;
   const time = selectedTime;
-  
-  // Sprawdź czy wszystko jest zaznaczone
+
   if (!date || !time) {
     showNotification('Wybierz datę i godzinę', 'error');
     return;
   }
-  
-  // Sprawdź czy wymagana zgoda na regulamin i politykę prywatności jest zaznaczona
+
   const consentTerms = document.getElementById('consentTerms');
   if (!consentTerms.checked) {
     showNotification('Musisz zaakceptować Regulamin rezerwacji i Politykę prywatności aby kontynuować', 'error');
     consentTerms.focus();
     return;
   }
-  
-  // Zapisz preferencje marketingowe
+
   const consentMarketing = document.getElementById('consentMarketing');
   const marketingConsent = consentMarketing.checked;
   localStorage.setItem('marketingConsent', marketingConsent);
-  
-  // Sprawdź czy godzina jest zablokowana (wraz z czasem trwania usługi)
+
   const duration = selectedService.duration || 1;
   if (isTimeBlocked(date, time, duration)) {
     showNotification('Ta godzina jest już zarezerwowana. Wybierz inną godzinę.', 'error');
     return;
   }
-  
-  // Sprawdź czy czas jest w zakresie 9:00-17:00
+
   const [hours] = time.split(':').map(Number);
   if (hours < 9 || hours >= 17) {
     alert('Rezerwacje możliwe tylko w godzinach 9:00 - 17:00');
     return;
   }
-  
-  // Formatuj datę
+
   const dateObj = new Date(date + 'T00:00');
   const dateFormatted = dateObj.toLocaleDateString('pl-PL', { 
     weekday: 'long', 
@@ -2778,8 +2670,7 @@ reservationForm.addEventListener('submit', async (e) => {
     month: 'long', 
     day: 'numeric' 
   });
-  
-  // Dane do wysłania emaila i kalendarza
+
   const reservationData = {
     client_name: name,
     client_phone: phone,
@@ -2798,13 +2689,12 @@ reservationForm.addEventListener('submit', async (e) => {
   };
   
   try {
-    // Pokaż loading
+
     const submitBtn = reservationForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Wysyłanie...';
     submitBtn.disabled = true;
-    
-    // Wyślij do Google Apps Script
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       body: JSON.stringify(reservationData)
@@ -2813,17 +2703,14 @@ reservationForm.addEventListener('submit', async (e) => {
     const result = await response.json();
     
     if (result.status === 'success') {
-      // Zablokuj wszystkie godziny zajęte przez usługę
+
       const duration = selectedService.duration || 1;
       blockTime(date, time, duration);
-      
-      // Pokaż ładny komunikat sukcesu
+
       showReservationSuccess(name, selectedService.name, dateFormatted, time, email);
-      
-      // Zamknij modal
+
       closeReservationModal();
-      
-      // Resetuj formularz
+
       reservationForm.reset();
     } else {
       throw new Error(result.message);
@@ -2837,38 +2724,33 @@ reservationForm.addEventListener('submit', async (e) => {
   }
 });
 
-// Zamknij modal na Escape
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && reservationModal.classList.contains('active')) {
     closeReservationModal();
   }
 });
 
-// ===== SYSTEM PŁATNOŚCI PRZELEWY24 =====
 function selectPaymentMethod() {
-  // Pobierz dane z formularza
+
   const inputs = reservationForm.querySelectorAll('input, textarea');
   const name = inputs[0].value;
   const phone = inputs[1].value;
   const email = inputs[2].value;
   const carBrand = inputs[3].value;
   const carModel = inputs[4].value;
-  
-  // Sprawdzenia
+
   if (!name || !phone || !email) {
     showNotification('Uzupełnij imię, telefon i email aby kontynuować płatność', 'error');
     return;
   }
-  
-  // Sprawdź czy wymagana zgoda na regulamin i politykę prywatności jest zaznaczona
+
   const consentTerms = document.getElementById('consentTerms');
   if (!consentTerms.checked) {
     showNotification('Musisz zaakceptować Regulamin rezerwacji i Politykę prywatności aby kontynuować', 'error');
     consentTerms.focus();
     return;
   }
-  
-  // Zapisz preferencje marketingowe
+
   const consentMarketing = document.getElementById('consentMarketing');
   const marketingConsent = consentMarketing.checked;
   localStorage.setItem('marketingConsent', marketingConsent);
@@ -2877,13 +2759,11 @@ function selectPaymentMethod() {
     showNotification('Wybierz datę i godzinę', 'error');
     return;
   }
-  
-  // Przygotuj dane do płatności
+
   const amount = 2000; // 20 zł w groszach
   const orderId = `GLO-${Date.now()}`; // Unikalny ID zamówienia
   const description = `Zaliczka za ${selectedService.name} - ${carBrand} ${carModel}`;
-  
-  // Ustaw dane w sessionStorage żeby potem pobrać w Google Apps Script
+
   sessionStorage.setItem('paymentData', JSON.stringify({
     orderId: orderId,
     amount: amount,
@@ -2897,14 +2777,12 @@ function selectPaymentMethod() {
     reservationTime: selectedTime,
     description: description
   }));
-  
-  // Tutaj będzie integracja z Przelewy24
-  // Na razie wyświetlamy alert
+
+
   alert(`💳 Płatność Przelewy24 (struktura przygotowana)\n\nZaliczka: 20 zł\nUsługa: ${selectedService.name}\nData: ${selectedDate}\n\nStruktra gotowa pieniazki na konto se splyna `);
 }
 
-// Scroll do góry strony na ładowaniu
-// ========== SUWAK PRZED/PO ==========
+
 const beaImages = [
   { before: 'probka.jpg', after: 'probka1.jpg' },
   { before: 'przed8.jpg', after: 'po8.jpg' },
@@ -2926,16 +2804,13 @@ function updateBeaImages() {
   if (!beforeEl || !afterEl) return;
   
   const img = beaImages[beaIndex];
-  
-  // Fade out
+
   beforeEl.style.opacity = '0';
   afterEl.style.opacity = '0';
-  
-  // Change src immediately (images load in background)
+
   beforeEl.src = img.before;
   afterEl.src = img.after;
-  
-  // Fade in after a tiny delay
+
   setTimeout(() => {
     beforeEl.style.opacity = '1';
     afterEl.style.opacity = '1';
@@ -2944,7 +2819,7 @@ function updateBeaImages() {
 }
 
 function preloadBeaImages() {
-  // Preload all images to avoid loading lag on click
+
   beaImages.forEach(imgSet => {
     const before = new Image();
     const after = new Image();
@@ -2963,22 +2838,19 @@ function prevBeforeAfter() {
   updateBeaImages();
 }
 
-// Inicjalizuj przed/po slider w następnej frame aby nie blokować scroll
 requestAnimationFrame(() => {
   updateBeaImages();
-  // Preload all images in background for instant switching
+
   setTimeout(() => preloadBeaImages(), 500);
 });
 
-// =============== FAQ MODAL FUNCTIONS ===============
 window.openFaqModal = function() {
   const faqModal = document.getElementById('faqModal');
   const faqModalOverlay = document.getElementById('faqModalOverlay');
   const pricingModal = document.getElementById('pricingModal');
   const pricingModalOverlay = document.getElementById('pricingModalOverlay');
   const reservationModal = document.getElementById('reservationModal');
-  
-  // Zamknij inne modalne okna
+
   if (pricingModal && pricingModal.classList.contains('active')) {
     pricingModal.classList.remove('active');
     pricingModalOverlay.classList.remove('active');
@@ -2995,13 +2867,12 @@ window.openFaqModal = function() {
     document.html = document.documentElement;
     document.html.style.overflow = 'hidden';
     faqModal.scrollTop = 0;
-    
-    // Zapobiegaj propagacji scrollu do strony głównej (mouse wheel) - nasłuchuj na treści
+
     const content = faqModal.querySelector('.faq-content');
     if (content) {
       content.removeEventListener('wheel', preventScroll);
       content.addEventListener('wheel', preventScroll, { passive: false });
-      // Zapobiegaj propagacji scrollu do strony głównej (touch)
+
       content.lastTouchY = 0;
       content.removeEventListener('touchmove', preventTouchScroll);
       content.addEventListener('touchmove', preventTouchScroll, { passive: false });
@@ -3018,8 +2889,7 @@ window.closeFaqModal = function() {
     faqModalOverlay.classList.remove('active');
     document.body.style.overflow = '';
     document.documentElement.style.overflow = '';
-    
-    // Usuń event listeners z treści
+
     const content = faqModal.querySelector('.faq-content');
     if (content) {
       content.removeEventListener('wheel', preventScroll);
@@ -3028,7 +2898,6 @@ window.closeFaqModal = function() {
   }
 };
 
-// Funkcja do zapobiegania scroll propagacji
 function preventScroll(e) {
   const element = e.currentTarget;
   const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
@@ -3039,7 +2908,6 @@ function preventScroll(e) {
   }
 }
 
-// Funkcja do zapobiegania scroll propagacji na mobile (touch)
 function preventTouchScroll(e) {
   const element = e.currentTarget;
   const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
@@ -3063,7 +2931,6 @@ window.toggleFaqItem = function(element) {
   }
 };
 
-// FAQ Modal listeners - setup
 const faqToggle = document.getElementById('faqToggle');
 const faqModalOverlay = document.getElementById('faqModalOverlay');
 
@@ -3079,7 +2946,6 @@ if (faqModalOverlay) {
   faqModalOverlay.addEventListener('click', closeFaqModal);
 }
 
-// Zamknij FAQ po kliknięciu na linki w headerze
 const navLinksForFaq = document.querySelectorAll('.nav-center a[href*="#"]');
 navLinksForFaq.forEach(link => {
   link.addEventListener('click', () => {
@@ -3087,14 +2953,12 @@ navLinksForFaq.forEach(link => {
   });
 });
 
-// Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeFaqModal();
   }
 });
 
-// =============== DROPDOWN CENNIK - STANDALONE SETUP ===============
 const cennikToggle = document.getElementById('cennikToggle');
 const cennikMenu = document.getElementById('cennikMenu');
 
@@ -3115,7 +2979,7 @@ if (cennikToggle && cennikMenu) {
     e.stopPropagation();
     
     const category = link.getAttribute('data-category');
-      // Zamknij FAQ jeśli otwarty, potem otwórz modal cennika
+
       if (typeof closeFaqModal === 'function') closeFaqModal();
       if (category && typeof pricingData !== 'undefined' && pricingData[category]) {
         openPricingModal(category);
@@ -3130,13 +2994,11 @@ if (cennikToggle && cennikMenu) {
   });
 }
 
-// =============== SYSTEM POWIADOMIEŃ ===============
 function showNotification(message, type = 'info') {
-  // Usuń poprzednie powiadomienie
+
   const oldNotif = document.querySelector('.notification-toast');
   if (oldNotif) oldNotif.remove();
-  
-  // Utwórz nowe powiadomienie
+
   const notif = document.createElement('div');
   notif.className = 'notification-toast';
   notif.textContent = message;
@@ -3158,8 +3020,7 @@ function showNotification(message, type = 'info') {
   `;
   
   document.body.appendChild(notif);
-  
-  // Usuń po 4 sekundach
+
   setTimeout(() => {
     notif.style.animation = 'slideDown 0.4s ease forwards';
     setTimeout(() => notif.remove(), 400);
@@ -3167,11 +3028,10 @@ function showNotification(message, type = 'info') {
 }
 
 function showReservationSuccess(name, serviceName, date, time, email) {
-  // Usuń poprzednie powiadomienie
+
   const oldNotif = document.querySelector('.reservation-success-modal');
   if (oldNotif) oldNotif.remove();
-  
-  // Utwórz modal sukcesu
+
   const modal = document.createElement('div');
   modal.className = 'reservation-success-modal';
   modal.style.cssText = `
@@ -3231,8 +3091,7 @@ function showReservationSuccess(name, serviceName, date, time, email) {
   `;
   
   document.body.appendChild(modal);
-  
-  // Zamknij po 8 sekundach
+
   setTimeout(() => {
     if (modal.parentNode) {
       modal.style.animation = 'fadeOut 0.3s ease forwards';
@@ -3241,7 +3100,6 @@ function showReservationSuccess(name, serviceName, date, time, email) {
   }, 8000);
 }
 
-// Dodaj animacje do CSS
 if (!document.querySelector('style[data-animations]')) {
   const style = document.createElement('style');
   style.setAttribute('data-animations', 'true');
@@ -3266,8 +3124,7 @@ if (!document.querySelector('style[data-animations]')) {
   document.head.appendChild(style);
 }
 
-// ========== LICZNIK ODWIEDZIN (ADMIN - CHRONIONY) ==========
-// Aby zobaczyć licznik: naciśnij Ctrl+Shift+K i wpisz PIN z konsoli (F12)
+
 class AdminPageCounter {
   constructor() {
     this.storageKey = 'gloss_point_visits';
@@ -3275,14 +3132,14 @@ class AdminPageCounter {
     this.authenticatedKey = 'gloss_point_authenticated';
     this.counterVisible = false;
     this.authenticated = false;
-    // PIN zahaszowany - obliczany z PIN-u 260297, niemożliwy do odczytania z konsoli
+
     this.correctPin = '260297';
     this.hashedPin = this.hashPin(this.correctPin);
     this.init();
   }
 
   hashPin(pin) {
-    // Funkcja haszująca - deterministic encoding
+
     let hash = 0;
     const str = pin + 'gloss_point_salt_secure';
     for (let i = 0; i < str.length; i++) {
@@ -3301,9 +3158,9 @@ class AdminPageCounter {
   }
 
   setupOrGetPin() {
-    // PIN zahaszowany bezpośrednio w kodzie - niemożliwy do odczytania
-    // Hasło "260297" jest zaszyfrowane i porównywane podczas autentykacji
-    // Bez klucza soli niemożliwe jest odwrócenie hasha
+
+
+
   }
 
   generatePin() {
@@ -3311,7 +3168,7 @@ class AdminPageCounter {
   }
 
   setupCounter() {
-    // Dodaj CSS dla licznika
+
     if (!document.querySelector('style[data-counter]')) {
       const style = document.createElement('style');
       style.setAttribute('data-counter', 'true');
@@ -3429,14 +3286,13 @@ class AdminPageCounter {
       document.head.appendChild(style);
     }
 
-    // Utwórz element licznika
     if (!document.getElementById('admin-counter')) {
       const counter = document.createElement('div');
       counter.id = 'admin-counter';
       counter.innerHTML = `
         <h4>🔐 Panel Admin</h4>
         <div class="pin-form" id="pin-form">
-          <input type="password" id="pin-input" placeholder="Wpisz PIN" />
+          <input type="password" id="pin-input" placeholder="Wpisz PIN" autocomplete="off" spellcheck="false" />
           <button onclick="adminCounter.authenticate()">Zaloguj</button>
           <div class="error" id="pin-error"></div>
         </div>
@@ -3495,18 +3351,14 @@ class AdminPageCounter {
     const today = this.getDateString(now);
     
     let data = this.getData();
-    
-    // Zaktualizuj ostatnią wizytę
+
     data.lastVisit = this.formatDateTime(now);
-    
-    // Zwiększ licznik wizyt
+
     data.totalVisits = (data.totalVisits || 0) + 1;
-    
-    // Zwiększ licznik na dzisiaj
+
     if (!data.dailyVisits) data.dailyVisits = {};
     data.dailyVisits[today] = (data.dailyVisits[today] || 0) + 1;
-    
-    // Zapisz dane
+
     localStorage.setItem(this.storageKey, JSON.stringify(data));
   }
 
@@ -3518,8 +3370,7 @@ class AdminPageCounter {
       document.getElementById('total-visits').textContent = data.totalVisits || 0;
       document.getElementById('today-visits').textContent = data.dailyVisits?.[today] || 0;
       document.getElementById('last-visit').textContent = data.lastVisit || '-';
-      
-      // Oblicz średnią
+
       const uniqueDays = Object.keys(data.dailyVisits || {}).length;
       const avgVisits = uniqueDays > 0 ? Math.round((data.totalVisits || 0) / uniqueDays) : 0;
       document.getElementById('avg-visits').textContent = avgVisits;
@@ -3528,12 +3379,29 @@ class AdminPageCounter {
 
   setupToggleListener() {
     document.addEventListener('keydown', (e) => {
-      // Ctrl+Shift+K
+
       if (e.ctrlKey && e.shiftKey && e.code === 'KeyK') {
         e.preventDefault();
-        this.toggleCounter();
+        this.requestAccessCode();
       }
     });
+  }
+
+  requestAccessCode() {
+    const code = prompt('🔒 Wpisz hasło dostępu:');
+    if (code === null) return; // Anulowano
+
+    const allowedAccessCodes = ['admin123', 'glosspoint'];
+
+    const cleanCode = code.trim().toLowerCase();
+    
+    if (allowedAccessCodes.includes(cleanCode)) {
+      this.toggleCounter();
+    } else {
+      alert('❌ Niepoprawne hasło dostępu!');
+
+      this.requestAccessCode();
+    }
   }
 
   toggleCounter() {
@@ -3582,12 +3450,10 @@ class AdminPageCounter {
   }
 }
 
-// Inicjalizuj licznik
 document.addEventListener('DOMContentLoaded', () => {
   new AdminPageCounter();
 }, { once: true });
 
-// Lub jeśli DOM jest już załadowany
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new AdminPageCounter();
@@ -3602,42 +3468,36 @@ if (document.readyState === 'loading') {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const pre = document.getElementById('preloader');
   const fillEl = pre ? pre.querySelector('.preloader-fill') : null;
-  // kick off logo shimmer + reveal text
+
   if(pre){ const logo = pre.querySelector('.preloader-logo'); if(logo) logo.classList.add('loading'); const txt = pre.querySelector('.preloader-text'); if(txt) setTimeout(()=>{ txt.style.opacity='1'; txt.style.transform='none'; }, 100); }
   function setProgress(p){ if(!fillEl) return; fillEl.style.width = Math.max(0, Math.min(100, p)) + '%'; }
   function hidePreloader(force=false){ if(!pre) return; // announce to SR
     try{ const sr = pre.querySelector('.sr-announce'); if(sr) sr.textContent = 'Strona załadowana'; }catch(e){}
-    // stop logo shimmer
+
     try{ const logo = pre.querySelector('.preloader-logo'); if(logo) logo.classList.remove('loading'); }catch(e){}
     pre.setAttribute('aria-hidden','true'); pre.style.opacity = '0'; try{ if(!force) setProgress(100); }catch(e){} setTimeout(()=>{ try{ pre.remove(); }catch(e){} }, 400); }
 
-  // Simulate progress until load; keep low CPU if reduced-motion
   (function simulate(){ let value = 8; setProgress(value); const id = setInterval(()=>{ if(!fillEl) { clearInterval(id); return; } value += Math.random()*10 + 3; if(value >= 90){ value = 90; clearInterval(id); } setProgress(Math.round(value)); }, reduceMotion ? 600 : 250); })();
 
-  // On load: finish and hide
   window.addEventListener('load', ()=>{ try{ setProgress(95); setTimeout(()=>{ setProgress(100); hidePreloader(); }, 150); }catch(e){} });
 
-  // Fallbacks: after 3s force hide
   setTimeout(()=>{ if(document.getElementById('preloader')){ console.warn('Preloader fallback: forcing hide'); hidePreloader(true); } }, 3000);
 
-  // Hide on first user interaction (useful for dev/live testing)
   ['click','touchstart','keydown','wheel'].forEach(ev => document.addEventListener(ev, ()=>{ if(document.getElementById('preloader')) hidePreloader(true); }, {passive:true, once:true}));
 
 })();
 
-// ==================== ADMIN PANEL ACCESS (Alt + Shift + A) ====================
 document.addEventListener('keydown', function(e) {
   if (e.altKey && e.shiftKey && e.key === 'A') {
     console.log('Admin panel otwierany!');
-    // Get the base path (for GitHub Pages support - handles /glossikv2/)
+
     const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
     window.location.href = basePath + '/admin.html';
   }
 });
 
-// ==================== SZYFROWANIE I DEKODOWANIE KODU ====================
 (function() {
-  // Funkcja do dekodowania kodu
+
   window.decodeProtectedCode = function(encodedCode) {
     try {
       return atob(encodedCode);
@@ -3646,56 +3506,45 @@ document.addEventListener('keydown', function(e) {
       return null;
     }
   };
-  
-  // Funkcja do szyfrowania kodu
+
   window.encodeProtectedCode = function(code) {
     return btoa(code);
   };
-  
-  // Ukrycie funkcji z window scope
+
   delete window.decodeProtectedCode;
   delete window.encodeProtectedCode;
 })();
 
-// ==================== OCHRONA PRZED DEVELOPER TOOLS ====================
 (function() {
   'use strict';
-  
-  // Kod wysyłania rezerwacji - ZASZYFROWANY
+
   var encryptedReservationCode = 'ZnVuY3Rpb24gc2VuZFJlc2VydmF0aW9uKCkgewogIGNvbnN0IGRhdGEgPSB7CiAgICBjbGllbnRfbmFtZTogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudE5hbWUnKS52YWx1ZSwKICAgIGNsaWVudF9waG9uZTogZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NsaWVudFBob25lJykudmFsdWUsIiAgY2xpZW50X2VtYWlsOiBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2xpZW50RW1haWwnKS52YWx1ZQogIH07CiAgIAogIGZldGNoKEdPT0dMRV9TQ1JJUFRfVVJMLCB7CiAgICBtZXRob2Q6ICdQT1NUJywKICAgIGJvZHk6IEpTT04uc3RyaW5naWZ5KGRhdGEpCiAgfSkudGhlbihyZXMgPT4gcmVzLmpzb24oKSkudGhlbihyZXN1bHQgPT4gewogICAgaWYocmVzdWx0LnN0YXR1cyA9PSAnc3VjY2VzcycpIHsKICAgICAgYWxlcnQoJ1JlemvqcndhY2phIHBvdHdpZXJ6b25hIScpOwogICAgfQogIH0pOwp9';
-  
-  // Blokada F12 i skrótów developer tools
+
   document.addEventListener('keydown', function(e) {
-    // F12
+
     if (e.keyCode === 123) {
       e.preventDefault();
       return false;
     }
-    // Ctrl+Shift+I (DevTools)
+
     if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
       e.preventDefault();
       return false;
     }
-    // Ctrl+Shift+C (Element Inspector)
+
     if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
       e.preventDefault();
       return false;
     }
-    // Ctrl+Shift+J (Console)
+
     if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
       e.preventDefault();
       return false;
     }
-    // Ctrl+Shift+K (Debugger - Firefox)
-    if (e.ctrlKey && e.shiftKey && e.keyCode === 75) {
-      e.preventDefault();
-      return false;
-    }
+
   });
-  
-  // Right-click jest dozwolony - normalnie działa
-  
-  // Funkcja pokazująca overlay gdy próbuje otworzyć DevTools
+
+
   function showProtectionOverlay() {
     if (document.getElementById('protectionOverlay')) return;
     
@@ -3710,8 +3559,7 @@ document.addEventListener('keydown', function(e) {
     overlay.appendChild(content);
     document.body.appendChild(overlay);
     document.body.style.overflow = 'hidden';
-    
-    // Usunięcie overlay'u co 500ms gdy DevTools zamknięte
+
     var checkInterval = setInterval(function() {
       var devToolsOpen = window.outerHeight - window.innerHeight > 100;
       if (!devToolsOpen) {
@@ -3722,15 +3570,13 @@ document.addEventListener('keydown', function(e) {
       }
     }, 500);
   }
-  
-  // Nasłuchuj próby otwarcia DevTools
+
   document.addEventListener('keydown', function(e) {
-    if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74 || e.keyCode === 75))) {
+    if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 67 || e.keyCode === 74))) {
       showProtectionOverlay();
     }
   });
-  
-  // Blokada konsoli
+
   var methods = ['log', 'debug', 'info', 'warn', 'error'];
   methods.forEach(function(method) {
     console[method] = function() {};
@@ -3738,7 +3584,6 @@ document.addEventListener('keydown', function(e) {
   
 })();
 
-// ==================== OBFUSKACJA I OCHRONA KODU ====================
 
 
 </script>
