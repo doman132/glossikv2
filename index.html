@@ -523,8 +523,8 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .reservation-modal{position:fixed;top:0;left:-100%;width:100%;max-width:100%;height:100vh;background:rgba(0,0,0,.95);overflow-y:hidden;transition:left 0.5s ease-out;z-index:4900;will-change:left;contain:layout style paint;pointer-events:none;}
 .pricing-modal.active{left:0 !important;overflow-y:auto;pointer-events:auto;}
 .reservation-modal.active{left:0;overflow-y:auto;pointer-events:auto;}
-.modal-header{position:relative;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;margin-top:0;}
-.modal-header h1{font-size:2rem;color:var(--tiffany);margin:0;}
+.modal-header{position:relative;top:0;left:0;right:0;padding:24px;background:rgba(0,0,0,.95);border-bottom:2px solid var(--tiffany);display:flex;justify-content:space-between;align-items:center;z-index:5001;box-sizing:border-box;margin-top:0;gap:16px;}
+.modal-header h1{font-size:2rem;color:var(--tiffany);margin:0;flex:1;}
 .modal-close{background:rgba(129,216,208,0.15);border:2px solid rgba(129,216,208,0.3);color:var(--tiffany);font-size:1.8rem;cursor:pointer;transition:.3s;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:6px;padding:0;margin:0;line-height:1;}
 .modal-close:hover{background:rgba(129,216,208,0.25);color:#fff;transform:scale(1.1);border-color:var(--tiffany);}
 .modal-close:active{transform:scale(0.95);}
@@ -535,11 +535,11 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .modal-content{padding:30px 16px 40px 16px;margin-top:0;}
 }
 @media(max-width:480px){
-.modal-header{padding:6px 4px;}
-.modal-header h1{font-size:1.1rem;}
-.modal-close{width:32px;height:32px;font-size:1.5rem;}
-.modal-content{padding:12px 6px 28px 6px;}
-.pricing-list-modal{margin-top:8px;}
+.modal-header{padding:12px 12px;}
+.modal-header h1{font-size:1.2rem;}
+.modal-close{width:40px;height:40px;font-size:1.6rem;padding:0;margin:0;}
+.modal-content{padding:16px 12px 28px 12px;}
+.pricing-list-modal{margin-top:12px;}
 }
 .category-tabs{display:flex;gap:8px;flex-wrap:wrap;flex:1;align-items:center;justify-content:center;width:100%;padding:0;}
 .category-tab{padding:8px 12px;background:rgba(129,216,208,.1);border:2px solid rgba(129,216,208,.3);color:#fff;cursor:pointer;border-radius:8px;font-weight:600;transition:.3s;font-size:0.85rem;text-align:center;line-height:1.2;white-space:normal;flex:0 1 auto;max-width:360px;}
@@ -574,19 +574,19 @@ h2{font-size:1.5rem;margin-bottom:30px;}
 .privacy-panel-content{padding:30px 16px;}
 .privacy-panel-header h2{font-size:1.4rem;}
 .modal-content{padding:30px 16px 40px 16px;}
-.category-tabs{gap:8px;flex-wrap:wrap;}
-.category-tab{padding:8px 14px;font-size:0.9rem;white-space:normal;}
+.category-tabs{gap:10px;flex-wrap:wrap;justify-content:flex-start;}
+.category-tab{padding:10px 16px;font-size:0.9rem;white-space:normal;flex:0 1 auto;}
 .item-name{font-size:1rem;}
 .item-price{font-size:1.1rem;}
 .pricing-item-modal{padding:16px;margin:0;}
 }
 @media(max-width:480px){
-.category-tabs{gap:6px;flex-wrap:nowrap;flex-direction:row;margin-top:8px;}
-.category-tab{padding:8px 6px;font-size:0.65rem;font-weight:700;white-space:nowrap;flex:1;min-width:0;line-height:1.2;border-radius:6px;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase;}
-.pricing-item-modal{padding:12px;margin-bottom:6px;}
-.item-name{font-size:0.85rem;}
-.item-price{font-size:0.85rem;}
-.pricing-item-description{font-size:0.75rem;}
+.category-tabs{gap:6px;flex-wrap:wrap;flex-direction:row;margin-top:8px;justify-content:center;}
+.category-tab{padding:10px 12px;font-size:0.8rem;font-weight:600;white-space:normal;flex:0 1 calc(50% - 3px);line-height:1.3;border-radius:6px;text-transform:none;text-align:center;}
+.pricing-item-modal{padding:16px;margin-bottom:8px;}
+.item-name{font-size:0.95rem;margin-bottom:8px;}
+.item-price{font-size:0.95rem;margin-bottom:8px;}
+.pricing-item-description{font-size:0.8rem;line-height:1.5;}
 }
 
 
@@ -1186,17 +1186,17 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Czas trwania zabiegu zależy od typu usługi:<br>• Mycie pojazdu: 1-2 godziny<br>• Detailing wnętrza: 2-4 godziny<br>• Korekta lakieru: 4-8 godzin<br>• Powłoki ceramiczne: 2-3 godziny<br>Dokładny czas będzie podany przy rezerwacji.</p>
+        <p>Czas trwania zabiegu zależy od typu usługi:<br>• Bieżące mycie : 1-2 godziny<br>• Detailing wnętrza: 1-3 godziny<br>• Korekta lakieru: 1-3 dni<br>• Aplikacja folii ppf: 3-7 dni<br>Dokładny czas trwania usługi zostanie podany po oględzinach samochodu.</p>
       </div>
     </div>
     
     <div class="faq-item">
       <div class="faq-question" onclick="toggleFaqItem(this)">
-        <h3>Jakie są warunki rezerwacji?</h3>
+        <h3>Warunki rezerwacji on-line na stronie.</h3>
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Rezerwacja wymaga wpłacenia zaliczki w wysokości 20 zł. Pozostałą kwotę zapłacisz na miejscu w dniu zabiegu. Rezerwację można anulować do 48 godzin przed zaplanowanym terminem. Jeśli nie pojawisz się na zabiegu bez powiadomienia nas, zaliczka nie zostanie zwrócona.</p>
+        <p>Rezerwacja wymaga wpłacenia zaliczki w wysokości 20 zł. Pozostałą kwotę zapłacisz na miejscu po wykonanej usłudze. Rezerwację można anulować do 48 godzin przed zaplanowanym terminem. Jeśli nie pojawisz się na zabiegu bez powiadomienia nas, zaliczka nie zostanie zwrócona.</p>
       </div>
     </div>
     
@@ -1206,7 +1206,7 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Jesteśmy zlokalizowani w Tarnowie. Mapę dojazdu oraz dokładny adres oraz instrukcje parkowania znajdziesz w sekcji Kontakt na naszej stronie. Mamy wyznaczone miejsca parkingowe dla klientów.</p>
+        <p>Znajdziesz nas w Tarnowie, przy ulicy Marii Konopnickiej 5. Dokładny punkt na mapie znajdziesz w sekcji <a onclick="closeFaqModalAndGoToContact()" style="color:var(--tiffany);text-decoration:underline;cursor:pointer;">Kontakt</a> na naszej stronie.</p>
       </div>
     </div>
     
@@ -1216,7 +1216,7 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>W soboty pracujemy w ograniczonym zakresie od 9:00 do 12:00. W niedziele jesteśmy zamknięci. Rezerwacje w sobotę można dokonywać dla wybranych usług. Zapraszamy w dni robocze (poniedziałek-piątek) od 9:00 do 17:00.</p>
+        <p>W sobotę pracujemy po wcześniejszym umówieniu się na usługę. Na oględziny bądź wyceny samochodu zparaszamy w tygodniu od poniedziałku do piątku 9-17.</p>
       </div>
     </div>
     
@@ -1226,7 +1226,7 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Aktualnie świadczymy usługi w naszym lokalu w Tarnowie. W przyszłości planujemy rozszerzić naszą ofertę o usługi mobilne. Prosimy o kontakt, aby uzyskać najnowsze informacje na temat dostępności tego typu usług.</p>
+        <p>Czy umyjemy samochód pod domem? - zdecydowanie nie. Za to świadczymy usługę door2door - odbierzemy samochód z danego punktu, następnie o niego zadbamy i odstawimy we wskazane miejsce, nie tracąc przy tym cennego czasu klienta.</p>
       </div>
     </div>
     
@@ -1236,7 +1236,7 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Wszystkie nasze usługi są gwarantowane najwyższą jakością wykonania. Na powłoki ceramiczne udzielamy gwarancji do 3 lat, na folie ochronne PPF do 5 lat. Szczegółowe warunki gwarancji otrzymasz w momencie zarezerwowania usługi.</p>
+        <p>Wszystkie nasze usługi są gwarantowane najwyższą jakością wykonania. Na powłoki ceramiczne udzielamy gwarancji od 1 roku do lat 5 w zależności od wybranego wariantu. Na folię ppf nawet do lat 10. Szczegółowe warunki gwarancji otrzymasz w momencie zarezerwowania usługi.</p>
       </div>
     </div>
     
@@ -1246,7 +1246,7 @@ font-size:1rem;
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-answer">
-        <p>Możesz się z nami skontaktować na wiele sposobów:<br>📞 Telefon: +48 660 706 043<br>📧 Email: dostępny w sekcji Kontakt<br>📱 Instagram: @glosspoint_<br>👍 Facebook: Gloss Point Detailing<br>Zapraszamy do wysłania wiadomości - odpowiemy w ciągu 24 godzin!</p>
+        <p>Możesz się z nami skontaktować na wiele sposobów:<br>📞 Telefon: +48 660 706 043<br>📧 Email: dostępny w sekcji Kontakt<br>📱 Instagram: @glosspoint_<br>👍 Facebook: Gloss Point Detailing<br>Zapraszamy do wysłania wiadomości - Staram odpowiadać się najszybciej jak tylko jest to możliwe.</p>
       </div>
     </div>
     
@@ -1308,7 +1308,7 @@ font-size:1rem;
 <div class="beyond-content">
 <h2>Beyond Clean</h2>
 <p><strong>Nie myjemy samochodów - przeprowadzamy rytuał renowacji.</strong></p>
-<p>Dzięki zaawansowanej nanotechnologii oraz obsesyjnej dbałości o detale sprawiamy, że Twoje auto nie tylko lśni — ono emanuje perfekcją.</p>
+<p>Dzięki zaawansowanej nanotechnologii oraz obsesyjnej dbałości o detale sprawiamy, że Twoje auto nie tylko lśni - ono emanuje perfekcją.</p>
 <div class="beyond-list">
 <p>Specjaliści korekty lakieru</p>
 <p>Certyfikowani instalatorzy powłok ceramicznych</p>
@@ -1523,7 +1523,7 @@ const pricingData = {
     title: 'Mycie i sprzątanie',
     categories: ['samochod maly - hatchback', 'samochod sredni - sedan / maly suv', 'samochod duzy - suv'],
     items: {
-      'Mycie podstawowe': {
+      'Bieżące mycie': {
         description: 'Bieżące mycie samochodu Bezpieczne mycie całego samochodu wraz z wnękami drzwi, nadkolami oraz felgami. Aplikacja hydrowosku. Osuszenie pojazdu powietrzem.',
         prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
@@ -1531,15 +1531,15 @@ const pricingData = {
         description: 'Gruntowne sprzątanie z wydmuchaniem zanieczyszczeń z zakamarków, odświeżenie plastików, odkurzanie i mycie szyb.',
         prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '90 zł', 'samochod duzy - suv': '100 zł' }
       },
-      'Komplet': {
+      'Bieżące mycie + sprzątanie wnętrza (komplet)': {
         description: 'Zawiera „Bieżące mycie” oraz sprzątanie wnętrza.',
         prices: { 'samochod maly - hatchback': '140 zł', 'samochod sredni - sedan / maly suv': '100 zł', 'samochod duzy - suv': '120 zł' }
       },
-      'Dekontaminacja': {
+      'Dekontaminacja chemiczna': {
         description: 'Usuniecie z nadwozia, wnęk oraz kół pyłu z klocków hamulcowych oraz zabrudzeń ropopochodnych typu asfalt.',
         prices: { 'samochod maly - hatchback': '100 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '160 zł' }
       },
-      'mycie detailingowe': {
+      'Mycie detailingowe': {
         description: 'Zawiera „Bieżące mycie”, wypędzelkowanie brudu z zakamarków, ręczne mycie nadkoli, wypłukanie podwozia, wyczyszczenie zawiasów drzwi z zalegającego smaru.',
         prices: { 'samochod maly - hatchback': '120 zł', 'samochod sredni - sedan / maly suv': '140 zł', 'samochod duzy - suv': '180 zł' }
       },
@@ -1547,11 +1547,11 @@ const pricingData = {
         description: 'Eliminacja nieprzyjemnych zapachów i bakterii z wnętrza pojazdu',
         prices: { 'samochod maly - hatchback': '80 zł', 'samochod sredni - sedan / maly suv': '80 zł', 'samochod duzy - suv': '80 zł' }
       },
-      'Usuwanie śierści': {
+      'Usuwanie sierści': {
         description: 'Profesjonalne usunięcie sierści zwierząt z tapicerki pojazdu',
         prices: { 'samochod maly - hatchback': '50 zł', 'samochod sredni - sedan / maly suv': '50 zł', 'samochod duzy - suv': '50 zł' }
       },
-      'aplikacja wosku': {
+      'Aplikacja wosku': {
         description: 'Ręczna aplikacja twardego wosku na karoserie aby nadać ochronę i połysk na okres 4-6 miesięcy.',
         prices: { 'samochod maly - hatchback': '200 zł', 'samochod sredni - sedan / maly suv': '250 zł', 'samochod duzy - suv': '300 zł' }
       },
@@ -2898,6 +2898,16 @@ window.closeFaqModal = function() {
   }
 };
 
+window.closeFaqModalAndGoToContact = function() {
+  closeFaqModal();
+  setTimeout(() => {
+    const kontaktSection = document.getElementById('kontakt');
+    if (kontaktSection) {
+      kontaktSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, 300);
+};
+
 function preventScroll(e) {
   const element = e.currentTarget;
   const isAtBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 1;
@@ -3590,5 +3600,4 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
-
 
